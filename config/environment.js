@@ -20,7 +20,21 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
-    }
+    },
+
+    firebase: {
+      apiKey: 'AIzaSyDJxOKoFlnk-j65DvIFSyqL-zw9j8w00rI',
+      authDomain: 'byome-fcaae.firebaseapp.com',
+      databaseURL: 'https://byome-fcaae.firebaseio.com',
+      storageBucket: 'byome-fcaae.appspot.com',
+      messageSenderId: '1047257712850'
+    },
+
+    contentSecurityPolicy: {
+      'script-src': "'self' 'unsafe-eval' apis.google.com",
+      'frame-src': "'self' https://*.firebaseapp.com",
+      'connect-src': "'self' wss://*.firebaseio.com https://*.googleapis.com"
+    },
   };
 
   if (environment === 'development') {
