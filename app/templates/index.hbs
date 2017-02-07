@@ -1,7 +1,7 @@
 <h1>Welcome to byome</h1>
 
 {{#if session.isAuthenticated}}
-logged in
+logged in {{session.userModel.email}}
 {{else}}
 {{link-to 'Login' 'login'}}
 {{/if}}

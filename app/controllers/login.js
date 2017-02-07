@@ -5,14 +5,13 @@ export default Ember.Controller.extend({
 
   actions: {
     signIn(user) {
+      const { email, password } = this.getProperties('email', 'password');
       this.get('session').open('firebase', {
         provider: 'password',
-        email: user.get('email'),
-        password: user.get('password')
-      }).then((data) => {
-        console.log(data);
-        console.log(this.get('session'));
-        this.transitionToRoute('index');
+        email: email,
+        password: password
+      }).then(() => {
+        this.transitionToRoute('dashboard');
       });
     },
 
