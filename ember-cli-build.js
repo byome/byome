@@ -1,6 +1,7 @@
 /*jshint node:true*/
 /* global require, module */
 var EmberApp = require('ember-cli/lib/broccoli/ember-app');
+var Funnel = require('broccoli-funnel');
 
 module.exports = function(defaults) {
   var app = new EmberApp(defaults, {
@@ -37,7 +38,18 @@ module.exports = function(defaults) {
   app.import("vendor/fonts/glyphicons-halflings-regular.ttf", { destDir: "fonts" });
   app.import("vendor/fonts/glyphicons-halflings-regular.woff", { destDir: "fonts" });
   app.import("vendor/fonts/glyphicons-halflings-regular.woff2", { destDir: "fonts" });
+  app.import("vendor/assets/font-awesome/fonts/fontawesome-webfont.eot", { destDir: "fonts" });
+  app.import("vendor/assets/font-awesome/fonts/fontawesome-webfont.svg", { destDir: "fonts" });
+  app.import("vendor/assets/font-awesome/fonts/fontawesome-webfont.ttf", { destDir: "fonts" });
+  app.import("vendor/assets/font-awesome/fonts/fontawesome-webfont.woff", { destDir: "fonts" });
+
+  // FlatLab Images
+  var images = new Funnel("vendor/img", {
+    srcDir: "/",
+    include: ["**/*.gif", "**/*.jpg", "**/*.png"],
+    destDir: "/img"
+  });
 
 
-  return app.toTree();
+  return app.toTree(images);
 };

@@ -1,1 +1,11 @@
-{{outlet}}
+{{#if session.isAuthenticated}}
+  <section id="container">
+    {{application/top-bar}}
+    {{application/side-bar}}
+    {{outlet}}
+  </section>
+{{else}}
+  <div class="container">
+    {{outlet}}
+  </div>
+{{/if}}

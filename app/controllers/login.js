@@ -5,7 +5,7 @@ export default Ember.Controller.extend({
 
   actions: {
     signIn(user) {
-      const { email, password } = this.getProperties('email', 'password');
+      const { email, password } = user.getProperties('email', 'password');
       this.get('session').open('firebase', {
         provider: 'password',
         email: email,

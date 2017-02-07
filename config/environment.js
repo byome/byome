@@ -34,6 +34,7 @@ module.exports = function(environment) {
       'script-src': [
         "'self'",
         "'unsafe-eval'",
+        "'unsafe-inline'",
         "apis.google.com"
       ],
       'frame-src': [
@@ -47,8 +48,7 @@ module.exports = function(environment) {
       ],
       'style-src': [
         "'self'",
-        "'sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU='",
-        "'sha256-kf82iNcbl2ymo+7CpNHC0krnmigdAQhl2ykUVLJRHmE='"
+        "'unsafe-inline'"
       ]
     },
 
