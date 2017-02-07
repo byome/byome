@@ -42,7 +42,8 @@
     "ember-source": "^2.11.0",
     "emberfire": "2.0.6",
     "install": "0.8.5",
-    "loader.js": "^4.0.10"
+    "loader.js": "^4.0.10",
+    "torii": "0.8.1"
   },
   "engines": {
     "node": ">= 0.12.0"

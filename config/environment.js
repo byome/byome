@@ -51,6 +51,10 @@ module.exports = function(environment) {
         "'sha256-kf82iNcbl2ymo+7CpNHC0krnmigdAQhl2ykUVLJRHmE='"
       ]
     },
+
+    torii: {
+      sessionServiceName: 'session'
+    }
   };
 
   if (environment === 'development') {
