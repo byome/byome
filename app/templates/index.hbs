@@ -1,1 +1,7 @@
 <h1>Welcome to byome</h1>
+
+{{#if session.isAuthenticated}}
+logged in
+{{else}}
+{{link-to 'Login' 'login'}}
+{{/if}}

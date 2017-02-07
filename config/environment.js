@@ -34,16 +34,16 @@ module.exports = function(environment) {
       'script-src': [
         "'self'",
         "'unsafe-eval'",
-        "'apis.google.com'"
+        "apis.google.com"
       ],
       'frame-src': [
         "'self'",
-        "'https://*.firebaseapp.com'"
+        "https://*.firebaseapp.com"
       ],
       'connect-src': [
         "'self'",
-        "'wss://*.firebaseio.com'",
-        "'https://*.googleapis.com'"
+        "wss://*.firebaseio.com",
+        "https://*.googleapis.com"
       ],
       'style-src': [
         "'self'",

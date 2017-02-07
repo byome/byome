@@ -1,0 +1,22 @@
+<div class="container">
+  <form class="form-signin" {{action 'signUp' this on='submit'}}>
+    <h2 class="form-signin-heading">create a byome account</h2>
+
+    <div class="login-wrap">
+      <p>Enter your account details below</p>
+      {{input type="text" value=name placeholder="Full Name" class="form-control" autofocus=true}}
+      {{input type="text" value=email placeholder="Email" class="form-control"}}
+      {{input type="text" value=username placeholder="Username" class="form-control"}}
+      {{input type="password" value=password placeholder="Password" class="form-control"}}
+      {{input type="password" value=passwordConfirmation placeholder="Confirm password" class="form-control"}}
+      <small>By creating an account, you agree to the Terms of Service and Privacy Policy</small>
+      <br/><br/>
+
+      <button class="btn btn-lg btn-login btn-block" type="submit">Submit</button>
+
+      <div class="registration">
+        Already Registered? {{link-to 'Login to your account' 'login'}}
+      </div>
+    </div>
+  </form>
+</div>

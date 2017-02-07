@@ -1,0 +1,46 @@
+<div class="container">
+  <form class="form-signin" {{action 'signIn' this on='submit'}}>
+    <h2 class="form-signin-heading">sign in to byome</h2>
+
+    <div class="login-wrap">
+      {{input type='text' value=email class="form-control" placeholder="Email" autofocus="true"}}
+      {{input type='password' value=password class="form-control" placeholder="Password"}}
+
+      <label class="checkbox">
+        {{input type='checkbox' checked=rememberMe}} Remember me
+        <span class="pull-right">
+            <a data-toggle="modal" href="#myModal"> Forgot Password?</a>
+        </span>
+      </label>
+
+      <button class="btn btn-lg btn-login btn-block" type="submit">Sign in</button>
+      <div class="registration">
+        Don't have an account yet?
+        {{link-to 'Create an account' 'register'}}
+      </div>
+    </div>
+  </form>
+</div>
+
+<!-- Modal -->
+<div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form {{action 'resetPassword' this on='submit'}}>
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Reset your password</h4>
+        </div>
+        <div class="modal-body">
+          <p>Enter your e-mail address below to reset your password.</p>
+          {{input type='text' value=email placeholder="forgotmypassword@website.com" autocomplete="off" class="form-control placeholder-no-fix"}}
+        </div>
+        <div class="modal-footer">
+          <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
+          <button class="btn btn-success" type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- modal -->
