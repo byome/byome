@@ -31,9 +31,25 @@ module.exports = function(environment) {
     },
 
     contentSecurityPolicy: {
-      'script-src': "'self' 'unsafe-eval' apis.google.com",
-      'frame-src': "'self' https://*.firebaseapp.com",
-      'connect-src': "'self' wss://*.firebaseio.com https://*.googleapis.com"
+      'script-src': [
+        "'self'",
+        "'unsafe-eval'",
+        "'apis.google.com'"
+      ],
+      'frame-src': [
+        "'self'",
+        "'https://*.firebaseapp.com'"
+      ],
+      'connect-src': [
+        "'self'",
+        "'wss://*.firebaseio.com'",
+        "'https://*.googleapis.com'"
+      ],
+      'style-src': [
+        "'self'",
+        "'sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU='",
+        "'sha256-kf82iNcbl2ymo+7CpNHC0krnmigdAQhl2ykUVLJRHmE='"
+      ]
     },
   };
 

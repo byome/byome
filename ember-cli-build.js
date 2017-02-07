@@ -7,18 +7,37 @@ module.exports = function(defaults) {
     // Add options here
   });
 
-  // Use `app.import` to add additional libraries to the generated
-  // output files.
-  //
-  // If you need to use different assets in different
-  // environments, specify an object as the first parameter. That
-  // object's keys should be the environment name and the values
-  // should be the asset to use in that environment.
-  //
-  // If the library that you are including contains AMD or ES6
-  // modules that you would like to import into your application
-  // please specify an object with the list of modules as keys
-  // along with the exports of each module as its value.
+  // FlatLab CSS
+  app.import("vendor/css/bootstrap.css");
+  app.import("vendor/css/bootstrap-reset.css");
+  app.import("vendor/assets/font-awesome/css/font-awesome.css");
+  app.import("vendor/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css");
+  app.import("vendor/css/owl.carousel.css");
+  app.import("vendor/css/slidebars.css");
+  app.import("vendor/css/style.css");
+  app.import("vendor/css/style-responsive.css");
+
+  // FlatLab JS
+  app.import("vendor/js/jquery.js");
+  app.import("vendor/js/bootstrap.js");
+  app.import("vendor/js/jquery.dcjqaccordion.2.7.js");
+  app.import("vendor/js/jquery.scrollTo.min.js");
+  app.import("vendor/js/jquery.nicescroll.js");
+  app.import("vendor/js/jquery.sparkline.js");
+  app.import("vendor/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.js");
+  app.import("vendor/js/owl.carousel.js");
+  app.import("vendor/js/slidebars.min.js");
+  app.import("vendor/js/common-scripts.js");
+  app.import("vendor/js/sparkline-chart.js");
+  app.import("vendor/js/easy-pie-chart.js");
+
+  // FlatLab Fonts
+  app.import("vendor/fonts/glyphicons-halflings-regular.eot", { destDir: "fonts" });
+  app.import("vendor/fonts/glyphicons-halflings-regular.svg", { destDir: "fonts" });
+  app.import("vendor/fonts/glyphicons-halflings-regular.ttf", { destDir: "fonts" });
+  app.import("vendor/fonts/glyphicons-halflings-regular.woff", { destDir: "fonts" });
+  app.import("vendor/fonts/glyphicons-halflings-regular.woff2", { destDir: "fonts" });
+
 
   return app.toTree();
 };
