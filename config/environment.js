@@ -49,6 +49,10 @@ module.exports = function(environment) {
       'style-src': [
         "'self'",
         "'unsafe-inline'"
+      ],
+      'img-src': [
+        "'self'",
+        "byome-fcaae.appspot.com"
       ]
     },
 

@@ -1,1 +1,79 @@
-{{outlet}}
+<div class="row">
+  <div class="col-md-12">
+    <ul class="breadcrumb">
+      <li>
+        {{#link-to 'dashboard'}}
+          <i class="fa fa-home"></i> Home
+        {{/link-to}}
+      </li>
+      <li>
+        {{link-to 'Servers' 'servers.index'}}
+      </li>
+      <li class="active">
+        {{model.name}}
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-8">
+    <section class="panel">
+      <div class="bio-graph-heading project-heading">
+        <strong>{{model.name}}</strong>
+      </div>
+      <div class="panel-body bio-graph-info">
+        <div class="row p-details">
+          <div class="bio-row">
+            <p>
+              <span class="bold">Host</span>: {{model.host}}
+            </p>
+          </div>
+          <div class="bio-row">
+            <p>
+              <span class="bold">Location</span>: {{model.location}}
+            </p>
+          </div>
+          <div class="bio-row">
+            <p>
+              <span class="bold">Status</span>: <span class="label {{statusClass}}">{{model.status}}</span>
+            </p>
+          </div>
+          <div class="bio-row">
+            <p>
+              <span class="bold">Last Wipe</span>: {{moment-format model.lastWipe 'MM/DD/YYYY'}}
+            </p>
+          </div>
+          <div class="bio-row">
+            <p>
+              <span class="bold">Next Wipe</span>: {{moment-format model.lastWipe 'MM/DD/YYYY'}}
+            </p>
+          </div>
+
+          <div class="col-lg-12">
+            <dl class="mtop20 p-progress">
+              <dt>Player Capacity:</dt>
+              <dd>
+                <div class="progress progress-striped active">
+                  <div style="width: 20%" class="progress-bar progress-bar-success"></div>
+                </div>
+                <small>10 / 50 players online</small>
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="col-md-4">
+    <section class="panel">
+      <header class="panel-heading">
+        Server Details
+      </header>
+      <div class="panel-body">
+        <img src="/assets/maps/{{model.host}}.png" class="img-responsive">
+      </div>
+    </section>
+  </div>
+</div>

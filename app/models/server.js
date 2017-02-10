@@ -7,6 +7,7 @@ export default DS.Model.extend({
   status: DS.attr('string'),
   location: DS.attr('string'),
   version: DS.attr('string'),
+  lastWipe: DS.attr('date'),
 
   // Associations
   players: DS.hasMany('player'),
