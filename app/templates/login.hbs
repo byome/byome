@@ -2,6 +2,11 @@
   <h2 class="form-signin-heading">sign in to byome</h2>
 
   <div class="login-wrap">
+    {{#if errorMessage}}
+      <div class="alert alert-danger">
+        {{errorMessage}}
+      </div>
+    {{/if}}
     {{input type='text' value=email class="form-control" placeholder="Email" autofocus="true"}}
     {{input type='password' value=password class="form-control" placeholder="Password"}}
 
@@ -12,7 +17,13 @@
       </span>
     </label>
 
-    <button class="btn btn-lg btn-login btn-block" type="submit">Sign in</button>
+    <button class="btn btn-lg btn-login btn-block" type="submit" disabled={{loggingIn}}>
+      {{#if loggingIn}}
+        <i class="fa fa-spinner fa-spin"></i>
+      {{else}}
+        Sign in
+      {{/if}}
+    </button>
     <div class="registration">
       Don't have an account yet?
       {{link-to 'Create an account' 'register'}}
