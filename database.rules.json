@@ -5,6 +5,9 @@
 
     "users": {
       ".indexOn": ["email"]
+    },
+    "players": {
+      ".indexOn": ["steamID"]
     }
   }
 }
