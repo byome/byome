@@ -1,0 +1,52 @@
+<section class="panel">
+  <header class="panel-heading">
+    Byome Servers
+  </header>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-12">
+      </div>
+    </div>
+  </div>
+  <table class="table table-hover p-table">
+    <thead>
+      <tr>
+        <th>Server Name</th>
+        <th>Host</th>
+        <th>Players Online</th>
+        <th>Status</th>
+        <th>Location</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each model as |server|}}
+        <tr>
+          <td class="p-name">
+            {{#link-to 'servers.show' server.id}}
+              {{server.name}}
+            {{/link-to}}
+          </td>
+            <td class="p-team">
+              {{server.host}}
+            </td>
+            <td class="p-progress">
+              <div class="progress progress-xs">
+                <div style="width: 20%;" class="progress-bar progress-bar-success"></div>
+              </div>
+              <small>10 / 50 players online</small>
+            </td>
+            <td>
+              {{#if server.isOnline}}
+                <span class="label label-success">Online</span>
+              {{else}}
+                <span class="label label-default">Offline</span>
+              {{/if}}
+            </td>
+            <td>
+              {{server.location}}
+            </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</section>

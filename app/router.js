@@ -11,6 +11,9 @@ Router.map(function() {
   this.route('login');
   this.route('register');
   this.authenticatedRoute('dashboard');
+  this.authenticatedRoute('servers', function() {
+    this.route('show', { path: '/:server_id' });
+  });
 });
 
 export default Router;
