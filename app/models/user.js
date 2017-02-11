@@ -9,5 +9,5 @@ export default DS.Model.extend({
   associationToken: DS.attr('string'),
 
   // Associations
-  player: DS.hasOne('player')
+  player: DS.belongsTo('player')
 });
