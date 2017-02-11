@@ -55,9 +55,9 @@
               <dt>Player Capacity:</dt>
               <dd>
                 <div class="progress progress-striped active">
-                  <div style="width: 20%" class="progress-bar progress-bar-success"></div>
+                  <div style="width: {{model.playersOnlineWidth}}%" class="progress-bar progress-bar-success"></div>
                 </div>
-                <small>10 / 50 players online</small>
+                <small>{{model.playersOnlineCount}} / {{model.playerLimit}} players online</small>
               </dd>
             </dl>
           </div>

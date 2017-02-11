@@ -8,10 +8,19 @@ export default DS.Model.extend({
   location: DS.attr('string'),
   version: DS.attr('string'),
   lastWipe: DS.attr('date'),
+  playerLimit: DS.attr('number'),
 
   // Associations
   players: DS.hasMany('player'),
+  connections: DS.hasMany('connection'),
 
   // Helpers
-  isOnline: Ember.computed.equal('status', 'online')
+  isOnline: Ember.computed.equal('status', 'online'),
+  playersOnline: Ember.computed.filterBy('connections', 'connected', true),
+  playersOnlineCount: Ember.computed('playersOnline', function() {
+    return this.get('playersOnline.length');
+  }),
+  playersOnlineWidth: Ember.computed('playersOnlineCount', 'playerLimit', function() {
+    return (this.get('playersOnlineCount') / this.get('playerLimit')) * 100;
+  })
 });
