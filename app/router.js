@@ -14,6 +14,9 @@ Router.map(function() {
   this.authenticatedRoute('servers', function() {
     this.route('show', { path: '/:server_id' });
   });
+  this.route('players', function() {
+    this.route('show');
+  });
 });
 
 export default Router;
