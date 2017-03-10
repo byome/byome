@@ -45,3 +45,13 @@ exports.playerConnected = functions.database.ref('/events/player_connected').onW
       return resolve();
     });
 });
+
+exports.playerDisconnected = functions.database.ref('/events/player_disconnected').onWrite(event => {1
+  const data = event.data.val();
+  connectionsRef.child(`${data.server}-${data.id}`).update({
+    connected: false
+  })
+  .then(() => {
+    resolve();
+  });
+});
