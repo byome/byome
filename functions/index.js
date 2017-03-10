@@ -13,7 +13,7 @@ const serversRef = functions.database.ref('servers');
 
 
 // User Session Events
-exports.playerConnected = functions.database.ref('/events/player_connected/{player_connected_id}').onWrite(event => {
+exports.playerConnected = functions.database.ref('/events/player_connected').onWrite(event => {
   const data = event.data.val();
   return playersRef
     .child(data.id)
