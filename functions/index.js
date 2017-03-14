@@ -10,9 +10,9 @@ const ServerKeys = {
 
 
 // Refs
-const connectionsRef = functions.database.ref('connections');
-const playersRef = functions.database.ref('players');
-const serversRef = functions.database.ref('servers');
+const connectionsRef = admin.database().ref('connections');
+const playersRef = admin.database().ref('players');
+const serversRef = admin.database().ref('servers');
 
 
 // User Session Events
