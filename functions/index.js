@@ -33,30 +33,31 @@ exports.playerConnected = functions.https.onRequest((req, res) => {
   }
 
   playersRef
-    .child(data.id)
+    .child(data.playerId)
     .once('value')
     .then((player) => {
       if (!player.exists()) {
-        playersRef.child(data.id).set({ name: data.name });
-        return playersRef.child(data.id);
+        playersRef.child(data.playerId).set({ name: data.playerName });
+        return playersRef.child(data.playerId);
       } else {
         return player.ref;
       }
     })
     .then((player) => {
-      player.child(`servers/${data.server}`).set(true);
-      serversRef.child(data.server).child(`players/${data.id}`).set(true);
+      player.child(`servers/${data.serverId}`).set(true);
+      serversRef.child(data.serverId).child(`players/${data.playerId}`).set(true);
       return player;
     })
     .then((player) => {
-      connectionsRef.child(`${data.server}-${data.id}`).set({
-        player: data.id,
-        server: data.server,
-        ipAddress: data.ipAddress,
-        connected: true
+      connectionsRef.child(`${data.serverId}-${data.playerId}`).set({
+        player: data.playerId,
+        server: data.serverId,
+        ipAddress: data.playerIpAddress,
+        connected: true,
+        sleeping: true
       });
-      serversRef.child(data.server).child(`connections/${data.server}-${data.id}`).set(true);
-      player.child('connections').child(`${data.server}-${data.id}`).set(true);
+      serversRef.child(data.serverId).child(`connections/${data.serverId}-${data.playerId}`).set(true);
+      player.child('connections').child(`${data.serverId}-${data.playerId}`).set(true);
     })
     .then(() => {
       res.status(200).send('OK');
@@ -83,7 +84,7 @@ exports.playerDisconnected = functions.https.onRequest((req, res) => {
     return;
   }
 
-  connectionsRef.child(`${data.server}-${data.id}`).update({
+  connectionsRef.child(`${data.serverId}-${data.playerId}`).update({
     connected: false
   })
   .then(() => {
@@ -91,5 +92,61 @@ exports.playerDisconnected = functions.https.onRequest((req, res) => {
   })
   .catch((error) => {
     res.status(500).send("Something went wrong.");
+  });
+});
+
+
+exports.playerSleep = functions.https.onRequest((req, res) => {
+  // Fail if invalid HTTP request
+  if (!req.method === 'POST') {
+    res.status(403).send('Forbidden!');
+    return;
+  }
+
+  // Get Data
+  const data = req.body;
+
+  // Fail if invalid API key
+  if (!ServerKeys[data.apiKey]) {
+    res.status(403).send('Forbidden!');
+    return;
+  }
+
+  connectionsRef.child(`${data.serverId}-${data.playerId}`).update({
+    sleeping: true
+  })
+  .then(() => {
+    res.status(200).send('OK');
+  })
+  .catch((error) => {
+    res.status(500).send("There was an error.");
+  });
+});
+
+
+exports.playerSleepEnded = functions.https.onRequest((req, res) => {
+  // Fail if invalid HTTP request
+  if (!req.method === 'POST') {
+    res.status(403).send('Forbidden!');
+    return;
+  }
+
+  // Get Data
+  const data = req.body;
+
+  // Fail if invalid API key
+  if (!ServerKeys[data.apiKey]) {
+    res.status(403).send('Forbidden!');
+    return;
+  }
+
+  connectionsRef.child(`${data.serverId}-${data.playerId}`).update({
+    sleeping: false
+  })
+  .then(() => {
+    res.status(200).send('OK');
+  })
+  .catch((error) => {
+    res.status(500).send("There was an error.");
   });
 });
