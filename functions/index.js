@@ -15,6 +15,63 @@ const playersRef = admin.database().ref('players');
 const serversRef = admin.database().ref('servers');
 
 
+// Server Events
+exports.serverOnline = functions.https.onRequest((req, res) => {
+  // Fail if invalid HTTP request
+  if (!req.method === 'POST') {
+    res.status(403).send('Forbidden!');
+    return;
+  }
+
+  // Get Data
+  const data = req.body;
+
+  // Fail if invalid API key
+  if (!ServerKeys[data.apiKey]) {
+    res.status(403).send('Forbidden!');
+    return;
+  }
+
+  serversRef.child(data.serverId).update({
+    status: 'online'
+  })
+  .then(() => {
+    res.status(200).send('OK');
+  })
+  .catch((error) => {
+    res.status(500).send("There was an error.");
+  });
+});
+
+
+exports.serverOffline = functions.https.onRequest((req, res) => {
+  // Fail if invalid HTTP request
+  if (!req.method === 'POST') {
+    res.status(403).send('Forbidden!');
+    return;
+  }
+
+  // Get Data
+  const data = req.body;
+
+  // Fail if invalid API key
+  if (!ServerKeys[data.apiKey]) {
+    res.status(403).send('Forbidden!');
+    return;
+  }
+
+  serversRef.child(data.serverId).update({
+    status: 'offline'
+  })
+  .then(() => {
+    res.status(200).send('OK');
+  })
+  .catch((error) => {
+    res.status(500).send("There was an error.");
+  });
+});
+
+
 // User Session Events
 exports.playerConnected = functions.https.onRequest((req, res) => {
   // Fail if invalid HTTP request
