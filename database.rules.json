@@ -36,8 +36,8 @@
     },
 
     "users": {
+      ".read": true,
       "$user": {
-        ".read": true,
         ".write": "!data.exists() && newData.exists()"
       },
       ".indexOn": ["email"]
