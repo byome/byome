@@ -1,9 +1,45 @@
 {
   "rules": {
-    ".read": "auth != null",
-    ".write": "auth != null",
+    "connections": {
+      "$connection": {
+        "connected": {
+          ".read": true,
+          ".write": false
+        },
+        "ipAddress": {
+          ".read": false,
+          ".write": false
+        },
+        "player": {
+          ".read": true,
+          ".write": false
+        },
+        "server": {
+          ".read": true,
+          ".write": false
+        }
+      }
+    },
+
+    "players": {
+      "$player": {
+        ".read": true,
+        ".write": false
+      }
+    },
+
+    "servers": {
+      "$server": {
+        ".read": true,
+        ".write": false
+      }
+    },
 
     "users": {
+      "$user": {
+        ".read": true,
+        ".write": "!data.exists() && newData.exists()"
+      },
       ".indexOn": ["email"]
     }
   }
