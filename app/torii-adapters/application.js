@@ -6,11 +6,8 @@ export default ToriiFirebaseAdapter.extend({
 
   open(user) {
     return this._super(user).then((data) => {
-      return this.get('store').query('user', {
-        orderBy: 'email',
-        equalTo: data.currentUser.email
-      }).then((users) => {
-        data.userModel = users.get('firstObject');
+      return this.get('store').findRecord('user', data.currentUser.uid).then((user) => {
+        data.userModel = user;
         return Ember.RSVP.resolve(data);
       });
     });

@@ -1,0 +1,24 @@
+<a data-toggle="dropdown" class="dropdown-toggle" href="#">
+  <i class="fa fa-bell-o"></i>
+  {{#unless user.player}}
+    <span class="badge bg-warning">1</span>
+  {{/unless}}
+</a>
+<ul class="dropdown-menu extended notification">
+  <div class="notify-arrow notify-arrow-yellow"></div>
+  {{#unless user.player}}
+    <li>
+      <p class="yellow">You have 1 notifications</p>
+    </li>
+    <li>
+      {{#link-to 'users.link-account'}}
+        <span class="label label-info"><i class="fa fa-user"></i></span>
+        Link your rust account
+        <!-- <span class="small italic">34 mins</span> -->
+      {{/link-to}}
+    </li>
+  {{/unless}}
+  <!-- <li>
+      <a href="#">See all notifications</a>
+  </li> -->
+</ul>

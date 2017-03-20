@@ -38,10 +38,10 @@
 
     "users": {
       ".read": true,
-      "$user": {
-        ".write": "!data.exists() && newData.exists()"
+      "$userId": {
+        ".write": "$userId === auth.uid"
       },
-      ".indexOn": ["email"]
+      ".indexOn": ["email", "associationToken"]
     }
   }
 }

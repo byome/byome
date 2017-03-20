@@ -8,9 +8,9 @@ export default Ember.Controller.extend({
     let newUser = this.get('store').createRecord('user', {
       email: email,
       name: name,
-      username: username,
-      firebaseUID: firebaseUID
+      username: username
     });
+    newUser.set('id', firebaseUID);
     return newUser.save();
   },
 

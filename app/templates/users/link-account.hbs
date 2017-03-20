@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col-md-12">
+    <ul class="breadcrumb">
+      <li>
+        {{#link-to 'dashboard'}}
+          <i class="fa fa-home"></i> Home
+        {{/link-to}}
+      </li>
+      <li>
+        Settings
+      </li>
+      <li class="active">
+        Link Account
+      </li>
+    </ul>
+  </div>
+</div>
+
+<section class="panel">
+  <header class="panel-heading">
+    Link your rust player to Byome
+  </header>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-12">
+        {{#if session.userModel.player}}
+          <div class="alert alert-success">
+            <h1>Success! Your rust player is now linked with Byome</h1>
+            <p>Your accounts are linked on all Byome servers</p>
+          </div>
+        {{else}}
+          Your association code:
+          <h1>{{model.associationToken}}</h1>
+          To link your rust player to your byome account:
+          <ol>
+            <li>Go to rust and join any byome server</li>
+            <li>In chat, type <code>/associate {{model.associationToken}}</code></li>
+          </ol>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</section>
