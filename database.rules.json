@@ -2,6 +2,7 @@
   "rules": {
     "connections": {
       "$connection": {
+        ".read": true,
         "connected": {
           ".read": true,
           ".write": false
@@ -22,15 +23,15 @@
     },
 
     "players": {
+      ".read": true,
       "$player": {
-        ".read": true,
         ".write": false
       }
     },
 
     "servers": {
+      ".read": true,
       "$server": {
-        ".read": true,
         ".write": false
       }
     },
