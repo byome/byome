@@ -1,5 +1,12 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  titleToken: 'Register'
+  session: Ember.inject.service('session'),
+  titleToken: 'Register',
+
+  beforeModel() {
+    if (this.get('session.isAuthenticated')) {
+      this.transitionTo('dashboard');
+    }
+  }
 });
