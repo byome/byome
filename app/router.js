@@ -3,7 +3,21 @@ import config from './config/environment';
 
 const Router = Ember.Router.extend({
   location: config.locationType,
-  rootURL: config.rootURL
+  rootURL: config.rootURL,
+  metrics: Ember.inject.service(),
+
+  didTransition() {
+    this._super(...arguments);
+    this._trackPage();
+  },
+
+  _trackPage() {
+    Ember.run.scheduleOnce('afterRender', this, () => {
+      const page = this.get('url');
+      const title = this.getWithDefault('currentRountName', 'unknown');
+      Ember.get(this, 'metrics').trackPage({ page, title });
+    });
+  }
 });
 
 Router.map(function() {

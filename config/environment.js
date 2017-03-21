@@ -35,7 +35,8 @@ module.exports = function(environment) {
         "'self'",
         "'unsafe-eval'",
         "'unsafe-inline'",
-        "apis.google.com"
+        "apis.google.com",
+        "www.google-analytics.com"
       ],
       'frame-src': [
         "'self'",
@@ -44,7 +45,8 @@ module.exports = function(environment) {
       'connect-src': [
         "'self'",
         "wss://*.firebaseio.com",
-        "https://*.googleapis.com"
+        "https://*.googleapis.com",
+        "www.google-analytics.com"
       ],
       'style-src': [
         "'self'",
@@ -58,7 +60,20 @@ module.exports = function(environment) {
 
     torii: {
       sessionServiceName: 'session'
-    }
+    },
+
+    metricsAdapters: [
+      {
+        name: 'GoogleAnalytics',
+        environments: ['development', 'production'],
+        config: {
+          id: 'UA-94075514-1',
+          //debug: environment === 'development',
+          //trace: environment === 'development',
+          sendHitTask: environment !== 'development'
+        }
+      }
+    ]
   };
 
   if (environment === 'development') {
