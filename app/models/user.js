@@ -5,7 +5,7 @@ export default DS.Model.extend({
   name: DS.attr('string'),
   username: DS.attr('string'),
 
-  firebaseUID: DS.attr('string'),
+  referralToken: DS.attr('string'),
   associationToken: DS.attr('string'),
 
   // Associations

@@ -54,7 +54,8 @@ module.exports = function(environment) {
       ],
       'img-src': [
         "'self'",
-        "byome-fcaae.appspot.com"
+        "byome-fcaae.appspot.com",
+        "www.google-analytics.com"
       ]
     },
 
@@ -67,16 +68,20 @@ module.exports = function(environment) {
         name: 'GoogleAnalytics',
         environments: ['development', 'production'],
         config: {
-          id: 'UA-94075514-1',
-          //debug: environment === 'development',
-          //trace: environment === 'development',
-          sendHitTask: environment !== 'development'
+          id: 'UA-94075514-1'
         }
       }
     ]
   };
 
+
+  /**
+   * DEVELOPMENT
+   */
   if (environment === 'development') {
+    // ENV.metricsAdapters[0].config.debug = true;
+    // ENV.metricsAdapters[0].config.trace = true;
+
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;
@@ -84,6 +89,10 @@ module.exports = function(environment) {
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
   }
 
+
+  /**
+   * TEST
+   */
   if (environment === 'test') {
     // Testem prefers this...
     ENV.locationType = 'none';
@@ -95,8 +104,12 @@ module.exports = function(environment) {
     ENV.APP.rootElement = '#ember-testing';
   }
 
-  if (environment === 'production') {
 
+  /**
+   * PRODUCTION
+   */
+  if (environment === 'production') {
+    ENV.metricsAdapters[0].config.sendHitTask = true;
   }
 
   return ENV;
