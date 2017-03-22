@@ -1,12 +1,14 @@
+const Functions = require('./lib');
+
 // Server Events
-exports.serverOnline  = require('./lib/server_online');
-exports.serverOffline = require('./lib/server_offline');
+exports.serverOnline  = Functions.severOnline;
+exports.serverOffline = Functions.serverOffline;
 
 // User Session Events
-exports.playerConnected    = require('./lib/player_connected');
-exports.playerDisconnected = require('./lib/player_disconnected');
-exports.playerSleep        = require('./lib/player_sleep');
-exports.playerSleepEnded   = require('./lib/player_sleep_ended');
+exports.playerConnected    = Functions.playerConnected;
+exports.playerDisconnected = Functions.playerDisconnected;
+exports.playerSleep        = Functions.playerSleep;
+exports.playerSleepEnded   = Functions.playerSleepEnded;
 
 // Commands
-exports.linkAccount = require('./lib/link_account');
+exports.linkAccount = Functions.linkAccount;
