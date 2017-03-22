@@ -12,3 +12,6 @@ exports.playerSleepEnded   = Functions.playerSleepEnded;
 
 // Commands
 exports.linkAccount = Functions.linkAccount;
+
+// Payments
+exports.createStripeCustomer = Functions.createStripeCustomer;

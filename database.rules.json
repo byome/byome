@@ -41,6 +41,11 @@
       }
     },
 
+    "stripe_customers": {
+      ".read": false,
+      ".write": false
+    },
+
     "users": {
       ".read": true,
       "$userId": {

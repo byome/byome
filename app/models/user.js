@@ -7,6 +7,7 @@ export default DS.Model.extend({
 
   referralToken: DS.attr('string'),
   associationToken: DS.attr('string'),
+  stripeCardToken: DS.attr('string'),
 
   // Associations
   player: DS.belongsTo('player')

@@ -1,4 +1,5 @@
 module.exports = {
+  createStripeCustomer: require('./functions/create_stripe_customer'),
   linkAccount: require('./functions/link_account'),
   playerConnected: require('./functions/player_connected'),
   playerDisconnected: require('./functions/player_disconnected'),
