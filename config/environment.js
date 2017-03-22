@@ -71,7 +71,11 @@ module.exports = function(environment) {
           id: 'UA-94075514-1'
         }
       }
-    ]
+    ],
+
+    stripe: {
+      publishableKey: 'pk_test_C656VQVF0FfLNOCGmcem3hfD'
+    }
   };
 
 
@@ -110,6 +114,7 @@ module.exports = function(environment) {
    */
   if (environment === 'production') {
     ENV.metricsAdapters[0].config.sendHitTask = true;
+    ENV.stripe.publishableKey = 'pk_live_3szcZmkaGIEgh7IxOTZ8ncti';
   }
 
   return ENV;
