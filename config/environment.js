@@ -36,11 +36,13 @@ module.exports = function(environment) {
         "'unsafe-eval'",
         "'unsafe-inline'",
         "apis.google.com",
-        "www.google-analytics.com"
+        "www.google-analytics.com",
+        "js.stripe.com"
       ],
       'frame-src': [
         "'self'",
-        "https://*.firebaseapp.com"
+        "https://*.firebaseapp.com",
+        "js.stripe.com"
       ],
       'connect-src': [
         "'self'",

@@ -26,11 +26,13 @@ Router.map(function() {
   this.route('register');
   this.authenticatedRoute('dashboard');
   this.authenticatedRoute('servers', function() {
-    this.route('show', { path: '/:server_id' });
+    this.authenticatedRoute('show', { path: '/:server_id' });
   });
-  this.route('users', function() {
-    this.route('link-account');
+  this.authenticatedRoute('users', function() {
+    this.authenticatedRoute('link-account');
+    this.authenticatedRoute('billing');
   });
+  this.authenticatedRoute('products', function() {});
 });
 
 export default Router;

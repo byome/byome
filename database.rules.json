@@ -29,6 +29,11 @@
       }
     },
 
+    "products": {
+      ".read": true,
+      ".write": false
+    },
+
     "servers": {
       ".read": true,
       "$server": {

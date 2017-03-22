@@ -1,0 +1,73 @@
+<div class="row">
+  <div class="col-md-12">
+    <ul class="breadcrumb">
+      <li>
+        {{#link-to 'dashboard'}}
+          <i class="fa fa-home"></i> Home
+        {{/link-to}}
+      </li>
+      <li class="active">
+        Kits
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="row">
+  <div class="text-center feature-head">
+    <h1>Upgrade Your Gear</h1>
+    <p>Purchase a kit and activate instantly in-game</p>
+  </div>
+  <div class="col-lg-3 col-sm-3">
+    <div class="pricing-table">
+      <div class="pricing-head">
+        <h1>{{dimebag.name}}</h1>
+        <h2><span class="note">$</span>{{dimebag.price}}</h2>
+      </div>
+      <ul class="list-unstyled">
+        {{#each-in dimebag.description as |item amount|}}
+          <li>{{item}} - {{amount}}</li>
+        {{/each-in}}
+      </ul>
+    </div>
+  </div>
+  <div class="col-lg-3 col-sm-3">
+    <div class="pricing-table">
+      <div class="pricing-head">
+        <h1>{{fistfulofdollars.name}}</h1>
+        <h2><span class="note">$</span>{{fistfulofdollars.price}}</h2>
+      </div>
+      <ul class="list-unstyled">
+        {{#each-in fistfulofdollars.description as |item amount|}}
+          <li>{{item}} - {{amount}}</li>
+        {{/each-in}}
+      </ul>
+    </div>
+  </div>
+  <div class="col-lg-3 col-sm-3">
+    <div class="pricing-table most-popular">
+      <div class="pricing-head">
+        <h1>{{forafewdollarsmore.name}}</h1>
+        <h2><span class="note">$</span>{{forafewdollarsmore.price}}</h2>
+      </div>
+      <ul class="list-unstyled">
+        {{#each-in forafewdollarsmore.description as |item amount|}}
+          <li>{{item}} - {{amount}}</li>
+        {{/each-in}}
+      </ul>
+    </div>
+  </div>
+  <div class="col-lg-3 col-sm-3">
+    <div class="pricing-table">
+      <div class="pricing-head">
+        <h1>{{goodbadugly.name}}</h1>
+        <h2><span class="note">$</span>{{goodbadugly.price}}</h2>
+      </div>
+      <ul class="list-unstyled">
+        {{#each-in goodbadugly.description as |item amount|}}
+          <li>{{item}} - {{amount}}</li>
+        {{/each-in}}
+      </ul>
+    </div>
+  </div>
+</div>
