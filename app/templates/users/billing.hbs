@@ -32,6 +32,7 @@
         {{/if}}
         {{#if user.stripeToken}}
           <div class="alert alert-info"><i class="fa fa-info-circle"></i> You already have a card on file. You can update here if necessary.</div>
+        {{/if}}
         <form class="form-horizontal" {{action 'saveBillingInfo' on='submit'}}>
           <div class="form-group">
             <label class="col-lg-3 col-sm-3 control-label">Card Number</label>
