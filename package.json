@@ -28,6 +28,13 @@
     "start": "ember server",
     "test": "ember test"
   },
+  "engines": {
+    "node": ">= 4"
+  },
+  "private": true,
+  "dependencies": {
+    "ember-cli-eslint": "^3.0.2"
+  },
   "devDependencies": {
     "broccoli-asset-rev": "^2.4.5",
     "broccoli-funnel": "^1.1.0",
@@ -64,12 +71,5 @@
     "install": "0.8.5",
     "loader.js": "^4.2.3",
     "torii": "0.8.1"
-  },
-  "engines": {
-    "node": ">= 4"
-  },
-  "private": true,
-  "dependencies": {
-    "ember-cli-eslint": "^3.0.2"
   }
 }
