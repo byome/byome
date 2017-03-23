@@ -7,14 +7,20 @@
 # dependencies
 /node_modules
 /bower_components
-/functions/node_modules
 
 # misc
 /.sass-cache
 /connect.lock
 /coverage/*
+
+# logs
 /libpeerconnection.log
 npm-debug.log*
 testem.log
-.DS_Store
+
+# firebase
+/functions/node_modules
 firebase-debug.log
+
+# macOs
+.DS_Store
