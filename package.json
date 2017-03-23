@@ -30,8 +30,8 @@
   },
   "devDependencies": {
     "broccoli-asset-rev": "^2.4.5",
-    "ember-ajax": "^2.4.1",
     "broccoli-funnel": "^1.1.0",
+    "ember-ajax": "^2.4.1",
     "ember-cli": "2.12.1",
     "ember-cli-app-version": "^2.0.0",
     "ember-cli-babel": "^5.1.7",
@@ -40,10 +40,10 @@
     "ember-cli-deploy": "1.0.0-beta.2",
     "ember-cli-deploy-firebase-pack": "0.2.4",
     "ember-cli-document-title": "0.3.3",
+    "ember-cli-eslint": "^3.0.2",
     "ember-cli-htmlbars": "^1.1.1",
     "ember-cli-htmlbars-inline-precompile": "^0.3.6",
     "ember-cli-inject-live-reload": "^1.4.1",
-    "ember-cli-jshint": "^2.0.1",
     "ember-cli-moment-shim": "3.0.1",
     "ember-cli-qunit": "^3.0.1",
     "ember-cli-release": "^0.2.9",
@@ -65,7 +65,10 @@
     "torii": "0.8.1"
   },
   "engines": {
-    "node": ">= 0.12.0"
+    "node": ">= 4"
   },
-  "private": true
+  "private": true,
+  "dependencies": {
+    "ember-cli-eslint": "^3.0.2"
+  }
 }
