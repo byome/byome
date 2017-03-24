@@ -30,8 +30,14 @@
         {{/each-in}}
       </ul>
       <div class="price-actions">
-        <h3>Uses: {{dimebag.uses}}</h3>
+        <h3>Uses: {{dimebag.redemptions}}</h3>
         <p>Kit can only be used <strong>once</strong> per wipe.</p>
+        {{#if session.userModel.stripeCardToken}}
+          <button class='btn btn-lg' {{action 'buyKit' dimebag}}>Get Now</button>
+        {{else}}
+          <h5 class="text-danger">You must have a payment method on file in order to buy a kit.</h5>
+          {{#link-to 'users.billing' class="btn btn-lg"}}Add Payment Method{{/link-to}}
+        {{/if}}
       </div>
     </div>
   </div>
@@ -47,8 +53,14 @@
         {{/each-in}}
       </ul>
       <div class="price-actions">
-        <h3>Uses: {{fistfulofdollars.uses}}</h3>
+        <h3>Uses: {{fistfulofdollars.redemptions}}</h3>
         <p>Kit can only be used <strong>once</strong> per wipe.</p>
+        {{#if session.userModel.stripeCardToken}}
+          <button class='btn btn-lg' {{action 'buyKit' fistfulofdollars}}>Get Now</button>
+        {{else}}
+          <h5 class="text-danger">You must have a payment method on file in order to buy a kit.</h5>
+          {{#link-to 'users.billing' class="btn btn-lg"}}Add Payment Method{{/link-to}}
+        {{/if}}
       </div>
     </div>
   </div>
@@ -64,8 +76,14 @@
         {{/each-in}}
       </ul>
       <div class="price-actions">
-        <h3>Uses: {{forafewdollarsmore.uses}}</h3>
+        <h3>Uses: {{forafewdollarsmore.redemptions}}</h3>
         <p>Kit can only be used <strong>once</strong> per wipe.</p>
+        {{#if session.userModel.stripeCardToken}}
+          <button class='btn btn-lg' {{action 'buyKit' forafewdollarsmore}}>Get Now</button>
+        {{else}}
+          <h5 class="text-danger">You must have a payment method on file in order to buy a kit.</h5>
+          {{#link-to 'users.billing' class="btn btn-lg"}}Add Payment Method{{/link-to}}
+        {{/if}}
       </div>
     </div>
   </div>
@@ -81,8 +99,14 @@
         {{/each-in}}
       </ul>
       <div class="price-actions">
-        <h3>Uses: {{goodbadugly.uses}}</h3>
+        <h3>Uses: {{goodbadugly.redemptions}}</h3>
         <p>Kit can only be used <strong>once</strong> per wipe.</p>
+        {{#if session.userModel.stripeCardToken}}
+          <button class='btn btn-lg' {{action 'buyKit' goodbadugly}}>Get Now</button>
+        {{else}}
+          <h5 class="text-danger">You must have a payment method on file in order to buy a kit.</h5>
+          {{#link-to 'users.billing' class="btn btn-lg"}}Add Payment Method{{/link-to}}
+        {{/if}}
       </div>
     </div>
   </div>

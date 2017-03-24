@@ -10,5 +10,6 @@ export default DS.Model.extend({
   stripeCardToken: DS.attr('string'),
 
   // Associations
-  player: DS.belongsTo('player')
+  player: DS.belongsTo('player'),
+  purchases: DS.hasMany('purchase')
 });

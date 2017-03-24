@@ -15,3 +15,4 @@ exports.linkAccount = Functions.linkAccount;
 
 // Payments
 exports.createStripeCustomer = Functions.createStripeCustomer;
+exports.createPurchaseCharge = Functions.createPurchaseCharge;

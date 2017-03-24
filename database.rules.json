@@ -34,6 +34,46 @@
       ".write": false
     },
 
+    "purchases": {
+      "$purchaseId": {
+        ".read": "data.val().user === auth.uid",
+        ".write": "!data.exists() && newData.exists() && newData.child('user').val() === auth.uid",
+        "amount": {
+          ".write": false
+        },
+        "redemptionsLeft": {
+          ".write": false,
+          ".validate": "newData.isNumber() && newData.val() >= 0"
+        },
+        "stripeId": {
+          ".write": false
+        },
+        "status": {
+          ".write": "!data.exists() && newData.exists()"
+        },
+        "notes": {
+          ".write": false
+        },
+        "product": {
+          ".write": "!data.exists() && newData.exists()"
+        },
+        "user": {
+          ".write": "!data.exists() && newData.exists()"
+        },
+        "redemptions": {
+          ".write": false
+        }
+      },
+      ".indexOn": ["product", "user"]
+    },
+
+    "redemptions": {
+      "$redemptionId": {
+        ".read": "root.child('purchases').child(data.child('purchase').val()).child('user').val() === auth.uid",
+        ".write": false
+      }
+    },
+
     "servers": {
       ".read": true,
       "$server": {
@@ -49,9 +89,42 @@
     "users": {
       ".read": true,
       "$userId": {
-        ".write": "$userId === auth.uid"
+        ".write": "$userId === auth.uid",
+        "email": {
+          ".write": "!data.exists() && newData.exists()"
+        },
+        "changeEmail": {
+          ".write": "$userId === auth.uid && !data.exists() && newData.exists()"
+        },
+        "name": {
+          ".write": "$userId === auth.uid"
+        },
+        "username": {
+          ".write": "$userId === auth.uid"
+        },
+        "referralToken": {
+          ".write": "!data.exists() && newData.exists()"
+        },
+        "associationToken": {
+          ".write": "$userId === auth.uid"
+        },
+        "stripeCardToken": {
+          ".write": "$userId === auth.uid"
+        },
+        "player": {
+          ".write": false
+        },
+        "purchases": {
+          "$purchaseId": {
+            ".write": "$userId === auth.uid && !data.exists() && newData.exists()"
+          }
+        }
       },
-      ".indexOn": ["email", "associationToken"]
+      ".indexOn": [
+        "email",
+        "username",
+        "associationToken"
+      ]
     }
   }
 }

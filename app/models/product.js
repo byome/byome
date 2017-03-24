@@ -8,5 +8,7 @@ export default DS.Model.extend({
   price: DS.attr('number'),
   description: DS.attr(),
   image: DS.attr('string'),
-  uses: DS.attr('number')
+  redemptions: DS.attr('number'),
+
+  purchases: DS.hasMany('purchase')
 });

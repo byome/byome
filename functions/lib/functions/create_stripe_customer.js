@@ -2,7 +2,7 @@ const functions = require('firebase-functions');
 const Stripe = require('stripe');
 const DB = require('../database');
 
-const STRIPE_KEY = functions.config().stripe.secret_key;
+const STRIPE_KEY = functions.config().stripe.secret_key_test;
 const STRIPE_CURRENCY = 'USD';
 
 const stripe = Stripe(STRIPE_KEY);
@@ -10,6 +10,11 @@ const stripeCustomersRef = DB.ref('stripe_customers');
 const usersRef = DB.ref('users');
 
 module.exports = functions.database.ref('/users/{userId}/stripeCardToken').onWrite((event) => {
+  // Exit when the data is deleted.
+  if (!event.data.exists()) {
+    return;
+  }
+  
   const stripeCardToken = event.data.val();
   const userId = event.params.userId;
 

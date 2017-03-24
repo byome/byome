@@ -13,6 +13,7 @@ export default DS.Model.extend({
   // Associations
   players: DS.hasMany('player'),
   connections: DS.hasMany('connection'),
+  redemptions: DS.hasMany('redemption'),
 
   // Helpers
   isOnline: Ember.computed.equal('status', 'online'),
