@@ -16,7 +16,7 @@ export default Ember.Controller.extend({
         password: password
       }).then(() => {
         this.transitionToRoute('dashboard');
-      }).catch(this.handleLoginErrors.bind(this));
+      }).catch(this.handleErrors.bind(this));
     },
 
     resetPassword(user) {
@@ -24,7 +24,7 @@ export default Ember.Controller.extend({
     }
   },
 
-  handleLoginErrors(error) {
+  handleErrors(error) {
     this.set('loggingIn', false);
     if (error.code === "auth/user-not-found") {
       this.set('errorMessage', 'Email not found. Please check spelling.');

@@ -1,7 +1,7 @@
 const Functions = require('./lib');
 
 // Server Events
-exports.serverOnline  = Functions.severOnline;
+exports.serverOnline  = Functions.serverOnline;
 exports.serverOffline = Functions.serverOffline;
 
 // User Session Events

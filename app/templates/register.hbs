@@ -2,6 +2,11 @@
   <h2 class="form-signin-heading">create a byome account</h2>
 
   <div class="login-wrap">
+    {{#if errorMessage}}
+      <div class="alert alert-danger">
+        {{errorMessage}}
+      </div>
+    {{/if}}
     <p>Enter your account details below</p>
     {{input type="text" value=email placeholder="Email" class="form-control"}}
     {{input type="text" value=name placeholder="Full Name" class="form-control" autofocus=true}}
@@ -11,7 +16,13 @@
     <small>By creating an account, you agree to the Terms of Service and Privacy Policy</small>
     <br/><br/>
 
-    <button class="btn btn-lg btn-login btn-block" type="submit">Submit</button>
+    <button class="btn btn-lg btn-login btn-block" type="submit" disabled={{registering}}>
+      {{#if registering}}
+        <i class="fa fa-spinner fa-spin"></i>
+      {{else}}
+        Sign Up
+      {{/if}}
+    </button>
 
     <div class="registration">
       Already Registered? {{link-to 'Login to your account' 'login'}}
