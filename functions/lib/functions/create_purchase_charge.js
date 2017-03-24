@@ -2,7 +2,7 @@ const functions = require('firebase-functions');
 const Stripe = require('stripe');
 const DB = require('../database');
 
-const STRIPE_KEY = functions.config().stripe.secret_key_test;
+const STRIPE_KEY = functions.config().stripe.secret_key;
 const STRIPE_CURRENCY = 'USD';
 const stripe = Stripe(STRIPE_KEY);
 
@@ -20,7 +20,7 @@ module.exports = functions.database.ref('/purchases/{purchaseId}').onWrite((even
   if (!event.data.exists()) {
     return;
   }
-  
+
   const purchaseRef = event.data;
   const purchaseId = event.params.purchaseId;
 
