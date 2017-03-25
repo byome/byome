@@ -4,19 +4,19 @@ export default Ember.Controller.extend({
   session: Ember.inject.service('session'),
 
   dimebag: Ember.computed('model', function() {
-    return this.get('model').findBy('permissionName', 'dimebag');
+    return this.get('model').findBy('slug', 'dimebag');
   }),
 
   fistfulofdollars: Ember.computed('model', function() {
-    return this.get('model').findBy('permissionName', 'fistfulofdollars');
+    return this.get('model').findBy('slug', 'fistfulofdollars');
   }),
 
   forafewdollarsmore: Ember.computed('model', function() {
-    return this.get('model').findBy('permissionName', 'forafewdollarsmore');
+    return this.get('model').findBy('slug', 'forafewdollarsmore');
   }),
 
   goodbadugly: Ember.computed('model', function() {
-    return this.get('model').findBy('permissionName', 'goodbadugly');
+    return this.get('model').findBy('slug', 'goodbadugly');
   }),
 
   actions: {

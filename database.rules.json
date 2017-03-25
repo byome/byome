@@ -31,7 +31,8 @@
 
     "products": {
       ".read": true,
-      ".write": false
+      ".write": false,
+      ".indexOn": ["slug"]
     },
 
     "purchases": {

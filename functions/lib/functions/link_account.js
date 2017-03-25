@@ -13,7 +13,7 @@ module.exports = functions.https.onRequest((req, res) => {
     res.status(validRequest.status).send(validRequest.message);
     return;
   }
-  
+
 
   // Get Data
   const data = req.body;
@@ -25,7 +25,7 @@ module.exports = functions.https.onRequest((req, res) => {
     .then((user) => {
       let userKey = Object.keys(user.val())[0]; // TODO: Why?
       if (user.val() === null) {
-        reject(new Error('Association Token not found'));
+        throw new Error('Association Token not found');
         return;
       } else {
         playersRef
