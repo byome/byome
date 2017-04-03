@@ -4,6 +4,7 @@ import DS from 'ember-data';
 export default DS.Model.extend({
   host: DS.attr('string'),
   name: DS.attr('string'),
+  slug: DS.attr('string'),
   status: DS.attr('string'),
   location: DS.attr('string'),
   version: DS.attr('string'),

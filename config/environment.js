@@ -57,7 +57,8 @@ module.exports = function(environment) {
       'img-src': [
         "'self'",
         "byome-fcaae.appspot.com",
-        "www.google-analytics.com"
+        "www.google-analytics.com",
+        "*.byome.io:28015"
       ]
     },
 
