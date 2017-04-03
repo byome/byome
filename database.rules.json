@@ -20,7 +20,8 @@
           ".read": true,
           ".write": false
         }
-      }
+      },
+      ".indexOn": ["connected"]
     },
 
     "players": {

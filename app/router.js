@@ -28,7 +28,7 @@ Router.map(function() {
   this.authenticatedRoute('servers', function() {
     this.authenticatedRoute('show', { path: '/:server_id' });
   });
-  this.authenticatedRoute('users', function() {
+  this.authenticatedRoute('settings', function() {
     this.authenticatedRoute('link-account');
     this.authenticatedRoute('billing');
   });
