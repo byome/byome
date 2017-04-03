@@ -1,10 +1,23 @@
 const functions = require('firebase-functions');
 const Stripe = require('stripe');
+const Sentencer = require('sentencer');
 const DB = require('../database');
 
 const STRIPE_KEY = functions.config().stripe.secret_key;
 const STRIPE_CURRENCY = 'USD';
 const stripe = Stripe(STRIPE_KEY);
+
+function randomNumber() {
+  return Math.floor( Math.random() * (9999 - 1) ) + 1;
+}
+
+Sentencer.configure({
+  actions: {
+    number: function() {
+      return randomNumber();
+    }
+  }
+});
 
 const stripeCustomersRef = DB.ref('stripe_customers');
 const usersRef = DB.ref('users');
@@ -61,7 +74,8 @@ module.exports = functions.database.ref('/purchases/{purchaseId}').onWrite((even
                 purchaseRef.adminRef.update({
                   status: 'success',
                   redemptionsLeft: product.redemptions,
-                  stripeId: charge.id
+                  stripeId: charge.id,
+                  code: Sentencer.make("{{adjective}}-{{noun}}-{{number}}")
                 });
                 console.log(`Charge for ${product.price} successful.`);
                 resolve();

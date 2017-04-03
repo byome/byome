@@ -6,6 +6,7 @@ const validateRequest = require('../validate_request');
 // Refs
 const purchasesRef = DB.ref('purchases');
 const productsRef = DB.ref('products');
+const redemptionsRef = DB.ref('redemptions');
 
 module.exports = functions.https.onRequest((req, res) => {
   const validRequest = validateRequest(req);
@@ -18,25 +19,35 @@ module.exports = functions.https.onRequest((req, res) => {
   // Get Data
   const data = req.body;
 
-  productsRef
-    .orderByChild('slug')
+  purchasesRef
+    .orderByChild('code')
     .equalTo(data.kitId.toLowerCase())
     .once('value')
-    .then((product) => {
-      if (product.val() === null) {
+    .then((purchase) => {
+      if (purchase.val() === null) {
         throw new Error('Kit not found');
       } else {
-        return Object.keys(product.val())[0]; // TODO: Why?
+        return purchase.ref;
       }
     })
-    .then((productKey) => {
-      purchasesRef
-        .orderByChild('user')
+    .then((purchase) => {
+      const redemptionsLeft = purchase.child('redemptionsLeft').val();
+      if (redemptionsLeft > 0) {
+        redemptionsRef.push({
+          timestamp: new Date(),
+          purchase: purchase.key,
+          player: data.playerId,
+          server: data.serverId
+        });
+        purchase.child('redemptionsLeft').set(redemptionsLeft - 1);
+      } else {
+        throw new Error("No redemptions for this kit are left.");
+      }
     })
     .then(() => {
       res.status(200).send('OK');
     })
     .catch((error) => {
-      res.status(500).send("There was an error.");
+      res.status(500).send(error. essage);
     });
 });
