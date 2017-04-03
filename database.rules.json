@@ -1,5 +1,6 @@
 {
   "rules": {
+    ".read": true,
     "connections": {
       "$connection": {
         ".read": true,
