@@ -24,10 +24,10 @@ module.exports = functions.https.onRequest((req, res) => {
     .equalTo(data.kitId.toLowerCase())
     .once('value')
     .then((purchase) => {
-      if (purchase.val() === null) {
+      if (!purchase.exists()) {
         throw new Error('Kit not found');
       } else {
-        return purchase.ref;
+        return purchase;
       }
     })
     .then((purchase) => {
@@ -39,7 +39,7 @@ module.exports = functions.https.onRequest((req, res) => {
           player: data.playerId,
           server: data.serverId
         });
-        purchase.child('redemptionsLeft').set(redemptionsLeft - 1);
+        purchase.child('redemptionsLeft').set(redemptionsLeft - 1 || 0);
       } else {
         throw new Error("No redemptions for this kit are left.");
       }
@@ -48,6 +48,7 @@ module.exports = functions.https.onRequest((req, res) => {
       res.status(200).send('OK');
     })
     .catch((error) => {
+      console.error(error);
       res.status(500).send(error. essage);
     });
 });

@@ -6,6 +6,7 @@ module.exports = {
   playerDisconnected: require('./functions/player_disconnected'),
   playerSleepEnded: require('./functions/player_sleep_ended'),
   playerSleep: require('./functions/player_sleep'),
+  redeemKit: require('./functions/redeem_kit'),
   serverOffline: require('./functions/server_offline'),
   serverOnline: require('./functions/server_online'),
 };

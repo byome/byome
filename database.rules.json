@@ -67,7 +67,7 @@
           ".write": false
         }
       },
-      ".indexOn": ["product", "user"]
+      ".indexOn": ["product", "user", "code"]
     },
 
     "redemptions": {
