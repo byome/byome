@@ -27,21 +27,23 @@ module.exports = functions.https.onRequest((req, res) => {
       if (!purchase.exists()) {
         throw new Error('Kit not found');
       } else {
-        return purchase;
-      }
-    })
-    .then((purchase) => {
-      const redemptionsLeft = purchase.child('redemptionsLeft').val();
-      if (redemptionsLeft > 0) {
-        redemptionsRef.push({
-          timestamp: new Date(),
-          purchase: purchase.key,
-          player: data.playerId,
-          server: data.serverId
-        });
-        purchase.child('redemptionsLeft').set(redemptionsLeft - 1 || 0);
-      } else {
-        throw new Error("No redemptions for this kit are left.");
+        const purchaseKey = Object.keys(purchase.val())[0];
+        purchasesRef.child(`${purchaseKey}/redemptionsLeft`)
+          .once('value')
+          .then((redemptionsLeft) => {
+            console.log(redemptionsLeft.val());
+            if (redemptionsLeft.val() > 0) {
+              redemptionsRef.push({
+                timestamp: new Date(),
+                purchase: purchaseKey,
+                player: data.playerId,
+                server: data.serverId
+              });
+              purchase.child('redemptionsLeft').set(redemptionsLeft() - 1 || 0);
+            } else {
+              throw new Error("No redemptions for this kit are left.");
+            }
+          });
       }
     })
     .then(() => {

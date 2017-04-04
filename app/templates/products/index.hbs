@@ -33,10 +33,10 @@
         <h3>Uses: {{dimebag.redemptions}}</h3>
         <p>Kit can only be used <strong>once</strong> per wipe.</p>
         {{#if session.userModel.stripeCardToken}}
-          <button class='btn btn-lg' {{action 'buyKit' dimebag}}>Get Now</button>
+          <button class='btn btn-lg' {{action 'setSelectedKit' dimebag}} data-toggle="modal" href="#purchaseModal">Get Now</button>
         {{else}}
           <h5 class="text-danger">You must have a payment method on file in order to buy a kit.</h5>
-          {{#link-to 'users.billing' class="btn btn-lg"}}Add Payment Method{{/link-to}}
+          {{#link-to 'settings.billing' class="btn btn-lg"}}Add Payment Method{{/link-to}}
         {{/if}}
       </div>
     </div>
@@ -56,10 +56,10 @@
         <h3>Uses: {{fistfulofdollars.redemptions}}</h3>
         <p>Kit can only be used <strong>once</strong> per wipe.</p>
         {{#if session.userModel.stripeCardToken}}
-          <button class='btn btn-lg' {{action 'buyKit' fistfulofdollars}}>Get Now</button>
+          <button class='btn btn-lg' {{action 'setSelectedKit' fistfulofdollars}} data-toggle="modal" href="#purchaseModal">Get Now</button>
         {{else}}
           <h5 class="text-danger">You must have a payment method on file in order to buy a kit.</h5>
-          {{#link-to 'users.billing' class="btn btn-lg"}}Add Payment Method{{/link-to}}
+          {{#link-to 'settings.billing' class="btn btn-lg"}}Add Payment Method{{/link-to}}
         {{/if}}
       </div>
     </div>
@@ -79,10 +79,10 @@
         <h3>Uses: {{forafewdollarsmore.redemptions}}</h3>
         <p>Kit can only be used <strong>once</strong> per wipe.</p>
         {{#if session.userModel.stripeCardToken}}
-          <button class='btn btn-lg' {{action 'buyKit' forafewdollarsmore}}>Get Now</button>
+          <button class='btn btn-lg' {{action 'setSelectedKit' forafewdollarsmore}} data-toggle="modal" href="#purchaseModal">Get Now</button>
         {{else}}
           <h5 class="text-danger">You must have a payment method on file in order to buy a kit.</h5>
-          {{#link-to 'users.billing' class="btn btn-lg"}}Add Payment Method{{/link-to}}
+          {{#link-to 'settings.billing' class="btn btn-lg"}}Add Payment Method{{/link-to}}
         {{/if}}
       </div>
     </div>
@@ -102,11 +102,31 @@
         <h3>Uses: {{goodbadugly.redemptions}}</h3>
         <p>Kit can only be used <strong>once</strong> per wipe.</p>
         {{#if session.userModel.stripeCardToken}}
-          <button class='btn btn-lg' {{action 'buyKit' goodbadugly}}>Get Now</button>
+          <button class='btn btn-lg' {{action 'setSelectedKit' goodbadugly}} data-toggle="modal" href="#purchaseModal">Get Now</button>
         {{else}}
           <h5 class="text-danger">You must have a payment method on file in order to buy a kit.</h5>
           {{#link-to 'users.billing' class="btn btn-lg"}}Add Payment Method{{/link-to}}
         {{/if}}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade modal-dialog-center top-modal-with-space" id="purchaseModal" tabindex="-1" role="dialog" aria-labelledby="purchaseModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">You are about to purchase a kit</h4>
+        </div>
+        <div class="modal-body">
+          You are about to buy the {{selectedKit.name}} for ${{selectedKit.price}}. Pressing Purchase will authorize a purchase.
+        </div>
+        <div class="modal-footer">
+          <button data-dismiss="modal" class="btn btn-default" type="button" {{action 'resetSelectedKit'}}>Cancel</button>
+          <button class="btn btn-warning" type="button" {{action 'purchaseSelectedKit'}}>Purchase</button>
+        </div>
       </div>
     </div>
   </div>

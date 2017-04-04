@@ -38,6 +38,7 @@
     },
 
     "purchases": {
+      ".write": "newData.child('user').val() === auth.uid",
       "$purchaseId": {
         ".read": "data.child('user').val() === auth.uid",
         ".write": "!data.exists() && newData.exists() && newData.child('user').val() === auth.uid",
