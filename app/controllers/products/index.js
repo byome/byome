@@ -37,8 +37,8 @@ export default Ember.Controller.extend({
         product: kit,
         user: this.get('session.userModel')
       });
-      purchase.save().then(() => {
-        alert('Congrats! You can now redeem your kit.');
+      purchase.save().then((purchase) => {
+        alert('Congrats! You can now redeem your kit. Use /byomkit ' + purchase.code + ' to redeem.');
       })
       .catch((error) => {
         console.error(error);

@@ -18,11 +18,6 @@ module.exports = functions.database.ref('/users/{userId}/stripeCardToken').onWri
   const stripeCardToken = event.data.val();
   const userId = event.params.userId;
 
-  if (stripeCardToken.toString() === 'true') {
-    console.log('User already has stripe token.');
-    return;
-  }
-
   if (stripeCardToken === null || stripeCardToken.id || stripeCardToken.error) {
     console.error("Invalid stripe card token");
     return;

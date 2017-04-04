@@ -28,18 +28,20 @@ module.exports = functions.https.onRequest((req, res) => {
         throw new Error('Kit not found');
       } else {
         const purchaseKey = Object.keys(purchase.val())[0];
-        purchasesRef.child(`${purchaseKey}/redemptionsLeft`)
+        const purchaseRef = purchasesRef.child(purchaseKey);
+        purchaseRef.child('redemptionsLeft')
           .once('value')
           .then((redemptionsLeft) => {
-            console.log(redemptionsLeft.val());
-            if (redemptionsLeft.val() > 0) {
-              redemptionsRef.push({
-                timestamp: new Date(),
+            const remaining = redemptionsLeft.val();
+            if (remaining > 0) {
+              let redemptionRef = redemptionsRef.push();
+              redemptionRef.update({
+                timestamp: (new Date()).toJSON().toString(),
                 purchase: purchaseKey,
                 player: data.playerId,
                 server: data.serverId
               });
-              purchase.child('redemptionsLeft').set(redemptionsLeft() - 1 || 0);
+              purchaseRef.child('redemptionsLeft').set(remaining - 1 || 0);
             } else {
               throw new Error("No redemptions for this kit are left.");
             }
