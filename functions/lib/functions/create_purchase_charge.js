@@ -77,6 +77,7 @@ module.exports = functions.database.ref('/purchases/{purchaseId}').onWrite((even
                   stripeId: charge.id,
                   code: Sentencer.make("{{adjective}}-{{noun}}-{{number}}")
                 });
+                usersRef.child(`${purchaseRef.user}/purchases`).set(purchaseRef.key);
                 console.log(`Charge for ${product.price} successful.`);
                 resolve();
               }
