@@ -1,17 +1,8 @@
-<div class="row">
-  <div class="col-md-12">
-    <ul class="breadcrumb">
-      <li class="active">
-        {{#link-to 'dashboard'}}
-          <i class="fa fa-home"></i> Dashboard
-        {{/link-to}}
-      </li>
-    </ul>
-  </div>
-</div>
-
 <div class="row state-overview">
   <div class="col-lg-3 col-sm-6">
     {{dashboard/online-players}}
+  </div>
+  <div class="col-lg-3 col-sm-6">
+    {{dashboard/sleeping-players}}
   </div>
 </div>
