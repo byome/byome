@@ -18,7 +18,7 @@
     </label>
 
     <button class="btn btn-lg btn-login btn-block" type="submit" disabled={{loggingIn}}>
-      {{#if loggingIn}}
+      {{#if session.isWorking}}
         <i class="fa fa-spinner fa-spin"></i>
       {{else}}
         Sign in

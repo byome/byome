@@ -1,6 +1,11 @@
 {
   "rules": {
-    ".read": true,
+    "authentication-roles": {
+      ".read": true,
+      ".write": false,
+      ".validate": "newData.isString() && newData.val() == 'admin'"
+    },
+
     "connections": {
       "$connection": {
         ".read": true,

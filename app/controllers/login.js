@@ -3,12 +3,10 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   session: Ember.inject.service('session'),
 
-  loggingIn: false,
   errorMessage: null,
 
   actions: {
     signIn(user) {
-      this.set('loggingIn', true);
       const { email, password } = user.getProperties('email', 'password');
       this.get('session').open('firebase', {
         provider: 'password',
@@ -25,7 +23,6 @@ export default Ember.Controller.extend({
   },
 
   handleErrors(error) {
-    this.set('loggingIn', false);
     if (error.code === "auth/user-not-found") {
       this.set('errorMessage', 'Email not found. Please check spelling.');
     } else
