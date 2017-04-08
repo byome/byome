@@ -9,19 +9,23 @@
       {{/link-to}}
     </li>
 
-    <li>
-      {{#link-to 'servers'}}
-        <i class="fa fa-tasks"></i>
-        <span>Servers</span>
-      {{/link-to}}
-    </li>
+    {{#if (can "index server")}}
+      <li>
+        {{#link-to 'servers'}}
+          <i class="fa fa-tasks"></i>
+          <span>Servers</span>
+        {{/link-to}}
+      </li>
+    {{/if}}
 
-    <li>
-      {{#link-to 'products'}}
-        <i class="fa fa-shopping-cart"></i>
-        <span>Kits</span>
-      {{/link-to}}
-    </li>
+    {{#if (can "index product")}}
+      <li>
+        {{#link-to 'products'}}
+          <i class="fa fa-shopping-cart"></i>
+          <span>Kits</span>
+        {{/link-to}}
+      </li>
+    {{/if}}
 
   </ul>
   <!-- sidebar menu end-->

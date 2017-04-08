@@ -5,9 +5,9 @@ export default Ability.extend({
   session: Ember.inject.service('session'),
 
   userIsAdmin: Ember.computed.alias('session.currentUser.isAdmin'),
+  userIsSelf: Ember.computed.equal('session.currentUser.id', 'model.id'),
 
-  canIndex: true,
-  canShow: true,
-  canCreate: Ember.computed.alias('userIsAdmin'),
-  canEdit: Ember.computed.alias('userIsAdmin')
+  canEdit: Ember.computed('userIsAdmin', 'userIsSelf', function() {
+    return this.get('userIsAdmin') || this.get('userIsSelf');
+  })
 });

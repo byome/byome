@@ -5,9 +5,9 @@ export default Ability.extend({
   session: Ember.inject.service('session'),
 
   userIsAdmin: Ember.computed.alias('session.currentUser.isAdmin'),
+  userIsPurchaser: Ember.computed.equal('session.currentUser.id', 'model.user'),
 
-  canIndex: true,
-  canShow: true,
-  canCreate: Ember.computed.alias('userIsAdmin'),
-  canEdit: Ember.computed.alias('userIsAdmin')
+  canCreate: true,
+  canEdit: Ember.computed.alias('userIsAdmin'),
+  canDestroy: Ember.alias('userIsAdmin')
 });

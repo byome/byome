@@ -35,32 +35,34 @@
     </thead>
     <tbody>
       {{#each model as |server|}}
-        <tr>
-          <td class="p-name">
-            {{#link-to 'servers.show' server.id}}
-              {{server.name}}
-            {{/link-to}}
-          </td>
-            <td class="p-team">
-              {{server.host}}
+        {{#if (can "show server" server)}}
+          <tr>
+            <td class="p-name">
+              {{#link-to 'servers.show' server.id}}
+                {{server.name}}
+              {{/link-to}}
             </td>
-            <td class="p-progress">
-              <div class="progress progress-xs">
-                <div style="width: {{server.playersOnlineWidth}}%;" class="progress-bar progress-bar-success"></div>
-              </div>
-              <small>{{server.playersOnlineCount}} / {{server.playerLimit}} players online</small>
-            </td>
-            <td>
-              {{#if server.isOnline}}
-                <span class="label label-success">Online</span>
-              {{else}}
-                <span class="label label-default">Offline</span>
-              {{/if}}
-            </td>
-            <td>
-              {{server.location}}
-            </td>
-        </tr>
+              <td class="p-team">
+                {{server.host}}
+              </td>
+              <td class="p-progress">
+                <div class="progress progress-xs">
+                  <div style="width: {{server.playersOnlineWidth}}%;" class="progress-bar progress-bar-success"></div>
+                </div>
+                <small>{{server.playersOnlineCount}} / {{server.playerLimit}} players online</small>
+              </td>
+              <td>
+                {{#if server.isOnline}}
+                  <span class="label label-success">Online</span>
+                {{else}}
+                  <span class="label label-default">Offline</span>
+                {{/if}}
+              </td>
+              <td>
+                {{server.location}}
+              </td>
+          </tr>
+        {{/if}}
       {{/each}}
     </tbody>
   </table>

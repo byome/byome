@@ -1,3 +1,4 @@
+import Ember from 'ember';
 import DS from 'ember-data';
 
 export default DS.Model.extend({
@@ -12,5 +13,8 @@ export default DS.Model.extend({
 
   // Associations
   player: DS.belongsTo('player'),
-  purchases: DS.hasMany('purchase')
+  purchases: DS.hasMany('purchase'),
+
+  // Helpers
+  isAdmin: Ember.computed.equal('role', 'admin')
 });
