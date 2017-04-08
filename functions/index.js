@@ -9,6 +9,7 @@ exports.playerConnected    = Functions.playerConnected;
 exports.playerDisconnected = Functions.playerDisconnected;
 exports.playerSleep        = Functions.playerSleep;
 exports.playerSleepEnded   = Functions.playerSleepEnded;
+exports.playerDeath        = Functions.playerDeath;
 
 // Commands
 exports.linkAccount = Functions.linkAccount;

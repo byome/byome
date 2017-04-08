@@ -4,6 +4,7 @@ module.exports = {
   linkAccount: require('./functions/link_account'),
   playerConnected: require('./functions/player_connected'),
   playerDisconnected: require('./functions/player_disconnected'),
+  playerDeath: require('./functions/player_death'),
   playerSleepEnded: require('./functions/player_sleep_ended'),
   playerSleep: require('./functions/player_sleep'),
   redeemKit: require('./functions/redeem_kit'),
