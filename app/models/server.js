@@ -15,6 +15,10 @@ export default DS.Model.extend({
   players: DS.hasMany('player'),
   connections: DS.hasMany('connection'),
   redemptions: DS.hasMany('redemption'),
+  messages: DS.hasMany('message'),
+  kills: DS.hasMany('kill'),
+  activities: DS.hasMany('activitie'),
+  deaths: DS.hasMany('death'),
 
   // Helpers
   isOnline: Ember.computed.equal('status', 'online'),
