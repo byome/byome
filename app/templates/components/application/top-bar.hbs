@@ -8,12 +8,19 @@
 {{/link-to}}
 <!--logo end-->
 
-{{application/top-bar/notifications}}
+{{#if (can "edit user")}}
+  {{application/top-bar/notifications}}
+{{/if}}
 
 <div class="top-nav ">
   <!--search & user info start-->
   <ul class="nav pull-right top-menu">
-    {{application/top-bar/user}}
+    {{#if (can "edit user")}}
+      {{application/top-bar/user}}
+    {{else}}
+      {{#link-to 'login' class="btn btn-primary"}}Login{{/link-to}}
+      {{#link-to 'register' class="btn btn-default"}}Register{{/link-to}}
+    {{/if}}
 
     <!-- <li class="sb-toggle-right">
       <i class="fa  fa-align-right"></i>
