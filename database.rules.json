@@ -7,6 +7,7 @@
     },
 
     "connections": {
+      ".read": true,
       "$connection": {
         ".read": true,
         "connected": {

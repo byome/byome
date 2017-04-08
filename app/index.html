@@ -21,6 +21,26 @@
     {{content-for "head-footer"}}
   </head>
   <body>
+
+    <!-- Application Loading Screen -->
+    <div class="web-loading" style="position:fixed; top:0; bottom:0; left:0; right:0; background-color:#FAFAFA; z-index:9999;">
+      <div style="height:100%; width:100%; margin:0; padding:0; position:static;">
+        <div style="height:100%; width:100%; margin:0; padding:0; top:0; left:0; position:absolute; display:table !important;">
+          <div style="margin:0; padding:0; text-align:center; vertical-align:middle; display:table-cell !important;">
+            <h1 style="">
+              <img style="display:inline-block !important; width:20%;" src="/assets/byome/favicon/byome-logo.svg">
+            </h1>
+            <div style="margin-top:3%;">
+              <p style="font-size:30px; margin-bottom:100px; font-family:'Segoe UI','Helvetica Neue',Helvetica,Arial,sans-serif; font-weight:300;">
+                Loading Byome
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END Application Loading Screen -->
+
     {{content-for "body"}}
 
     <script src="{{rootURL}}assets/vendor.js"></script>

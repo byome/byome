@@ -7,7 +7,7 @@ export default Ember.Route.extend({
     if (this.get('session.isAuthenticated')) {
       this.transitionTo('dashboard');
     } else {
-      this.transitionTo('coming-soon');
+      this.transitionTo('login');
     }
   }
 });

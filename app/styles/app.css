@@ -3,63 +3,6 @@
   src: url('fonts/Nunito-Regular.ttf') format('truetype');
 }
 
-.coming-soon-background {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  left: 0;
-  top: 0;
-  background-size: cover;
-  -webkit-background-size: cover;
-  -o-background-size: cover;
-  -moz-background-size: cover;
-}
-
-.coming-soon-background-photo-0 {
-  background: url(/assets/byome/coming-soon/0.jpg) no-repeat center center fixed;
-}
-.coming-soon-background-photo-1 {
-  background: url(/assets/byome/coming-soon/1.jpg) no-repeat center center fixed;
-}
-.coming-soon-background-photo-2 {
-  background: url(/assets/byome/coming-soon/2.jpg) no-repeat center center fixed;
-}
-.coming-soon-background-photo-3 {
-  background: url(/assets/byome/coming-soon/3.jpg) no-repeat center center fixed;
-}
-.coming-soon-background-photo-4 {
-  background: url(/assets/byome/coming-soon/4.jpg) no-repeat center center fixed;
-}
-
-.coming-soon-background .overlay {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  left: 0;
-  top: 0;
-  background-size: cover;
-  -webkit-background-size: cover;
-  -o-background-size: cover;
-  -moz-background-size: cover;
-  background: linear-gradient(
-    rgba(0, 0, 0, 0.5),
-    rgba(0, 0, 0, 0.5)
-  );
-}
-
-.coming-soon-background .logo {
-  width: 25%;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-  position: relative;
-  margin-top: 10%
-}
-
-.coming-soon-background .name {
-  font-family: 'Nunito';
-  color: #fff;
-  text-align: center;
-  margin-top: 3%;
-  font-size: 8vw;
+.ember-application .web-loading {
+  display: none;
 }
