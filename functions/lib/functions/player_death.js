@@ -8,7 +8,7 @@ const deathsRef = DB.ref('deaths');
 const killsRef = DB.ref('kills');
 const activitiesRef = DB.ref('activities');
 const serversRef = DB.ref('servers');
-const playersRef = DB.ref('servers');
+const playersRef = DB.ref('players');
 
 module.exports = functions.https.onRequest((req, res) => {
   const validRequest = validateRequest(req);
