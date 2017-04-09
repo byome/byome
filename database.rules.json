@@ -32,17 +32,20 @@
 
     "deaths": {
       ".read": true,
-      ".write": false
+      ".write": false,
+      ".indexOn": ["player"]
     },
 
     "kills": {
       ".read": true,
-      ".write": false
+      ".write": false,
+      ".indexOn": ["player"]
     },
 
     "messages": {
       ".read": true,
-      ".write": false
+      ".write": false,
+      ".indexOn": ["player", "server"]
     },
 
     "players": {
