@@ -30,6 +30,16 @@
       ".indexOn": ["connected"]
     },
 
+    "deaths": {
+      ".read": true,
+      ".write": false
+    },
+
+    "kills": {
+      ".read": true,
+      ".write": false
+    },
+
     "players": {
       ".read": true,
       "$player": {

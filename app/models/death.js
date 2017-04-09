@@ -7,7 +7,6 @@ export default DS.Model.extend({
 
   // Associations
   server: DS.belongsTo('server'),
-  victim: DS.belongsTo('player', { inverse: 'victim' }),
-  pepertrator: DS.belongsTo('player', { inverse: 'pepertrator' }),
+  player: DS.belongsTo('player'),
   kill: DS.belongsTo('kill')
 });

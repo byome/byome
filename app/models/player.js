@@ -1,3 +1,4 @@
+import Ember from 'ember';
 import DS from 'ember-data';
 
 export default DS.Model.extend({
@@ -7,6 +8,6 @@ export default DS.Model.extend({
   user: DS.belongsTo('user'),
   servers: DS.hasMany('server'),
   connections: DS.hasMany('connection'),
-  victim: DS.hasMany('kill', inverse: 'victim'),
-  perpetrator: DS.hasMany('kill', inverse: 'perpertrator')
+  kills: DS.hasMany('kill'),
+  deaths: DS.hasMany('death')
 });
