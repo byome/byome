@@ -2,6 +2,7 @@ module.exports = {
   createPurchaseCharge: require('./functions/create_purchase_charge'),
   createStripeCustomer: require('./functions/create_stripe_customer'),
   linkAccount: require('./functions/link_account'),
+  playerChat: require('./functions/player_chat'),
   playerConnected: require('./functions/player_connected'),
   playerDisconnected: require('./functions/player_disconnected'),
   playerDeath: require('./functions/player_death'),

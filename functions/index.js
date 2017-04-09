@@ -5,6 +5,7 @@ exports.serverOnline  = Functions.serverOnline;
 exports.serverOffline = Functions.serverOffline;
 
 // User Session Events
+exports.playerChat         = Functions.playerChat;
 exports.playerConnected    = Functions.playerConnected;
 exports.playerDisconnected = Functions.playerDisconnected;
 exports.playerSleep        = Functions.playerSleep;

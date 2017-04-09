@@ -40,6 +40,11 @@
       ".write": false
     },
 
+    "messages": {
+      ".read": true,
+      ".write": false
+    },
+
     "players": {
       ".read": true,
       "$player": {

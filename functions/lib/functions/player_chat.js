@@ -4,9 +4,7 @@ const validateRequest = require('../validate_request');
 const ServerKeys = functions.config().rust.servers.api_keys;
 
 // Refs
-const deathsRef = DB.ref('deaths');
-const killsRef = DB.ref('kills');
-const activitiesRef = DB.ref('activities');
+const messagesRef = DB.ref('messages');
 
 module.exports = functions.https.onRequest((req, res) => {
   const validRequest = validateRequest(req);
@@ -20,22 +18,12 @@ module.exports = functions.https.onRequest((req, res) => {
   const data = req.body;
 
   try {
-    let death = deathsRef.push({
+    messagesRef.push({
       timestamp: new Date(),
-      miscDeath: '',
-      server: data.serverId,
-      player: data.playerId
+      content: data.content,
+      player: data.playerId,
+      server: data.serverId
     });
-
-    let kill = killsRef.push({
-      timestamp: new Date(),
-      remaniningInfo: '',
-      server: data.serverId,
-      player: data.perpetratorId,
-      death: death.key
-    });
-
-    kill.update({ death: death.key });
 
     res.status(200).send('OK');
   } catch(error) {

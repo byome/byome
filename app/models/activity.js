@@ -5,7 +5,7 @@ export default DS.Model.extend({
   timestamp: DS.attr('date'),
 
   // Associations
-  server; DS.belongsTo('server'),
+  server: DS.belongsTo('server'),
 
   // Polymorphic of sorts
   kind: DS.attr('string'),
