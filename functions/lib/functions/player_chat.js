@@ -19,7 +19,7 @@ module.exports = functions.https.onRequest((req, res) => {
 
   try {
     messagesRef.push({
-      timestamp: new Date(),
+      timestamp: (new Date).toJSON(),
       content: data.content,
       player: data.playerId,
       server: data.serverId

@@ -7,6 +7,8 @@ const ServerKeys = functions.config().rust.servers.api_keys;
 const deathsRef = DB.ref('deaths');
 const killsRef = DB.ref('kills');
 const activitiesRef = DB.ref('activities');
+const serversRef = DB.ref('servers');
+const playersRef = DB.ref('servers');
 
 module.exports = functions.https.onRequest((req, res) => {
   const validRequest = validateRequest(req);
@@ -21,21 +23,28 @@ module.exports = functions.https.onRequest((req, res) => {
 
   try {
     let death = deathsRef.push({
-      timestamp: new Date(),
+      timestamp: (new Date).toJSON(),
       miscDeath: '',
       server: data.serverId,
       player: data.playerId
     });
 
     let kill = killsRef.push({
-      timestamp: new Date(),
+      timestamp: (new Date).toJSON(),
       remaniningInfo: '',
       server: data.serverId,
       player: data.perpetratorId,
       death: death.key
     });
 
-    kill.update({ death: death.key });
+    death.update({ kill: kill.key });
+
+    serversRef.child(data.serverId).child(`deaths/${death.key}`).set(true);
+    playersRef.child(data.playerId).child(`deaths/${death.key}`).set(true);
+    if (data.perpetratorId) {
+      serversRef.child(data.serverId).child(`kills/${kill.key}`).set(true);
+      playersRef.child(data.perpetratorId).child(`kills/${kill.key}`).set(true);
+    }
 
     res.status(200).send('OK');
   } catch(error) {
