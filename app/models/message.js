@@ -6,6 +6,5 @@ export default DS.Model.extend({
 
   // Associations
   player: DS.belongsTo('player'),
-  server: DS.belongsTo('server'),
-  activities: DS.hasMany('activities')
+  server: DS.belongsTo('server')
 });

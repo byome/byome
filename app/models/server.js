@@ -17,7 +17,7 @@ export default DS.Model.extend({
   redemptions: DS.hasMany('redemption'),
   messages: DS.hasMany('message'),
   kills: DS.hasMany('kill'),
-  activities: DS.hasMany('activitie'),
+  activities: DS.hasMany('activity'),
   deaths: DS.hasMany('death'),
 
   // Helpers
