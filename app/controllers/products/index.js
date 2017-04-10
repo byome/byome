@@ -4,6 +4,7 @@ export default Ember.Controller.extend({
   session: Ember.inject.service('session'),
   store: Ember.inject.service('store'),
   raven: Ember.inject.service('raven'),
+  metrics: Ember.inject.service('metrics'),
 
   dimebag: Ember.computed('model', function() {
     return this.get('model').findBy('slug', 'dimebag');
@@ -26,6 +27,10 @@ export default Ember.Controller.extend({
   actions: {
     setSelectedKit(kit) {
       this.set('selectedKit', kit);
+      this.get('metrics').trackEvent('kitSelected', {
+        kit: kit.get('slug'),
+        user: this.get('session.userModel')
+      });
     },
 
     resetSelectedKit() {
@@ -40,6 +45,10 @@ export default Ember.Controller.extend({
       });
       purchase.save().then((purchase) => {
         alert('Congrats! You can now redeem your kit. Use /byomkit ' + purchase.code + ' to redeem.');
+        this.get('metrics').trackEvent('kitPurchased', {
+          kit: kit.get('slug'),
+          user: this.get('session.userModel')
+        });
       })
       .catch((error) => {
         this.get('raven').captureException(error);

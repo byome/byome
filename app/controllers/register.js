@@ -3,6 +3,7 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   firebaseApp: Ember.inject.service('firebaseApp'),
   raven: Ember.inject.service('raven'),
+  metrics: Ember.inject.service('metrics'),
 
   registering: false,
   errorMessage: null,
@@ -16,7 +17,9 @@ export default Ember.Controller.extend({
     });
     newUser.set('id', firebaseUID);
     this.set('registering', false);
-    return newUser.save();
+    newUser.save().then((user) => {
+      this.get('metrics').trackEvent('newUser', user.toJSON());
+    }).catch(error => this.get('raven').captureException(error));
   },
 
   handleErrors(error) {
