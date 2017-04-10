@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   firebaseApp: Ember.inject.service('firebaseApp'),
+  raven: Ember.inject.service('raven'),
 
   registering: false,
   errorMessage: null,
@@ -19,6 +20,7 @@ export default Ember.Controller.extend({
   },
 
   handleErrors(error) {
+    this.get('raven').captureException(error);
     const genericError = "Something went wrong. Please try again.";
     const firebaseErrors = {
       "auth/email-already-in-use": "Email address already in use.",

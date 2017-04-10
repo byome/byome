@@ -9,6 +9,7 @@ module.exports = function(deployTarget) {
       sentryOrganizationSlug: 'byome',
       sentryProjectSlug: 'byome-frontend',
       sentryApiKey: '50400eb4ed394fecb2b027abeccdbea19c3c78198bb04011bee3997434b4ba54',
+      sentryBearerApiKey: '50400eb4ed394fecb2b027abeccdbea19c3c78198bb04011bee3997434b4ba54'
     }
   };
 

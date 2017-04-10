@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "byome-fcaae"
+    "default": "byome-fcaae",
+    "staging": "byome-staging"
   }
 }

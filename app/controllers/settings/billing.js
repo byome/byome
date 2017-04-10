@@ -47,6 +47,7 @@ export default Ember.Controller.extend({
         this.set('errors', null);
       })
       .catch((response) => {
+        this.get('raven').captureException(response);
         this.set('errors', "There was an error. Double check your card information and try again.");
         this.set('submitting', false);
         this.set('success', false);

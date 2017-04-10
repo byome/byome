@@ -3,6 +3,7 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   session: Ember.inject.service('session'),
   store: Ember.inject.service('store'),
+  raven: Ember.inject.service('raven'),
 
   dimebag: Ember.computed('model', function() {
     return this.get('model').findBy('slug', 'dimebag');
@@ -41,7 +42,7 @@ export default Ember.Controller.extend({
         alert('Congrats! You can now redeem your kit. Use /byomkit ' + purchase.code + ' to redeem.');
       })
       .catch((error) => {
-        console.error(error);
+        this.get('raven').captureException(error);
         purchase.set('status', 'failed');
         purchase.set('notes', error);
         purchase.save();

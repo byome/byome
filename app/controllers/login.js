@@ -24,6 +24,7 @@ export default Ember.Controller.extend({
   },
 
   handleErrors(error) {
+    this.get('raven').captureException(error);
     if (error.code === "auth/user-not-found") {
       this.set('errorMessage', 'Email not found. Please check spelling.');
     } else
