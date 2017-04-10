@@ -4,6 +4,7 @@ import ToriiFirebaseAdapter from 'emberfire/torii-adapters/firebase';
 export default ToriiFirebaseAdapter.extend({
   store: Ember.inject.service('store'),
   firebase: Ember.inject.service('firebase'),
+  raven: Ember.inject.service('raven'),
 
   findAndSetUser(data) {
     return this.get('store').findRecord('user', data.currentUser.uid).then((user) => {
@@ -24,7 +25,7 @@ export default ToriiFirebaseAdapter.extend({
       return this.findAndSetUser(data)
         .then(this.authorizeUser.bind(this))
         .then(data => Ember.RSVP.resolve(data))
-        .catch(error => console.log(error));
+        .catch(error => this.get('raven').captureException(error));
     });
   }
 });
