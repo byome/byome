@@ -50,6 +50,8 @@ module.exports = function(defaults) {
     destDir: "/img"
   });
 
+  // Sentry
+  app.import('bower_components/raven-js/dist/raven.js');
 
   return app.toTree(images);
 };

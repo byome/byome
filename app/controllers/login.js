@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   session: Ember.inject.service('session'),
+  raven: Ember.inject.service('raven'),
 
   errorMessage: null,
 
@@ -18,7 +19,7 @@ export default Ember.Controller.extend({
     },
 
     resetPassword(user) {
-      console.log(user.get('email'));
+      this.get('raven').captureException(new Error(`Password reset attempt: ${user.get('email')}`));
     }
   },
 

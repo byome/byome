@@ -37,7 +37,8 @@ module.exports = function(environment) {
         "'unsafe-inline'",
         "apis.google.com",
         "www.google-analytics.com",
-        "js.stripe.com"
+        "js.stripe.com",
+        "cdn.ravenjs.com"
       ],
       'frame-src': [
         "'self'",
@@ -48,7 +49,9 @@ module.exports = function(environment) {
         "'self'",
         "wss://*.firebaseio.com",
         "https://*.googleapis.com",
-        "www.google-analytics.com"
+        "www.google-analytics.com",
+        "app.getsentry.com",
+        "sentry.io"
       ],
       'style-src': [
         "'self'",
@@ -58,7 +61,8 @@ module.exports = function(environment) {
         "'self'",
         "byome-fcaae.appspot.com",
         "www.google-analytics.com",
-        "*.byome.io:28015"
+        "*.byome.io:28015",
+        "app.getsentry.com"
       ]
     },
 
@@ -78,6 +82,16 @@ module.exports = function(environment) {
 
     stripe: {
       publishableKey: 'pk_test_C656VQVF0FfLNOCGmcem3hfD'
+    },
+
+    sentry: {
+      dsn: 'https://9fff740211b245508a63dc7852c969fb@sentry.io/156722',
+      debug: true,
+      development: false,
+      exposedPropertyName: 'raven',
+      serviceName: 'raven',
+      globalErrorCatching: true,
+      whitelistUrls: ['localhost:4200', 'byome.io']
     }
   };
 

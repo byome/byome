@@ -2,8 +2,14 @@
 
 module.exports = function(deployTarget) {
   var ENV = {
-    build: {}
-    // include other plugin configuration that applies to all deploy targets here
+    build: {},
+    sentry: {
+      publicUrl: 'https://byome.io', // the URL or CDN your js assets are served from
+      //sentryUrl: 'https://sentry.your.awesome.site', // the sentry install you're using, https://sentry.io for hosted accounts
+      sentryOrganizationSlug: 'byome',
+      sentryProjectSlug: 'byome-frontend',
+      sentryApiKey: '50400eb4ed394fecb2b027abeccdbea19c3c78198bb04011bee3997434b4ba54',
+    }
   };
 
   if (deployTarget === 'development') {
