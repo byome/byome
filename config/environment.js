@@ -58,6 +58,14 @@ module.exports = function(environment) {
       ]
     },
 
+    firebase: {
+      apiKey: 'AIzaSyDJxOKoFlnk-j65DvIFSyqL-zw9j8w00rI',
+      authDomain: 'byome-fcaae.firebaseapp.com',
+      databaseURL: 'https://byome-fcaae.firebaseio.com',
+      storageBucket: 'byome-fcaae.appspot.com',
+      messageSenderId: '1047257712850'
+    },
+
     torii: {
       sessionServiceName: 'session'
     },
