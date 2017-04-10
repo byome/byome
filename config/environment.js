@@ -23,6 +23,9 @@ module.exports = function(environment) {
     },
 
     contentSecurityPolicy: {
+      'default-src': [
+        "'self'"
+      ],
       'script-src': [
         "'self'",
         "'unsafe-eval'",
@@ -133,13 +136,6 @@ module.exports = function(environment) {
   if (environment === 'production') {
     ENV.metricsAdapters[0].config.sendHitTask = true;
     ENV.stripe.publishableKey = 'pk_live_3szcZmkaGIEgh7IxOTZ8ncti';
-    // ENV.firebase: {
-    //   apiKey: 'AIzaSyDJxOKoFlnk-j65DvIFSyqL-zw9j8w00rI',
-    //   authDomain: 'byome-fcaae.firebaseapp.com',
-    //   databaseURL: 'https://byome-fcaae.firebaseio.com',
-    //   storageBucket: 'byome-fcaae.appspot.com',
-    //   messageSenderId: '1047257712850'
-    // },
   }
 
   return ENV;
