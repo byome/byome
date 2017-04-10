@@ -8,7 +8,6 @@ module.exports = function(deployTarget) {
       sentryUrl: 'https://sentry.io', // the sentry install you're using, https://sentry.io for hosted accounts
       sentryOrganizationSlug: 'byome',
       sentryProjectSlug: 'byome-frontend',
-      sentryApiKey: '50400eb4ed394fecb2b027abeccdbea19c3c78198bb04011bee3997434b4ba54',
       sentryBearerApiKey: '50400eb4ed394fecb2b027abeccdbea19c3c78198bb04011bee3997434b4ba54'
     }
   };

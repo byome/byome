@@ -151,7 +151,8 @@
       ".indexOn": [
         "email",
         "username",
-        "associationToken"
+        "associationToken",
+        "sleeping"
       ]
     }
   }
