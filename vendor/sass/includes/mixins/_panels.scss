@@ -1,0 +1,59 @@
+// Heading colored panel
+@mixin panel-heading-color ($color, $set-defaults: false) {
+  background-color: $color;
+
+  @if $set-defaults != true {
+    color: $light-color;
+  }
+
+  @if $set-defaults != true {
+    .panel-subtitle {
+      color: $light-color;
+    }
+  }
+
+  @if $set-defaults != true {
+    .tools {
+      .icon {
+        color:$light-color;
+
+        &:hover {
+          color: darken($color, 6%);
+        }
+      }
+    }
+  }
+}
+
+// Full colored panel
+@mixin panel-full-color($color, $set-defaults: false) {
+  background-color: $color;
+
+  @if $set-defaults != true {
+    color: $light-color;
+  }
+
+  @if $set-defaults != true {
+    .panel-heading {
+      color: $light-color;
+    }
+  }
+
+  @if $set-defaults != true {
+    .panel-subtitle {
+      color: $light-color;
+    }
+  }
+
+  @if $set-defaults != true {
+    .tools {
+      .icon {
+        color:$light-color;
+
+        &:hover {
+          color: darken($color, 6%);
+        }
+      }
+    }
+  }
+}

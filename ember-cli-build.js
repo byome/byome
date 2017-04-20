@@ -27,47 +27,39 @@ module.exports = function(defaults) {
     }
   });
 
-  // FlatLab CSS
-  app.import("vendor/css/bootstrap.css");
-  app.import("vendor/css/bootstrap-reset.css");
-  app.import("vendor/assets/font-awesome/css/font-awesome.css");
-  app.import("vendor/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css");
-  app.import("vendor/css/owl.carousel.css");
-  app.import("vendor/css/slidebars.css");
-  app.import("vendor/css/style.css");
-  app.import("vendor/css/style-responsive.css");
 
-  // FlatLab JS
-  app.import("vendor/js/jquery.js");
-  app.import("vendor/js/bootstrap.js");
-  app.import("vendor/js/jquery.dcjqaccordion.2.7.js");
-  app.import("vendor/js/jquery.scrollTo.min.js");
-  app.import("vendor/js/jquery.nicescroll.js");
-  app.import("vendor/js/jquery.sparkline.js");
-  app.import("vendor/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.js");
-  app.import("vendor/js/owl.carousel.js");
-  app.import("vendor/js/slidebars.min.js");
-  app.import("vendor/js/common-scripts.js");
-  app.import("vendor/js/sparkline-chart.js");
-  app.import("vendor/js/easy-pie-chart.js");
+  // Maisonette CSS
+  app.import("vendor/assets/lib/stroke-7/style.css");
+  app.import("vendor/assets/lib/perfect-scrollbar/css/perfect-scrollbar.min.css");
+  app.import("vendor/assets/css/app.css");
 
-  // FlatLab Fonts
-  app.import("vendor/fonts/glyphicons-halflings-regular.eot", { destDir: "fonts" });
-  app.import("vendor/fonts/glyphicons-halflings-regular.svg", { destDir: "fonts" });
-  app.import("vendor/fonts/glyphicons-halflings-regular.ttf", { destDir: "fonts" });
-  app.import("vendor/fonts/glyphicons-halflings-regular.woff", { destDir: "fonts" });
-  app.import("vendor/fonts/glyphicons-halflings-regular.woff2", { destDir: "fonts" });
-  app.import("vendor/assets/font-awesome/fonts/fontawesome-webfont.eot", { destDir: "fonts" });
-  app.import("vendor/assets/font-awesome/fonts/fontawesome-webfont.svg", { destDir: "fonts" });
-  app.import("vendor/assets/font-awesome/fonts/fontawesome-webfont.ttf", { destDir: "fonts" });
-  app.import("vendor/assets/font-awesome/fonts/fontawesome-webfont.woff", { destDir: "fonts" });
+  // Maisonette JS
+  app.import("vendor/assets/lib/jquery/jquery.min.js");
+  app.import("vendor/assets/lib/tether/js/tether.min.js");
+  app.import("vendor/assets/lib/perfect-scrollbar/js/perfect-scrollbar.jquery.min.js");
+  app.import("vendor/assets/lib/bootstrap/dist/js/bootstrap.min.js");
+  app.import("vendor/js/app.js");
 
-  // FlatLab Images
-  var images = new Funnel("vendor/img", {
+  // Maisonette Fonts (Open Sans)
+  var maisonetteOpenSansFonts = new Funnel("vendor/assets/lib", {
+    srcDir: "/open-sans",
+    include: ["**/*.eot","**/*.ttf","**/*.svg","**/*.woff","**/*.woff2"],
+    destDir: "/assets/lib/open-sans"
+  });
+
+  // Maisonette Fonts (Stroke 7)
+  var maisonetteStroke7Fonts = new Funnel("vendor/assets/lib", {
+    srcDir: "/stroke-7/fonts",
+    include: ["**/*.eot","**/*.ttf","**/*.svg","**/*.woff","**/*.woff2"],
+    destDir: "/assets/fonts"
+  });
+
+  // Maisonette Images
+  var maisonetteImages = new Funnel("vendor/img", {
     srcDir: "/",
     include: ["**/*.gif", "**/*.jpg", "**/*.png"],
     destDir: "/img"
   });
 
-  return app.toTree(images);
+  return app.toTree([maisonetteImages, maisonetteOpenSansFonts, maisonetteStroke7Fonts]);
 };

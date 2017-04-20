@@ -1,0 +1,40 @@
+//Full colored modal
+@mixin modal-header-colored-variant($color) {
+  background-color: $color;
+
+  h1, h2, h3, h4, h5, h6 {
+    @if $color == $dark-color {
+      color: darken($light-color, 18%);
+    } @else {
+      color: $light-color;
+    } 
+  }
+
+  .close {
+    color: $light-color;
+    opacity: 0.6;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+@mixin modal-full-color($color) {
+
+  .modal-header {
+    background-color: $color;
+  }
+
+  .modal-body, .modal-footer {
+    background-color: $color;
+  }
+
+  .btn-default {
+		color: $color;
+
+    &:active {
+      color: $color;
+    }
+  }
+}

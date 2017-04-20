@@ -1,0 +1,83 @@
+//
+// Textual form controls
+//
+
+.form-control {
+	font-size: $paragraph-size;
+}
+
+.form-control[multiple] {
+  padding: 0;
+
+  option {
+    padding: 14px 13px;
+  }
+}
+
+textarea {
+
+	&.form-control {
+		background-color: $textarea-bg;
+
+		&:focus {
+			background-color: $textarea-bg;
+		}
+	}
+}
+
+// File input
+
+.inputfile {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+
+  & + label {
+    padding: $btn-padding-y $btn-padding-x;
+    display: inline-block;
+    cursor: pointer;
+
+    i {
+      margin-right: 10px;
+    }
+  }
+}
+
+// Form control sizing
+//
+
+.form-control-xs {
+  padding: $input-padding-y-xs $input-padding-x-xs;
+  font-size: 1rem;
+}
+
+select.form-control-xs {
+  &:not([size]):not([multiple]) {
+    height: $input-height-xs;
+  }
+}
+
+.form-control-sm {
+  font-size: 1rem;
+}
+
+.form-control-lg {
+  font-size: 1.230rem;
+}
+
+// Form groups
+.form-group {
+
+  &.row {
+
+    .col-form-label {
+
+      .form-horizontal & {
+        text-align: right;
+      }
+    }
+  }
+}

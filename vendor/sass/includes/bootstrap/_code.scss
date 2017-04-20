@@ -1,0 +1,13 @@
+/*------------------------------------------------------------------
+  [Code]
+*/
+pre {
+	padding: 1.538rem;
+	border: 0;
+	border-radius: 0;
+	background-color: darken($light-color, 2%);
+
+	code {
+		white-space: pre-wrap;
+	}
+}

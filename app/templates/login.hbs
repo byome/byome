@@ -1,55 +1,43 @@
-<form class="form-signin" {{action 'signIn' this on='submit'}}>
-  <h2 class="form-signin-heading">sign in to byome</h2>
-
-  <div class="login-wrap">
-    {{#if errorMessage}}
-      <div class="alert alert-danger">
-        {{errorMessage}}
+<div class="mai-wrapper mai-login">
+  <div class="main-content container">
+    <div class="splash-container row">
+      <div class="col-sm-6 user-message">
+        <span class="splash-message text-right">Hello!<br> is good to<br> see you again</span>
+        <span class="alternative-message text-right">Don't have an account? {{#link-to 'register'}}Sign up{{/link-to}}</span>
       </div>
-    {{/if}}
-    {{input type='text' value=email class="form-control" placeholder="Email" autofocus="true"}}
-    {{input type='password' value=password class="form-control" placeholder="Password"}}
-
-    <label class="checkbox">
-      {{input type='checkbox' checked=rememberMe}} Remember me
-      <span class="pull-right">
-          <a data-toggle="modal" href="#myModal"> Forgot Password?</a>
-      </span>
-    </label>
-
-    <button class="btn btn-lg btn-login btn-block" type="submit" disabled={{loggingIn}}>
-      {{#if session.isWorking}}
-        <i class="fa fa-spinner fa-spin"></i>
-      {{else}}
-        Sign in
-      {{/if}}
-    </button>
-    <div class="registration">
-      Don't have an account yet?
-      {{link-to 'Create an account' 'register'}}
-    </div>
-  </div>
-</form>
-
-<!-- Modal -->
-<div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <form {{action 'resetPassword' this on='submit'}}>
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title">Reset your password</h4>
-        </div>
-        <div class="modal-body">
-          <p>Enter your e-mail address below to reset your password.</p>
-          {{input type='text' value=email placeholder="forgotmypassword@website.com" autocomplete="off" class="form-control placeholder-no-fix"}}
-        </div>
-        <div class="modal-footer">
-          <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
-          <button class="btn btn-success" type="submit">Submit</button>
-        </div>
-      </form>
+      <div class="col-sm-6 form-message">
+        <img src="/assets/byome/logos/byome-logo-white.svg" alt="logo" width="100" height="" class="logo-img mb-4"/>
+        <span class="splash-description text-center mt-5 mb-5">Login to your account</span>
+        <form {{action 'signIn' this on='submit'}}>
+          <div class="form-group">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="icon s7-user"></i></span>
+              {{input type='text' value=email class="form-control" placeholder="Email" autofocus="true"}}
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="input-group"><span class="input-group-addon"><i class="icon s7-lock"></i></span>
+              {{input type='password' value=password class="form-control" placeholder="Password"}}
+            </div>
+          </div>
+          <div class="form-group login-submit">
+            <button data-dismiss="modal" type="submit" class="btn btn-lg btn-primary btn-block">Login</button>
+          </div>
+          <div class="form-group row login-tools">
+            <div class="col-6 login-remember">
+              <label class="custom-control custom-checkbox mt-2">
+                <input type="checkbox" class="custom-control-input">
+                  <span class="custom-control-indicator"></span>
+                  <span class="custom-control-description">Remember me</span>
+              </label>
+            </div>
+            <div class="col-6 pt-2 text-right login-forgot-password">
+              <a href="#">Forgot Password?</a>
+            </div>
+          </div>
+        </form>
+        <div class="out-links">{{#link-to 'index'}}© 2017 Byome, LLC{{/link-to}}</div>
+      </div>
     </div>
   </div>
 </div>
-<!-- modal -->

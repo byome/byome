@@ -1,0 +1,248 @@
+// Modals
+
+.modal-content {
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+	overflow: hidden;
+	background-color: $light-color;
+	color: $body-color;
+	border: none;
+	border-radius: 0;
+	max-width : $modal-md;
+}
+
+// Modal Header
+.modal-header {
+	border: 0;
+	padding: 19px;
+	justify-content: flex-end;
+
+	h1, h2, h3, h4, h5, h6 {
+		display: block;
+		margin: 0;
+		color: $body-color;
+	}
+
+	.close {
+		font-size: 20px;
+		opacity: 0.4;
+		text-shadow: none;
+
+		&:hover {
+			opacity: 0.8;
+		}
+	}
+}
+
+// Modal Body
+.modal-body {
+	padding: 20px 30px 30px;
+
+	// Remove margin bottom from last row form group
+	.row:last-child {
+		
+		.form-group {
+			margin-bottom: 0;
+		}
+	}
+}
+
+// Modal Main Icon
+.modal-main-icon {
+	display: inline-block;
+	height: 77px;
+	width: 77px;
+	line-height: normal;
+	font-size: 77px;
+	margin-bottom: 37px;
+}
+
+//Modal Footer
+.modal-footer {
+	padding: 20px 30px;
+	border: none;
+}
+
+// Modal dark
+.modal-dark {
+
+	.modal-content {
+		background-color: $dark-color;
+		color: darken($light-color, 18%);
+	}
+
+	.modal-header {
+		
+		.close {
+			color: $light-color;
+			opacity: 0.6;
+
+			&:hover {
+				opacity: 1;
+			}
+		}
+	}
+
+	.btn {
+		border-width: 0;
+	}
+
+	.modal-footer {
+		
+		.btn-link-secondary {
+			color: darken($light-color, 12%);
+
+			@include hover {
+				color: darken($light-color, 20%);
+			}
+		}
+	}
+}
+
+// Colored Header
+.modal-header-colored {
+	justify-content: space-between;
+	background-color: darken($light-color, 4%);
+
+	& + .modal-body {
+		padding-top: 30px;
+	}
+
+	.modal-dark & {
+		background-color: lighten($black-color, 29%);
+
+		h1, h2, h3, h4, h5, h6 {
+      color: darken($light-color, 18%);
+   	}
+  }
+
+	&-primary, .modal-dark &-primary {
+		@include modal-header-colored-variant($primary-color);
+	}
+
+	&-success, .modal-dark &-success {
+		@include modal-header-colored-variant($success-color);
+	}
+
+	&-info, .modal-dark &-info {
+		@include modal-header-colored-variant($info-color);
+	}
+
+	&-warning, .modal-dark &-warning {
+		@include modal-header-colored-variant($warning-color);
+	}
+
+	&-danger, .modal-dark &-danger {
+		@include modal-header-colored-variant($danger-color);
+	}
+
+	&-dark, .modal-dark &-dark {
+		@include modal-header-colored-variant($dark-color);
+	}
+}
+
+// Full Color Modals
+.modal-full-color {
+
+	.modal-content {
+		color: $light-color;
+	}
+
+	.modal-header {
+		
+		.close {
+			color: $light-color;
+			opacity: 0.6;
+
+			&:hover {
+				opacity: 1;
+			}
+		}
+	}
+
+	.modal-footer {
+
+		.btn-link-secondary {
+			color: $light-color;
+
+			@include hover {
+				color: darken($light-color, 8%);
+			}
+		}
+	}
+
+	.btn {
+		border-width: 0;
+	}
+
+	//Transparent style for color buttons
+	.btn-primary,
+  .btn-success,
+  .btn-info,
+  .btn-warning,
+  .btn-danger,
+  .btn-dark {
+		background-color: rgba(0, 0, 0, 0);
+
+		
+		&:focus {
+			background-color: rgba(0, 0, 0, 0);
+		}
+
+		&:hover,.hover {
+			background-color: rgba(0, 0, 0, 0.1);
+		}
+
+		&:active {
+			background-color: rgba(0, 0, 0, 0.15);
+		}
+  }
+}
+
+// Modal Full Color set
+.modal-full-color-primary {
+	@include modal-full-color($primary-color);
+}
+
+.modal-full-color-success {
+	@include modal-full-color($success-color);
+}
+
+.modal-full-color-info {
+	@include modal-full-color($info-color);
+}
+
+.modal-full-color-warning {
+	@include modal-full-color($warning-color);
+}
+
+.modal-full-color-danger {
+	@include modal-full-color($danger-color);
+}
+
+.modal-full-color-dark {
+	@include modal-full-color($dark-color);
+}
+
+
+// Bootstrap Modals
+.full-width {
+	max-width:none;
+
+	.modal-content {
+		max-width: none;
+		width: 90%;
+	}
+}
+
+// Responsive Design
+@include phone {
+
+	.modal-dialog {
+		min-width: 100%;
+		padding: 0 15px;
+	}
+}
+
+.mai-modal-open {
+	overflow-x: visible;
+}

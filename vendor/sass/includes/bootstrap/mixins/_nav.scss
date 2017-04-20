@@ -1,0 +1,17 @@
+@mixin tabs-color-variation($color){
+
+	.nav-link.active {
+		background-color: $color;
+		@if $color == $noir-color {
+			color: $primary-color;
+		} @else {
+			color: $light-color;
+		}
+	}
+
+	& + .tab-content {
+		background-color: $color;
+		color: $light-color;
+	}
+
+}

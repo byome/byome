@@ -1,0 +1,25 @@
+.page-head {
+	padding: 20px 0 30px;
+}
+
+.page-head-heading {
+	justify-content: center;
+  display: flex;
+  flex-direction: column;
+	
+	h1 {
+		font-size: 3.07692rem;
+		line-height: 1.3;
+	}
+}
+
+.page-head-desc {
+	border-left: 2px solid darken($light-color, 15%);
+	text-align: center;
+
+	h3 {		
+		font-size: 1.69231rem;
+		color: darken($light-color, 43%);
+		line-height: 1.4;
+	}
+}

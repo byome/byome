@@ -1,0 +1,46 @@
+.mai-login {
+
+	@include phone {
+		height: 100%;
+	}
+
+	.main-content {
+		padding: 0;
+	}
+}
+
+.login-submit {
+	padding: 2.4rem 0 2.5rem;
+}
+
+.login-tools {
+
+	> div {
+		padding: 0;
+	}
+}
+
+.login-remember {
+	
+	.custom-control-indicator {
+		background-color: transparent;
+		border-width: 2px;
+		border-color: lighten($dark-color, 10%);
+	}
+	
+	.custom-control-input:checked ~ .custom-control-indicator,
+	.custom-control-input:active ~ .custom-control-indicator {
+		background-color: transparent;
+	}
+}
+
+.login-forgot-password {
+	a {
+		color: $light-color;
+		opacity: .8;
+
+		&:hover {
+			opacity: 1;
+		}
+	}
+}

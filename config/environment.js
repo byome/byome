@@ -36,8 +36,8 @@ module.exports = function(environment) {
    * DEVELOPMENT
    */
   if (environment === 'development') {
-    ENV.metricsAdapters[0].config.debug = true;
-    ENV.metricsAdapters[0].config.trace = true;
+    ENV.metricsAdapters[0].config.debug = false;
+    ENV.metricsAdapters[0].config.trace = false;
 
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;

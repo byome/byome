@@ -1,0 +1,55 @@
+.todo-list {
+	margin-bottom: $widget-margin-bottom;
+}
+
+.todo-list-container {
+	padding: $todo-list-container-padding;
+}
+
+.todo-tasks {
+	padding: 0;
+}
+
+.todo-task {
+	list-style: none;
+	display: flex;
+	align-items: center;
+	padding: $todo-task-padding 0;
+
+	.custom-control {
+		margin: 0;
+		padding-left: 2.30769rem;
+		flex: 1 1;
+	}
+
+	.custom-control-indicator {
+		top: 50%;
+		margin-top: - ($custom-control-indicator-size / 2);
+	}
+
+	.custom-control-input:checked ~ .custom-control-description {
+  		text-decoration: line-through;
+  	}
+}
+
+.todo-new-task {
+
+	.input-group {
+		border-top: 1px solid $input-border-color;
+		padding: $todo-new-task-padding;
+	}
+
+	input {
+		border-width: 0;
+	}
+
+	.input-group-addon {
+		background-color: transparent;
+		border-width: 0;
+	}
+
+	.input-group-addon {
+		font-size: 30px;
+		padding: 0.3rem 0.9rem;
+	}
+}

@@ -1,0 +1,35 @@
+/*------------------------------------------------------------------
+  [Perfect Scrollbar]
+*/
+/*Perfect Scrollbar*/
+
+.ps-container {
+
+	&:hover, &.ps-in-scrolling.ps-y {
+
+      > .ps-scrollbar-y-rail,
+      > .ps-scrollbar-y-rail:hover{
+    	width: $scroll-width;
+    	background-color: rgba(0,0,0, 0.1);
+
+	    	> .ps-scrollbar-y{
+	      	right: 0;
+	      	width: $scroll-width;
+	      	border-radius: 3px;
+	      	background-color: rgba(0,0,0, 0.25);
+	    	}
+  		}
+  	}
+
+  	> .ps-scrollbar-y-rail{
+    	width: $scroll-width;
+    	background-color: rgba(0,0,0, 0.1);
+
+    	> .ps-scrollbar-y{
+      	right: 0;
+      	width: $scroll-width;
+      	border-radius: 3px;
+      	background-color: rgba(0,0,0, 0.25);
+    	}
+ 	}
+}

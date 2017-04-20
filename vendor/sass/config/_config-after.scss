@@ -1,0 +1,16 @@
+// Nifty Modals
+$modal-prefix: 								modal;
+$modal-zindex: 								$zindex-modal;
+
+//btn-link
+$btn-link-color:												$body-color;
+$btn-link-hover-color:									lighten($body-color, 15%);
+
+// input Sizing
+$input-height-xs:                ((1rem * $line-height-sm) + ($input-padding-y-xs * 2));
+
+// Mega Menu
+$mega-menu-zindex:									$zindex-dropdown - 1;
+
+// Sub navigation
+$sub-nav-dropdown-item-color: 					lighten($body-color, 5%);

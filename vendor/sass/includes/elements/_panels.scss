@@ -1,0 +1,230 @@
+/*------------------------------------------------------------------
+  [Panels]
+*/
+
+.panel {
+	background-color: $light-color;
+	margin-bottom: $panel-margin-bottom;
+	box-shadow: $panel-box-shadow;
+	border-radius: $panel-border-radius;
+}
+
+// Panel body
+.panel-body {
+	padding: $panel-body-padding;
+}
+
+// Panel heading
+.panel-heading {
+	font-size: $panel-heading-font-size;
+	font-weight: $panel-heading-font-weight;
+	color: $panel-heading-color;
+	padding: $panel-heading-padding-top 0 $panel-heading-padding-bottom;
+	margin: 0 $panel-heading-horizontal-padding;
+
+	.tools {
+		float: right;
+		font-size: 0;
+
+		> a {
+			display: inline-block;
+		}
+
+		.icon {
+			display: inline-block;
+			font-size: $panel-heading-icon-size;
+			line-height: $panel-heading-icon-line-height;
+			vertical-align: middle;
+			cursor: pointer;
+			color: $panel-heading-icon-color;
+			min-width: $panel-heading-icon-size;
+			text-align: center;
+
+			& + .icon {
+				margin-left: $panel-heading-icon-separation;
+			}
+
+			&:hover {
+				color: $panel-heading-icon-hover;
+			}
+		}
+	}
+}
+
+// Panel title
+.panel-title {
+	font-size: $panel-heading-font-size;
+	font-weight: $panel-heading-font-weight;
+	display: block;
+	margin: 0;
+}
+
+// Panel subtitle
+.panel-subtitle {
+	display: block;
+	font-size: $font-size-base;
+	line-height: 1;
+	margin-bottom: $panel-heading-subtitle-margin;
+	color: darken($light-color, 47%);
+}
+
+// Panel heading divider
+.panel-heading-divider {
+	border-bottom: 1px solid darken($light-color, 10%);
+  padding-left: 0;
+  padding-right: 0;
+}
+
+// Panel border
+.panel-border {
+	box-shadow: none;
+	border: 1px solid darken($light-color, 10%);
+}
+
+// Panel transparent
+.panel-transparent {
+	background-color: transparent;
+	box-shadow: none;
+}
+
+// panel border color
+.panel-border-color {
+	border-top: 4px solid darken($light-color, 21%);
+	border-radius: 0 0 $panel-border-radius $panel-border-radius;
+}
+
+// Panel border danger
+.panel-border-color-primary {
+	border-top-color: $primary-color;
+}
+
+// Panel border danger
+.panel-border-color-danger {
+	border-top-color: $danger-color;
+}
+
+// Panel border warning
+.panel-border-color-warning {
+	border-top-color: $warning-color;
+}
+
+// Panel border info
+.panel-border-color-info {
+	border-top-color: $info-color;
+}
+
+// Panel border success
+.panel-border-color-success {
+	border-top-color: $success-color;
+}
+
+// Panel border dark
+.panel-border-color-dark {
+	border-top-color: $noir-color;
+}
+
+// Panel full colors
+.panel-heading-full-width {
+	margin: 0;
+	padding-left: $panel-heading-horizontal-padding;
+	padding-right: $panel-heading-horizontal-padding;
+}
+
+// Panel body contrast
+.panel-body-contrast {
+	background-color: darken($light-color, 10%);
+	border-radius: 0 0 $panel-border-radius $panel-border-radius;
+}
+
+// Panels Heading Color
+.panel-heading-color {
+  margin: 0;
+  padding: 22px 20px 21px;
+  border-radius: $panel-border-radius $panel-border-radius 0 0;
+
+  .panel-subtitle {
+    margin-bottom: 0;
+  }
+}
+
+.panel-heading-color-contrast {
+	@include panel-heading-color($grey-color, true);
+}
+
+.panel-heading-color-primary {
+	@include panel-heading-color($primary-color);
+}
+
+.panel-heading-color-success {
+	@include panel-heading-color($success-color);
+}
+
+.panel-heading-color-info {
+	@include panel-heading-color($info-color);
+}
+
+.panel-heading-color-danger {
+	@include panel-heading-color($danger-color);
+}
+
+.panel-heading-color-warning {
+	@include panel-heading-color($warning-color);
+}
+
+.panel-heading-color-dark {
+	@include panel-heading-color($noir-color);
+}
+
+// Panel colors
+.panel-full-color {
+	
+	.panel-heading {
+		border-radius: $panel-border-radius $panel-border-radius 0 0;
+	}
+
+	.panel-heading-divider {
+		border-color: rgba(0,0,0,0.07);
+	}
+
+	.panel-body {
+		border-radius: 0 0 $panel-border-radius $panel-border-radius;
+	}
+}
+
+// Full color style
+.panel-full-color-primary {
+	@include panel-full-color($primary-color);
+}
+
+.panel-full-color-success {
+	@include panel-full-color($success-color);
+}
+
+.panel-full-color-warning {
+	@include panel-full-color($warning-color);
+}
+
+.panel-full-color-danger {
+	@include panel-full-color($danger-color);
+}
+
+.panel-full-color-dark {
+	@include panel-full-color($noir-color);
+}
+
+.panel-full-color-grey {
+	@include panel-full-color($grey-color, true);
+}
+
+//Table Panel
+.panel-table{
+
+	.panel-body{
+		padding: 0;
+	}
+}
+
+.panel-divider {
+	margin: 2rem 0;
+  border-top: 1px solid darken($light-color, 5%);
+}

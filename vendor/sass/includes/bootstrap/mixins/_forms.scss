@@ -1,0 +1,25 @@
+@mixin custom-form-control-validation($color) {
+  // Color the label and help text
+  .form-control-feedback,
+  .form-control-label,
+  .col-form-label,
+  .form-check-label,
+  .custom-control {
+    color: $body-color;
+  }
+
+  .custom-control-indicator {
+    border-color: $color;
+  }
+
+  .custom-control-input:checked ~ .custom-control-indicator {
+    border-color: $color;
+    color: $color;
+  }
+
+
+  .custom-control-input:checked ~ .custom-control-color {
+    background-color: $color;
+    color: $light-color;
+  }
+}

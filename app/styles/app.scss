@@ -1,0 +1,10 @@
+@import "vendor/sass/app";
+
+@font-face {
+  font-family: 'Nunito';
+  src: url('fonts/Nunito-Regular.ttf') format('truetype');
+}
+
+.ember-application .web-loading {
+  display: none;
+}

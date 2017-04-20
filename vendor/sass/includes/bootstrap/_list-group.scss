@@ -1,0 +1,39 @@
+/*------------------------------------------------------------------
+  [List group]
+*/
+.list-group-item {
+
+	&.active {
+		.badge {
+			background: $light-color;
+			color: $primary-color;
+		}
+	}
+
+	.icon {
+		flex: 0 0 auto;
+		margin-right: .7rem;
+		font-size: 1.385rem;
+		line-height: 0.5;
+		vertical-align: middle;
+	}
+
+	&.active {
+		.icon {
+			color: $light-color;
+		}
+	}
+
+	.text {
+		flex: 1 1 auto;
+	}
+
+	.badge {
+		flex: 0 0 auto;
+
+		.active & {
+			background: $light-color;
+			color: $primary-color;
+		}
+	}
+}

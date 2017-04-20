@@ -1,0 +1,42 @@
+.badge {
+  display: inline-block;
+  border: 1px solid darken($light-color, 20%);
+  vertical-align: middle;
+  @include border-radius(0);
+
+  // Empty badges collapse automatically
+  &:empty {
+    display: none;
+  }
+}
+
+.badge-pill {
+  @include border-radius($badge-pill-border-radius);
+  padding: ($badge-padding-y - .1915) ($badge-padding-x - .1154);
+}
+
+// Color variants
+
+.badge-primary {
+  @include badge-color-variant($primary-color);
+}
+
+.badge-success {
+  @include badge-color-variant($success-color);
+}
+
+.badge-info {
+  @include badge-color-variant($info-color);
+}
+
+.badge-warning {
+  @include badge-color-variant($warning-color);
+}
+
+.badge-danger {
+  @include badge-color-variant($danger-color);
+}
+
+.badge-dark {
+  @include badge-color-variant($dark-color);
+}

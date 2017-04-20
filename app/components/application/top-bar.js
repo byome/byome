@@ -1,11 +1,11 @@
 import Ember from 'ember';
-import FlatLab from 'byome/utils/flat-lab';
+import VendorTemplate from 'byome/utils/vendor_template';
 
 export default Ember.Component.extend({
   tagName: 'header',
   classNames: ['header', 'white-bg'],
 
   didInsertElement() {
-    FlatLab.initializeTopbarPlugins();
+    VendorTemplate.initializeTemplate();
   }
 });
