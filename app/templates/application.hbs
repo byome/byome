@@ -1,10 +1,13 @@
 {{application/top-bar}}
-{{#if session.isAuthenticated}}
-  <section id="container">
-    {{outlet}}
-  </section>
-{{else}}
-  <div class="container">
-    {{outlet}}
-  </div>
-{{/if}}
+<div class="mai-wrapper">
+  {{application/main-menu}}
+  {{#if session.isAuthenticated}}
+    <section id="container">
+      {{outlet}}
+    </section>
+  {{else}}
+    <div class="container">
+      {{outlet}}
+    </div>
+  {{/if}}
+</div>

@@ -9,4 +9,8 @@ export default Ember.Component.extend({
     'navbar-fixed-top',
     'mai-top-header'
   ],
+
+  didInsertElement() {
+    Ember.run(() => App.init());
+  }
 });
