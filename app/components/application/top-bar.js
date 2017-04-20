@@ -1,11 +1,12 @@
 import Ember from 'ember';
-import VendorTemplate from 'byome/utils/vendor_template';
 
 export default Ember.Component.extend({
-  tagName: 'header',
-  classNames: ['header', 'white-bg'],
-
-  didInsertElement() {
-    VendorTemplate.initializeTemplate();
-  }
+  tagName: 'nav',
+  classNames: [
+    'navbar',
+    'navbar-full',
+    'navbar-inverse',
+    'navbar-fixed-top',
+    'mai-top-header'
+  ],
 });

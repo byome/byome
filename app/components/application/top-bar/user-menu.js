@@ -1,8 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  tagName: 'li',
-  classNames: 'dropdown',
+  tagName: 'ul',
+  classNames: ['nav', 'navbar-nav', 'float-lg-right', 'mai-user-nav'],
 
   session: Ember.inject.service('session'),
   user: Ember.computed.alias('session.userModel'),

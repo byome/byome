@@ -10,7 +10,8 @@ module.exports = (process) => {
       "apis.google.com",
       "www.google-analytics.com",
       "js.stripe.com",
-      "cdn.ravenjs.com"
+      "cdn.ravenjs.com",
+      "firebase.io"
     ],
     'frame-src': [
       "'self'",

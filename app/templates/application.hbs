@@ -1,12 +1,7 @@
+{{application/top-bar}}
 {{#if session.isAuthenticated}}
   <section id="container">
-    {{application/top-bar}}
-    {{application/side-bar}}
-    <section id="main-content">
-      <section class="wrapper site-min-height">
-        {{outlet}}
-      </section>
-    </section>
+    {{outlet}}
   </section>
 {{else}}
   <div class="container">

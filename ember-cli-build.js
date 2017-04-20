@@ -54,6 +54,13 @@ module.exports = function(defaults) {
     destDir: "/assets/fonts"
   });
 
+  // Maisonette Fonts (Raleway)
+  var maisonetteRalewayFonts = new Funnel("vendor/assets/lib", {
+    srcDir: "/raleway",
+    include: ["**/*.eot","**/*.ttf","**/*.svg","**/*.woff","**/*.woff2"],
+    destDir: "/assets/lib/raleway"
+  });
+
   // Maisonette Images
   var maisonetteImages = new Funnel("vendor/img", {
     srcDir: "/",
@@ -61,5 +68,10 @@ module.exports = function(defaults) {
     destDir: "/img"
   });
 
-  return app.toTree([maisonetteImages, maisonetteOpenSansFonts, maisonetteStroke7Fonts]);
+  return app.toTree([
+    maisonetteImages,
+    maisonetteOpenSansFonts,
+    maisonetteStroke7Fonts,
+    maisonetteRalewayFonts
+  ]);
 };

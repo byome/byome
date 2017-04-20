@@ -1,30 +1,9 @@
-<div class="sidebar-toggle-box">
-  <i class="fa fa-bars"></i>
-</div>
-<!--logo start-->
-{{#link-to 'dashboard' class="logo"}}
-  <img src="/assets/byome/favicon/byome-logo.svg" width="30" alt="logo">
-  <span>byome</span>
-{{/link-to}}
-<!--logo end-->
-
-{{#if (can "edit user")}}
-  {{application/top-bar/notifications}}
-{{/if}}
-
-<div class="top-nav ">
-  <!--search & user info start-->
-  <ul class="nav pull-right top-menu">
-    {{#if (can "edit user")}}
-      {{application/top-bar/user}}
-    {{else}}
-      {{#link-to 'login' class="btn btn-primary"}}Login{{/link-to}}
-      {{#link-to 'register' class="btn btn-default"}}Register{{/link-to}}
-    {{/if}}
-
-    <!-- <li class="sb-toggle-right">
-      <i class="fa  fa-align-right"></i>
-    </li> -->
-  </ul>
-  <!--search & user info end-->
+<div class="container">
+  {{#link-to 'index' classNames="navbar-brand byome-brand"}}{{/link-to}}
+  <!--Left Menu-->
+  {{application/top-bar/left-menu}}
+  <!--Icons Menu-->
+  {{application/top-bar/notifications-menu}}
+  <!--User Menu-->
+  {{application/top-bar/user-menu}}
 </div>
