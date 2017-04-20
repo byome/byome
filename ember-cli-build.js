@@ -5,6 +5,22 @@ var Funnel = require('broccoli-funnel');
 
 module.exports = function(defaults) {
   var app = new EmberApp(defaults, {
+    dotEnv: {
+      clientAllowedKeys: [
+        'STRIPE_PUBLISHABLE_KEY',
+        'FIREBASE_API_KEY',
+        'FIREBASE_AUTH_DOMAIN',
+        'FIREBASE_DATABASE_URL',
+        'FIREBASE_STORAGE_BUCKET',
+        'FIREBASE_MESSAGE_SENDER_ID',
+        'SENTRY_CDN',
+        'SENTRY_DSN'
+      ],
+      path: {
+        development: './config/.env.development',
+        production: './config/.env.production'
+      }
+    },
     sourcemaps: {
       enabled: true,
       extensions: ['js']

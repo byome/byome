@@ -27,7 +27,7 @@
           ".write": false
         }
       },
-      ".indexOn": ["connected"]
+      ".indexOn": ["connected", "sleeping"]
     },
 
     "deaths": {

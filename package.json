@@ -49,6 +49,7 @@
     "ember-cli-deploy-firebase-pack": "byome/ember-cli-deploy-firebase-pack",
     "ember-cli-deploy-sentry": "^0.5.2",
     "ember-cli-document-title": "0.3.3",
+    "ember-cli-dotenv": "^1.2.0",
     "ember-cli-eslint": "^3.0.2",
     "ember-cli-htmlbars": "^1.1.1",
     "ember-cli-htmlbars-inline-precompile": "^0.3.6",

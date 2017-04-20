@@ -22,81 +22,13 @@ module.exports = function(environment) {
       // when it is created
     },
 
-    contentSecurityPolicy: {
-      'default-src': [
-        "'self'"
-      ],
-      'script-src': [
-        "'self'",
-        "'unsafe-eval'",
-        "'unsafe-inline'",
-        "apis.google.com",
-        "www.google-analytics.com",
-        "js.stripe.com",
-        "cdn.ravenjs.com"
-      ],
-      'frame-src': [
-        "'self'",
-        "https://*.firebaseapp.com",
-        "js.stripe.com"
-      ],
-      'connect-src': [
-        "'self'",
-        "wss://*.firebaseio.com",
-        "https://*.googleapis.com",
-        "www.google-analytics.com",
-        "app.getsentry.com",
-        "sentry.io"
-      ],
-      'style-src': [
-        "'self'",
-        "'unsafe-inline'"
-      ],
-      'img-src': [
-        "'self'",
-        "byome-fcaae.appspot.com",
-        "www.google-analytics.com",
-        "*.byome.io:28015",
-        "app.getsentry.com"
-      ]
-    },
-
-    firebase: {
-      apiKey: 'AIzaSyDJxOKoFlnk-j65DvIFSyqL-zw9j8w00rI',
-      authDomain: 'byome-fcaae.firebaseapp.com',
-      databaseURL: 'https://byome-fcaae.firebaseio.com',
-      storageBucket: 'byome-fcaae.appspot.com',
-      messageSenderId: '1047257712850'
-    },
-
-    torii: {
-      sessionServiceName: 'session'
-    },
-
-    metricsAdapters: [
-      {
-        name: 'GoogleAnalytics',
-        environments: ['development', 'production'],
-        config: {
-          id: 'UA-94075514-1'
-        }
-      }
-    ],
-
-    stripe: {
-      publishableKey: 'pk_test_C656VQVF0FfLNOCGmcem3hfD'
-    },
-
-    sentry: {
-      cdn: 'https://cdn.ravenjs.com/3.14.0/raven.min.js',
-      dsn: 'https://9fff740211b245508a63dc7852c969fb@sentry.io/156722',
-      debug: true,
-      development: false,
-      exposedPropertyName: 'raven',
-      serviceName: 'raven',
-      globalErrorCatching: true,
-      whitelistUrls: ['localhost:4200', 'byome.io']
-    }
+    // Initializers
+    contentSecurityPolicy: require('./initializers/content-security-policy')(process),
+    firebase: require('./initializers/firebase')(process),
+    torii: require('./initializers/torii')(process),
+    metricsAdapters: require('./initializers/metrics_adapters')(process),
+    stripe: require('./initializers/stripe')(process),
+    sentry: require('./initializers/sentry')(process)
   };
 
 
@@ -135,7 +67,6 @@ module.exports = function(environment) {
    */
   if (environment === 'production') {
     ENV.metricsAdapters[0].config.sendHitTask = true;
-    ENV.stripe.publishableKey = 'pk_live_3szcZmkaGIEgh7IxOTZ8ncti';
   }
 
   return ENV;

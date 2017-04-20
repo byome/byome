@@ -24,3 +24,7 @@ firebase-debug.log
 
 # macOs
 .DS_Store
+
+# ENV
+config/*.env
+config/*.env.*
