@@ -7,28 +7,28 @@
       <div id="mai-navbar-collapse" class="navbar-collapse collapse mai-nav-tabs">
 
         <ul class="nav navbar-nav">
-          <li class="nav-item parent">
-            <a href="javascript:;" role="button" aria-expanded="false" class="nav-link">
+          {{#link-to 'dashboard' href=false tagName='li' classNames="nav-item parent" activeClass="open"}}
+            {{#link-to 'dashboard' href=false tagName='a' class="nav-link"}}
               <span class="icon s7-home"></span>
               <span> Home</span>
-            </a>
+            {{/link-to}}
             <ul class="mai-nav-tabs-sub mai-sub-nav nav">
               <li class="nav-item">
-                {{#link-to 'index' class="nav-link"}}
+                {{#link-to 'dashboard' class="nav-link"}}
                   <span class="icon s7-monitor"></span>
                   <span class="name">Dashboard</span>
                 {{/link-to}}
               </li>
             </ul>
-          </li>
+          {{/link-to}}
         </ul>
 
         <ul class="nav navbar-nav">
-          <li class="nav-item parent">
-            <a href="javascript:;" role="button" aria-expanded="false" class="nav-link">
+          {{#link-to 'servers.index' href=false tagName='li' classNames="nav-item parent" activeClass="open"}}
+            {{#link-to 'servers.index' href=false tagName='a' class="nav-link"}}
               <span class="icon s7-server"></span>
               <span> Servers</span>
-            </a>
+            {{/link-to}}
             <ul class="mai-nav-tabs-sub mai-sub-nav nav">
               <li class="nav-item">
                 {{#link-to 'servers.index' class="nav-link"}}
@@ -37,8 +37,9 @@
                 {{/link-to}}
               </li>
             </ul>
-          </li>
+          {{/link-to}}
         </ul>
+        
       </div>
     </nav>
   <!--Search input-->
