@@ -14,7 +14,7 @@ export default Ember.Controller.extend({
         email: email,
         password: password
       }).then(() => {
-        this.transitionToRoute('dashboard');
+        this.transitionToRoute('home.dashboard');
       }).catch(this.handleErrors.bind(this));
     },
 

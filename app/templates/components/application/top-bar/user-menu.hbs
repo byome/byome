@@ -1,24 +1,33 @@
-<li class="dropdown nav-item">
-  <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle nav-link">
-    <!-- <img src="assets/img/avatar.jpg"/> -->
-    <span class="user-name">{{user.name}}</span>
-    <span class="angle-down s7-angle-down"></span>
-  </a>
-  <div role="menu" class="dropdown-menu">
-    <a href="#" class="dropdown-item">
-      <span class="icon s7-home"></span> My Account
+{{#if session.isAuthenticated}}
+  <li class="dropdown nav-item">
+    <a href="javascript:;" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle nav-link">
+      <!-- <img src="assets/img/avatar.jpg"/> -->
+      <span class="user-name">{{user.name}}</span>
+      <span class="angle-down s7-angle-down"></span>
     </a>
-    <a href="#" class="dropdown-item">
-      <span class="icon s7-user"></span> Profile
-    </a>
-    <a href="#" class="dropdown-item">
-      <span class="icon s7-cash"></span> Billing
-    </a>
-    <a href="#" class="dropdown-item">
-      <span class="icon s7-tools"></span> Settings
-    </a>
-    <a href="" class="dropdown-item"{{action 'logout'}}>
-      <span class="icon s7-power"></span> Log Out
-    </a>
-  </div>
-</li>
+    <div role="menu" class="dropdown-menu">
+      <a href="#" class="dropdown-item">
+        <span class="icon s7-home"></span> My Account
+      </a>
+      <a href="#" class="dropdown-item">
+        <span class="icon s7-user"></span> Profile
+      </a>
+      <a href="#" class="dropdown-item">
+        <span class="icon s7-cash"></span> Billing
+      </a>
+      <a href="#" class="dropdown-item">
+        <span class="icon s7-tools"></span> Settings
+      </a>
+      <a href="" class="dropdown-item"{{action 'logout'}}>
+        <span class="icon s7-power"></span> Log Out
+      </a>
+    </div>
+  </li>
+{{else}}
+  <li class="nav-item">
+    {{#link-to 'register' class="nav-link"}}Register{{/link-to}}
+  </li>
+  <li class="nav-item">
+    {{#link-to 'login' class="nav-link"}}Login{{/link-to}}
+  </li>
+{{/if}}

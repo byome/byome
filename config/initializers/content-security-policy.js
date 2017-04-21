@@ -35,7 +35,8 @@ module.exports = (process) => {
       "byome-fcaae.appspot.com",
       "www.google-analytics.com",
       "*.byome.io:28015",
-      "app.getsentry.com"
+      "app.getsentry.com",
+      "https://stats.g.doubleclick.net"
     ]
   };
 }

@@ -8,7 +8,7 @@ export default Ember.Route.extend(CanMixin, {
 
   afterModel(model) {
     if (!this.can('show server', model)) {
-      this.transitionTo('dashboard');
+      this.transitionTo('home');
     }
   },
 

@@ -3,7 +3,9 @@
   <!--Left Menu-->
   {{application/top-bar/left-menu}}
   <!--Icons Menu-->
-  {{application/top-bar/notifications-menu}}
+  {{#if session.isAuthenticated}}
+    {{application/top-bar/notifications-menu}}
+  {{/if}}
   <!--User Menu-->
   {{application/top-bar/user-menu}}
 </div>

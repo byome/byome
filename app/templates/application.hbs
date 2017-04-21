@@ -1,13 +1,13 @@
-{{#if session.isAuthenticated}}
+{{#if loginOrRegisterRoute}}
+  <div id="container">
+    {{outlet}}
+  </div>
+{{else}}
   {{application/top-bar}}
   <div class="mai-wrapper">
     {{application/main-menu}}
-    <section id="container">
-      {{outlet}}
-    </section>
-  </div>
-{{else}}
-    <div class="container">
+    <div id="main-content container">
       {{outlet}}
     </div>
+  </div>
 {{/if}}

@@ -5,8 +5,13 @@ export default Ember.Route.extend({
   titleToken: 'Login',
 
   beforeModel() {
+    this.controllerFor('application').set('loginOrRegisterRoute', true);
     if (this.get('session.isAuthenticated')) {
-      this.transitionTo('dashboard');
+      this.transitionTo('home');
     }
+  },
+
+  didTransition() {
+    this.controllerFor('application').set('loginOrRegisterRoute', false);
   }
 });

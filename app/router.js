@@ -23,15 +23,17 @@ const Router = Ember.Router.extend({
 Router.map(function() {
   this.route('login');
   this.route('register');
-  this.authenticatedRoute('dashboard');
-  this.authenticatedRoute('servers', function() {
-    this.authenticatedRoute('show', { path: '/:server_id' });
+  this.route('home', function() {
+    this.route('dashboard');
   });
+  this.route('servers', function() {
+    this.route('show', { path: '/:server_id' });
+  });
+  this.route('products', function() {});
   this.authenticatedRoute('settings', function() {
     this.authenticatedRoute('link-account');
     this.authenticatedRoute('billing');
   });
-  this.authenticatedRoute('products', function() {});
 });
 
 export default Router;
