@@ -11,7 +11,7 @@ export default Ember.Route.extend({
     }
   },
 
-  didTransition() {
+  deactivate() {
     this.controllerFor('application').set('loginOrRegisterRoute', false);
   }
 });

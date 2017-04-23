@@ -5,17 +5,20 @@ export default Ember.Controller.extend({
   raven: Ember.inject.service('raven'),
 
   errorMessage: null,
+  signingIn: false,
 
   actions: {
     signIn(user) {
       const { email, password } = user.getProperties('email', 'password');
       this.get('session').open('firebase', {
         provider: 'password',
-        email: email,
-        password: password
-      }).then(() => {
+        email,
+        password
+      })
+      .then(() => {
         this.transitionToRoute('home.dashboard');
-      }).catch(this.handleErrors.bind(this));
+      })
+      .catch(this.handleErrors.bind(this));
     },
 
     resetPassword(user) {
