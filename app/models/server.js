@@ -23,6 +23,8 @@ export default DS.Model.extend({
 
   // Helpers
   isOnline: Ember.computed.equal('status', 'online'),
+  isRestarting: Ember.computed.equal('status', 'restarting'),
+  isUpgrading: Ember.computed.equal('status', 'upgrading'),
   playersOnline: Ember.computed.filterBy('connections', 'connected', true),
   playersOnlineCount: Ember.computed('playersOnline', function() {
     return this.get('playersOnline.length');

@@ -10,29 +10,44 @@
             <table class="no-border no-strip skills">
               <tbody class="no-border-x no-border-y">
                 <tr>
-                  <td class="icon"><span class="icon s7-portfolio"></span></td>
+                  <td class="icon"><span class="icon s7-graph1"></span></td>
                   <td class="item">Host</td>
-                  <td><a href="javascript;">{{model.host}}</a></td>
-                </tr>
-                <tr>
-                  <td class="icon"><span class="icon s7-gift"></span></td>
-                  <td class="item">Location</td>
-                  <td> <a href="javascript;">{{model.location}}</a></td>
-                </tr>
-                <tr>
-                  <td class="icon"><span class="icon s7-phone"></span></td>
-                  <td class="item">Status</td>
-                  <td> <a href="javascript;">{{model.status}}</a></td>
+                  <td>{{model.host}}</td>
                 </tr>
                 <tr>
                   <td class="icon"><span class="icon s7-global"></span></td>
-                  <td class="item">Last Wipe</td>
-                  <td> <a href="javascript;">{{moment-format model.lastWipe 'MM/DD/YYYY'}}</a></td>
+                  <td class="item">Location</td>
+                  <td>{{model.location}}</td>
                 </tr>
                 <tr>
-                  <td class="icon"><span class="icon s7-map-marker"></span></td>
+                  <td class="icon"><span class="icon s7-rocket"></span></td>
+                  <td class="item">Status</td>
+                  <td>
+                    {{#if model.isOnline}}
+                      <span class="item badge badge-success">Online</span>
+                    {{else if model.isRestarting}}
+                      <span class="item badge badge-info">Restarting</span>
+                    {{else if model.isUpgrading}}
+                      <span class="item badge badge-warning">Upgrading</span>
+                    {{else}}
+                      <span class="item badge badge-danger">Offline</span>
+                    {{/if}}
+                  </td>
+                </tr>
+                <tr>
+                  <td class="icon"><span class="icon s7-hourglass"></span></td>
+                  <td class="item">
+                    Last Wipe <br/>
+                    {{#if (can "edit server" model)}}
+                      <span class="small"><a href="javascript:;" {{action 'updateWipeDay'}}>Set to Today</a></span>
+                    {{/if}}
+                  </td>
+                  <td>{{moment-format model.lastWipe 'MM/DD/YYYY'}}</td>
+                </tr>
+                <tr>
+                  <td class="icon"><span class="icon s7-hourglass"></span></td>
                   <td class="item">Next Wipe</td>
-                  <td> <a href="javascript;">{{moment-format model.nextWipe 'MM/DD/YYYY'}}</a></td>
+                  <td>{{moment-format model.nextWipe 'MM/DD/YYYY'}}</td>
                 </tr>
               </tbody>
             </table>

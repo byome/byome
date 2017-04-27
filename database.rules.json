@@ -105,7 +105,7 @@
     "servers": {
       ".read": true,
       "$server": {
-        ".write": false
+        ".write": "root.child('authentication-roles').child(auth.uid).exists()"
       }
     },
 

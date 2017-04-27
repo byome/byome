@@ -16,9 +16,13 @@
             <div class="project-item-state">
               <span class="name">
                 {{#if server.isOnline}}
-                  <span class="label label-success">Online</span>
+                  <span class="badge badge-success">Online</span>
+                {{else if server.isRestarting}}
+                  <span class="badge badge-info">Restarting</span>
+                {{else if server.isUpgrading}}
+                  <span class="badge badge-warning">Upgrading</span>
                 {{else}}
-                  <span class="label label-default">Offline</span>
+                  <span class="badge badge-danger">Offline</span>
                 {{/if}}
               </span>
               <span class="description">State</span>
