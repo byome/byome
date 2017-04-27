@@ -33,13 +33,13 @@
     "deaths": {
       ".read": true,
       ".write": false,
-      ".indexOn": ["player"]
+      ".indexOn": ["player", "timestamp"]
     },
 
     "kills": {
       ".read": true,
       ".write": false,
-      ".indexOn": ["player"]
+      ".indexOn": ["player", "timestamp"]
     },
 
     "messages": {

@@ -9,6 +9,7 @@ export default DS.Model.extend({
   location: DS.attr('string'),
   version: DS.attr('string'),
   lastWipe: DS.attr('date'),
+  nextWipe: DS.attr('date'),
   playerLimit: DS.attr('number'),
 
   // Associations

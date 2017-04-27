@@ -14,5 +14,16 @@ export default Ember.Route.extend(CanMixin, {
 
   titleToken(model) {
     return model.get('name');
+  },
+
+  setupController(controller, model) {
+    this._super(controller, model);
+    this.get('store').query('kill', {
+      orderBy: 'server',
+      equalTo: model.get('id'),
+      limitToLast: 10
+    }).then((serverKills) => {
+      controller.set('killFeed', serverKills.toArray().reverse());
+    });
   }
 });
