@@ -14,5 +14,8 @@ export default Ability.extend({
 
   canEdit: Ember.computed('userIsAdmin', 'userIsSelf', function() {
     return this.get('userIsAdmin') || this.get('userIsSelf');
+  }),
+  canUpdateStripe: Ember.computed('userIsAdmin', 'userIsSelf', 'userHasStripe', function() {
+    return !this.get('userHasStripe') && (this.get('userIsAdmin') || this.get('userIsSelf'));
   })
 });

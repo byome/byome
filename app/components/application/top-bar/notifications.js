@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  classNames: ['nav', 'notify-row'],
-  elementId: 'top_menu'
+  tagName: 'ul',
+  classNames: ['navbar-nav', 'float-lg-right', 'mai-icons-nav']
 });

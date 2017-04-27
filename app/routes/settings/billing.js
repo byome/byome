@@ -5,7 +5,7 @@ export default Ember.Route.extend({
   session: Ember.inject.service('session'),
 
   beforeModel() {
-    if (!this.get('session')) {
+    if (!this.get('session.userModel')) {
       this.transitionTo('login');
     }
   },

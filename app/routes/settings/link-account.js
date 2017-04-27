@@ -6,7 +6,7 @@ export default Ember.Route.extend({
   playerNotLinked: Ember.computed.empty('session.userModel.player.name'),
 
   beforeModel() {
-    if (!this.get('session')) {
+    if (!this.get('session.userModel')) {
       this.transitionTo('login');
     }
   },

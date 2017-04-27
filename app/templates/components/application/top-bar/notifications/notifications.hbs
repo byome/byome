@@ -1,24 +1,31 @@
-<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-  <i class="fa fa-bell-o"></i>
+<a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
+  <span class="icon s7-bell"></span>
   {{#unless user.player}}
-    <span class="badge bg-warning">1</span>
+    <span class="indicator"></span>
   {{/unless}}
 </a>
-<ul class="dropdown-menu extended notification">
-  <div class="notify-arrow notify-arrow-yellow"></div>
-  {{#unless user.player}}
-    <li>
-      <p class="yellow">You have 1 notifications</p>
-    </li>
-    <li>
-      {{#link-to 'settings.link-account'}}
-        <span class="label label-info"><i class="fa fa-user"></i></span>
-        Link your rust account
-        <!-- <span class="small italic">34 mins</span> -->
-      {{/link-to}}
-    </li>
-  {{/unless}}
-  <!-- <li>
-      <a href="#">See all notifications</a>
-  </li> -->
+<ul class="dropdown-menu">
+  <li>
+    <div class="title">Notifications</div>
+    <div class="mai-scroller">
+      <div class="content">
+        <ul>
+          {{#unless user.player}}
+            <li>
+              {{#link-to 'settings.link-account'}}
+                <div class="icon">
+                  <span class="s7-add-user"></span>
+                </div>
+                <div class="content">
+                  <span class="desc">Link your rust account and get <strong>2 free supply signals</strong></span>
+                  <span class="date">10 minutes ago</span>
+                </div>
+              {{/link-to}}
+            </li>
+          {{/unless}}
+        </ul>
+      </div>
+    </div>
+    <!-- <div class="footer"> <a href="#">View all notifications</a></div> -->
+  </li>
 </ul>

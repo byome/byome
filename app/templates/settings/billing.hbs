@@ -1,29 +1,11 @@
-<div class="row">
-  <div class="col-md-12">
-    <ul class="breadcrumb">
-      <li>
-        {{#link-to 'home.dashboard'}}
-          <i class="fa fa-home"></i> Home
-        {{/link-to}}
-      </li>
-      <li>
-        Settings
-      </li>
-      <li class="active">
-        Billing Information
-      </li>
-    </ul>
-  </div>
-</div>
-
 <section class="panel">
-  <header class="panel-heading">
-    <h3>Update your billing information</h3>
-    <span>Note: we do not store any credit card information. All payment handling is done through Stripe.</span>
+  <header class="panel-heading panel-heading-divider">
+    Update your billing information
+    <span class="panel-subtitle">Note: we do not store any credit card information. All payment handling is done through Stripe.</span>
   </header>
   <div class="panel-body">
     <div class="row">
-      <div class="col-md-4">
+      <div class="col-md-9">
         {{#if success}}
           <div class="alert alert-success">Info successfully updated!</div>
         {{/if}}
@@ -33,34 +15,44 @@
         {{#if user.stripeToken}}
           <div class="alert alert-info"><i class="fa fa-info-circle"></i> You already have a card on file. You can update here if necessary.</div>
         {{/if}}
-        <form class="form-horizontal" {{action 'saveBillingInfo' on='submit'}}>
-          <div class="form-group">
-            <label class="col-lg-3 col-sm-3 control-label">Card Number</label>
-            <div class="col-lg-9">
-              <div class="iconic-input">
-                <i class="fa fa-credit-card"></i>
-                {{input type='text' value=number class="form-control" autofocus="true"}}
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="col-lg-3 col-sm-3 control-label">Expiration</label>
-            <div class="col-lg-9">
-              <div class="iconic-input">
-                <i class="fa fa-calendar"></i>
+        {{#if (can "update stripe for user" user)}}
+          <form class="form-horizontal" {{action 'saveBillingInfo' on='submit'}}>
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label text-right">Card Number</label>
+              <div class="col-sm-9">
                 {{input type='text'
-                  value=expiration
-                  placeholder="mm/yy"
+                  value=number
                   class="form-control"
-                  autofocus="true"}}
+                  autofocus="true"
+                  placeholder="1234 5678 1234 5678"}}
               </div>
             </div>
-          </div>
-          <div class="form-group">
-            <label class="col-lg-3 col-sm-3 control-label">CVC</label>
-            <div class="col-lg-9">
-              <div class="iconic-input">
-                <i class="fa fa-lock"></i>
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label text-right">Expiration</label>
+              <div class="col-sm-9">
+                <div class="row">
+                  <div class="col-sm-6">
+                    {{input type='text'
+                      value=exp_mm
+                      placeholder="MM"
+                      class="form-control"
+                      autofocus="true"
+                      length=2}}
+                  </div>
+                  <div class="col-sm-6">
+                    {{input type='text'
+                      value=exp_yy
+                      placeholder="YYYY"
+                      class="form-control"
+                      autofocus="true"
+                      length=2}}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label text-right">CVC</label>
+              <div class="col-sm-9">
                 {{input type='text'
                   value=cvc
                   placeholder="123"
@@ -68,17 +60,17 @@
                   autofocus="true"}}
               </div>
             </div>
-          </div>
-          <div class="col-12">
-            <button class="btn btn-lg btn-primary pull-right" type="submit" disabled={{submitting}}>
-              {{#if submitting}}
-                <i class="fa fa-spinner fa-spin"></i>
-              {{else}}
-                Save
-              {{/if}}
-            </button>
-          </div>
-        </form>
+            <div class="col-12">
+              <button class="btn btn-lg btn-primary pull-right" type="submit" disabled={{submitting}}>
+                {{#if submitting}}
+                  <i class="fa fa-spinner fa-spin"></i>
+                {{else}}
+                  Save
+                {{/if}}
+              </button>
+            </div>
+          </form>
+        {{/if}}
       </div>
     </div>
   </div>
