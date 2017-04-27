@@ -109,9 +109,7 @@
 
     "servers": {
       ".read": true,
-      "$server": {
-        ".write": "root.child('authentication-roles').child(auth.uid).exists()"
-      }
+      ".write": "root.child('authentication-roles').child(auth.uid).exists()"
     },
 
     "stripe_customers": {
