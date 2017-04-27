@@ -31,27 +31,29 @@ export default Ember.Controller.extend({
         this.set('success', false);
         this.set('submitting', false);
         return;
+      } else {
+        this.get('stripe').card.createToken({ number, cvc, exp_month, exp_year })
+        .then((response) => {
+          if (response && response.id) {
+            this.get('user').set('stripeCardToken', response.id);
+            this.get('user').save();
+          }
+        })
+        .then(() => {
+          this.set('number', '');
+          this.set('cvc', '');
+          this.set('expiration', '');
+          this.set('submitting', false);
+          this.set('success', true);
+          this.set('errors', null);
+        })
+        .catch((response) => {
+          this.set('errors', "There was an error. Double check your card information and try again.");
+          this.set('submitting', false);
+          this.set('success', false);
+          this.get('raven').captureException(response);
+        });
       }
-
-      this.get('stripe').card.createToken({ number, cvc, exp_month, exp_year })
-      .then((response) => {
-        this.get('user').set('stripeCardToken', response.id);
-        this.get('user').save();
-      })
-      .then(() => {
-        this.set('number', '');
-        this.set('cvc', '');
-        this.set('expiration', '');
-        this.set('submitting', false);
-        this.set('success', true);
-        this.set('errors', null);
-      })
-      .catch((response) => {
-        this.get('raven').captureException(response);
-        this.set('errors', "There was an error. Double check your card information and try again.");
-        this.set('submitting', false);
-        this.set('success', false);
-      });
     }
   }
 });

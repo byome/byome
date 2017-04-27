@@ -13,11 +13,11 @@
         <span class="icon s7-user"></span> Profile
       </a>
       <a href="#" class="dropdown-item">
-        <span class="icon s7-cash"></span> Billing
-      </a>
-      <a href="#" class="dropdown-item">
         <span class="icon s7-tools"></span> Settings
       </a> -->
+      {{#link-to 'settings.billing' class="dropdown-item"}}
+        <span class="icon s7-cash"></span> Billing
+      {{/link-to}}
       <a href="" class="dropdown-item"{{action 'logout'}}>
         <span class="icon s7-power"></span> Log Out
       </a>

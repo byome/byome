@@ -20,8 +20,9 @@
             <div class="form-group row">
               <label class="col-sm-3 col-form-label text-right">Card Number</label>
               <div class="col-sm-9">
-                {{input type='text'
-                  value=number
+                {{input-mask
+                  mask='9999 9999 9999 9999'
+                  unmaskedValue=number
                   class="form-control"
                   autofocus="true"
                   placeholder="1234 5678 1234 5678"}}
@@ -30,31 +31,20 @@
             <div class="form-group row">
               <label class="col-sm-3 col-form-label text-right">Expiration</label>
               <div class="col-sm-9">
-                <div class="row">
-                  <div class="col-sm-6">
-                    {{input type='text'
-                      value=exp_mm
-                      placeholder="MM"
-                      class="form-control"
-                      autofocus="true"
-                      length=2}}
-                  </div>
-                  <div class="col-sm-6">
-                    {{input type='text'
-                      value=exp_yy
-                      placeholder="YYYY"
-                      class="form-control"
-                      autofocus="true"
-                      length=2}}
-                  </div>
-                </div>
+                {{input-mask
+                  mask="99/99[99]"
+                  value=expiration
+                  placeholder="MM/YYYY"
+                  class="form-control"
+                  autofocus="true"}}
               </div>
             </div>
             <div class="form-group row">
               <label class="col-sm-3 col-form-label text-right">CVC</label>
               <div class="col-sm-9">
-                {{input type='text'
-                  value=cvc
+                {{input-mask
+                  mask="999"
+                  unmaskedValue=cvc
                   placeholder="123"
                   class="form-control"
                   autofocus="true"}}

@@ -8,7 +8,7 @@ export default Ability.extend({
     return this.get('session.userModel.isAdmin');
   }),
   userHasStripe: Ember.computed('session.userModel', function() {
-    return this.get('session.userModel.stripeCardToken') === true;
+    return this.get('session.userModel.stripeCardToken') === 'true';
   }),
 
   canIndex: true,
