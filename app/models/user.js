@@ -6,7 +6,7 @@ export default DS.Model.extend({
   name: DS.attr('string'),
   username: DS.attr('string'),
   role: DS.attr('string'),
-  registeredOn: DS.attr('date'),
+  createdAt: DS.attr('date'),
 
   referralToken: DS.attr('string'),
   associationToken: DS.attr('string'),

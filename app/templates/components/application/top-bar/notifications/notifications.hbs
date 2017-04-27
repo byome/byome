@@ -1,8 +1,8 @@
 <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
   <span class="icon s7-bell"></span>
-  {{#unless user.player}}
+  {{#if (can "link account for user" user)}}
     <span class="indicator"></span>
-  {{/unless}}
+  {{/if}}
 </a>
 <ul class="dropdown-menu">
   <li>
@@ -10,7 +10,7 @@
     <div class="mai-scroller">
       <div class="content">
         <ul>
-          {{#unless user.player}}
+          {{#if (can "link account for user" user)}}
             <li>
               {{#link-to 'settings.link-account'}}
                 <div class="icon">
@@ -18,11 +18,11 @@
                 </div>
                 <div class="content">
                   <span class="desc">Link your rust account and get <strong>2 free supply signals</strong></span>
-                  <span class="date">10 minutes ago</span>
+                  <span class="date">{{moment-from-now user.createdAt}}</span>
                 </div>
               {{/link-to}}
             </li>
-          {{/unless}}
+          {{/if}}
         </ul>
       </div>
     </div>
