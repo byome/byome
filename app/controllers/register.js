@@ -13,7 +13,8 @@ export default Ember.Controller.extend({
     let newUser = this.get('store').createRecord('user', {
       email: email,
       name: name,
-      username: username
+      username: username,
+      registeredOn: new Date()
     });
     newUser.set('id', firebaseUID);
     this.set('registering', false);
