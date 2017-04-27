@@ -86,21 +86,22 @@
   </div>
 </div>
 
-
-<div class="modal fade modal-dialog-center top-modal-with-space" id="purchaseModal" tabindex="-1" role="dialog" aria-labelledby="purchaseModal" aria-hidden="true">
+<div id="purchaseModal" tabindex="-1" role="dialog" class="modal fade">
   <div class="modal-dialog">
-    <div class="">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title">You are about to purchase a kit</h4>
-        </div>
-        <div class="modal-body">
-          You are about to buy the {{selectedKit.name}} for ${{selectedKit.price}}. Pressing Purchase will authorize a purchase.
-        </div>
-        <div class="modal-footer">
-          <button data-dismiss="modal" class="btn btn-default" type="button" {{action 'resetSelectedKit'}}>Cancel</button>
-          <button class="btn btn-warning" type="button" {{action 'purchaseSelectedKit'}}>Purchase</button>
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" data-dismiss="modal" aria-hidden="true" class="close"><span class="s7-close"></span></button>
+      </div>
+      <div class="modal-body">
+        <div class="text-center">
+          <div class="text-primary"><span class="modal-main-icon s7-rocket"></span></div>
+          <h3 class="mb-4">Right on! You are about to purchase a kit!</h3>
+          <p>You are about to buy the {{selectedKit.name}} for ${{selectedKit.price}}. Pressing Purchase will authorize a purchase.</p>
+          <p>Purchasing kits helps to support the cost of running Byome and its servers for your enjoyment.</p>
+          <div class="mt-6">
+            <button type="button" data-dismiss="modal" class="btn btn-sm btn-space btn-secondary" {{action 'resetSelectedKit'}}>Cancel</button>
+            <button type="button" data-dismiss="modal" class="btn btn-sm btn-space btn-primary" {{action 'purchaseSelectedKit'}}>Proceed</button>
+          </div>
         </div>
       </div>
     </div>
