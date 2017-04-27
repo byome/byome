@@ -40,6 +40,23 @@
           {{/link-to}}
         </ul>
 
+        <ul class="nav navbar-nav">
+          {{#link-to 'products' tagName='li' classNames="nav-item parent" activeClass="open"}}
+            {{#link-to 'products' tagName='a' class="nav-link"}}
+              <span class="icon s7-rocket"></span>
+              <span> Kits</span>
+            {{/link-to}}
+            <ul class="mai-nav-tabs-sub mai-sub-nav nav">
+              <li class="nav-item">
+                {{#link-to 'products.index' class="nav-link"}}
+                  <span class="icon s7-wallet"></span>
+                  <span class="name">Browse</span>
+                {{/link-to}}
+              </li>
+            </ul>
+          {{/link-to}}
+        </ul>
+
       </div>
     </nav>
   <!--Search input-->

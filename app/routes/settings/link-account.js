@@ -5,6 +5,12 @@ export default Ember.Route.extend({
   session: Ember.inject.service('session'),
   playerNotLinked: Ember.computed.empty('session.userModel.player.name'),
 
+  beforeModel() {
+    if (!this.get('session')) {
+      this.transitionTo('login');
+    }
+  },
+
   model() {
     return this.get('session.userModel');
   },

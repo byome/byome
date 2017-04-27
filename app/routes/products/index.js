@@ -7,7 +7,7 @@ export default Ember.Route.extend(CanMixin, {
 
   beforeModel() {
     if (!this.can('index product')) {
-      this.transitionTo('dashboard');
+      this.transitionTo('home.dashboard');
     }
   },
 

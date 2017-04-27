@@ -8,8 +8,11 @@ export default Ability.extend({
   userIsAdmin: Ember.computed('session.userModel', function() {
     return this.get('session.userModel.isAdmin');
   }),
+  userHasStripe: Ember.computed('session.userModel', function() {
+    return this.get('session.userModel.stripeCardToken') === true;
+  }),
 
-  canCreate: true,
+  canCreate: Ember.computed.alias('userHasStripe'),
   canEdit: Ember.computed.alias('userIsAdmin'),
-  canDestroy: Ember.alias('userIsAdmin')
+  canDestroy: Ember.computed.alias('userIsAdmin')
 });

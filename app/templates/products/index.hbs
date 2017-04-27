@@ -1,116 +1,91 @@
-<div class="row">
-  <div class="col-md-12">
-    <ul class="breadcrumb">
-      <li>
-        {{#link-to 'dashboard'}}
-          <i class="fa fa-home"></i> Home
-        {{/link-to}}
-      </li>
-      <li class="active">
-        Kits
-      </li>
-    </ul>
+<div class="row page-head">
+  <div class="col-sm-4 page-head-heading">
+    <h1>Upgrade Your Gear</h1>
+  </div>
+  <div class="col-sm-8 page-head-desc">
+    <h3>Purchase a kit and activate instantly in-game</h3>
   </div>
 </div>
 
-<div class="row">
-  <div class="text-center feature-head">
-    <h1>Upgrade Your Gear</h1>
-    <p>Purchase a kit and activate instantly in-game</p>
-  </div>
-  <div class="col-lg-3 col-sm-3">
+<div class="row pricing-tables">
+  <div class="col-md-3">
     <div class="pricing-table">
-      <div class="pricing-head">
-        <h1>{{dimebag.name}}</h1>
-        <h2><span class="note">$</span>{{dimebag.price}}</h2>
-      </div>
-      <ul class="list-unstyled">
+      <div class="pricing-table-title">{{dimebag.name}}</div>
+      <div class="pricing-table-price"><span class="value">${{dimebag.price}}</span></div>
+      <div class="pricing-table-frecuency">{{dimebag.redemptions}} redemptions</div>
+      <div class="panel-divider panel-divider-xl"></div>
+      <ul class="pricing-table-features">
         {{#each-in dimebag.description as |item amount|}}
           <li>{{item}} - {{amount}}</li>
         {{/each-in}}
       </ul>
-      <div class="price-actions">
-        <h3>Uses: {{dimebag.redemptions}}</h3>
-        <p>Kit can only be used <strong>once</strong> per wipe.</p>
-        {{#if session.userModel.stripeCardToken}}
-          <button class='btn btn-lg' {{action 'setSelectedKit' dimebag}} data-toggle="modal" href="#purchaseModal">Get Now</button>
-        {{else}}
-          <h5 class="text-danger">You must have a payment method on file in order to buy a kit.</h5>
-          {{#link-to 'settings.billing' class="btn btn-lg"}}Add Payment Method{{/link-to}}
-        {{/if}}
-      </div>
+      {{#if (can "create purchase" dimebag)}}
+        <button class='btn btn-lg' {{action 'setSelectedKit' dimebag}} data-toggle="modal" href="#purchaseModal">Get Now</button>
+      {{else}}
+        <h5 class="text-danger">You must have a payment method on file in order to buy a kit.</h5>
+        {{#link-to 'settings.billing' class="btn btn-lg"}}Add Payment Method{{/link-to}}
+      {{/if}}
     </div>
   </div>
-  <div class="col-lg-3 col-sm-3">
+  <div class="col-md-3">
     <div class="pricing-table">
-      <div class="pricing-head">
-        <h1>{{fistfulofdollars.name}}</h1>
-        <h2><span class="note">$</span>{{fistfulofdollars.price}}</h2>
-      </div>
-      <ul class="list-unstyled">
+      <div class="pricing-table-title">{{fistfulofdollars.name}}</div>
+      <div class="pricing-table-price"><span class="value">${{fistfulofdollars.price}}</span></div>
+      <div class="pricing-table-frecuency">{{fistfulofdollars.redemptions}} redemptions</div>
+      <div class="panel-divider panel-divider-xl"></div>
+      <ul class="pricing-table-features">
         {{#each-in fistfulofdollars.description as |item amount|}}
           <li>{{item}} - {{amount}}</li>
         {{/each-in}}
       </ul>
-      <div class="price-actions">
-        <h3>Uses: {{fistfulofdollars.redemptions}}</h3>
-        <p>Kit can only be used <strong>once</strong> per wipe.</p>
-        {{#if session.userModel.stripeCardToken}}
-          <button class='btn btn-lg' {{action 'setSelectedKit' fistfulofdollars}} data-toggle="modal" href="#purchaseModal">Get Now</button>
-        {{else}}
-          <h5 class="text-danger">You must have a payment method on file in order to buy a kit.</h5>
-          {{#link-to 'settings.billing' class="btn btn-lg"}}Add Payment Method{{/link-to}}
-        {{/if}}
-      </div>
+      {{#if (can "create purchase" fistfulofdollars)}}
+        <button class='btn btn-lg' {{action 'setSelectedKit' fistfulofdollars}} data-toggle="modal" href="#purchaseModal">Get Now</button>
+      {{else}}
+        <h5 class="text-danger">You must have a payment method on file in order to buy a kit.</h5>
+        {{#link-to 'settings.billing' class="btn btn-lg"}}Add Payment Method{{/link-to}}
+      {{/if}}
     </div>
   </div>
-  <div class="col-lg-3 col-sm-3">
-    <div class="pricing-table most-popular">
-      <div class="pricing-head">
-        <h1>{{forafewdollarsmore.name}}</h1>
-        <h2><span class="note">$</span>{{forafewdollarsmore.price}}</h2>
-      </div>
-      <ul class="list-unstyled">
+  <div class="col-md-3">
+    <div class="pricing-table">
+      <div class="pricing-table-title">{{forafewdollarsmore.name}}</div>
+      <div class="pricing-table-price"><span class="value">${{forafewdollarsmore.price}}</span></div>
+      <div class="pricing-table-frecuency">{{forafewdollarsmore.redemptions}} redemptions</div>
+      <div class="panel-divider panel-divider-xl"></div>
+      <ul class="pricing-table-features">
         {{#each-in forafewdollarsmore.description as |item amount|}}
           <li>{{item}} - {{amount}}</li>
         {{/each-in}}
       </ul>
-      <div class="price-actions">
-        <h3>Uses: {{forafewdollarsmore.redemptions}}</h3>
-        <p>Kit can only be used <strong>once</strong> per wipe.</p>
-        {{#if session.userModel.stripeCardToken}}
-          <button class='btn btn-lg' {{action 'setSelectedKit' forafewdollarsmore}} data-toggle="modal" href="#purchaseModal">Get Now</button>
-        {{else}}
-          <h5 class="text-danger">You must have a payment method on file in order to buy a kit.</h5>
-          {{#link-to 'settings.billing' class="btn btn-lg"}}Add Payment Method{{/link-to}}
-        {{/if}}
-      </div>
+      {{#if (can "create purchase" forafewdollarsmore)}}
+        <button class='btn btn-lg' {{action 'setSelectedKit' forafewdollarsmore}} data-toggle="modal" href="#purchaseModal">Get Now</button>
+      {{else}}
+        <h5 class="text-danger">You must have a payment method on file in order to buy a kit.</h5>
+        {{#link-to 'settings.billing' class="btn btn-lg"}}Add Payment Method{{/link-to}}
+      {{/if}}
     </div>
   </div>
-  <div class="col-lg-3 col-sm-3">
+  <div class="col-md-3">
     <div class="pricing-table">
-      <div class="pricing-head">
-        <h1>{{goodbadugly.name}}</h1>
-        <h2><span class="note">$</span>{{goodbadugly.price}}</h2>
-      </div>
-      <ul class="list-unstyled">
+      <div class="pricing-table-title">{{goodbadugly.name}}</div>
+      <div class="pricing-table-price"><span class="value">${{goodbadugly.price}}</span></div>
+      <div class="pricing-table-frecuency">{{goodbadugly.redemptions}} redemptions</div>
+      <div class="panel-divider panel-divider-xl"></div>
+      <ul class="pricing-table-features">
         {{#each-in goodbadugly.description as |item amount|}}
           <li>{{item}} - {{amount}}</li>
         {{/each-in}}
       </ul>
-      <div class="price-actions">
-        <h3>Uses: {{goodbadugly.redemptions}}</h3>
-        <p>Kit can only be used <strong>once</strong> per wipe.</p>
-        {{#if session.userModel.stripeCardToken}}
-          <button class='btn btn-lg' {{action 'setSelectedKit' goodbadugly}} data-toggle="modal" href="#purchaseModal">Get Now</button>
-        {{else}}
-          <h5 class="text-danger">You must have a payment method on file in order to buy a kit.</h5>
-          {{#link-to 'users.billing' class="btn btn-lg"}}Add Payment Method{{/link-to}}
-        {{/if}}
-      </div>
+      {{#if (can "create purchase" goodbadugly)}}
+        <button class='btn btn-lg' {{action 'setSelectedKit' goodbadugly}} data-toggle="modal" href="#purchaseModal">Get Now</button>
+      {{else}}
+        <h5 class="text-danger">You must have a payment method on file in order to buy a kit.</h5>
+        {{#link-to 'settings.billing' class="btn btn-lg"}}Add Payment Method{{/link-to}}
+      {{/if}}
     </div>
   </div>
 </div>
+
 
 <div class="modal fade modal-dialog-center top-modal-with-space" id="purchaseModal" tabindex="-1" role="dialog" aria-labelledby="purchaseModal" aria-hidden="true">
   <div class="modal-dialog">
