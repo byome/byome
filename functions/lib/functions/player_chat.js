@@ -5,6 +5,7 @@ const ServerKeys = functions.config().rust.servers.api_keys;
 
 // Refs
 const messagesRef = DB.ref('messages');
+const activitiesRef = DB.ref('activities');
 
 module.exports = functions.https.onRequest((req, res) => {
   const validRequest = validateRequest(req);
@@ -18,11 +19,20 @@ module.exports = functions.https.onRequest((req, res) => {
   const data = req.body;
 
   try {
-    messagesRef.push({
-      timestamp: (new Date).toJSON(),
+    const timestamp = (new Date).toJSON();
+    let message = messagesRef.push({
+      timestamp: timestamp,
       content: data.content,
       player: data.playerId,
       server: data.serverId
+    });
+
+    activitiesRef.push({
+      timestamp: timestamp,
+      player: data.playerId,
+      server: data.serverId,
+      kind: 'message',
+      kindId: message.key
     });
 
     res.status(200).send('OK');

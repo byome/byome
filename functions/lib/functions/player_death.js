@@ -22,15 +22,16 @@ module.exports = functions.https.onRequest((req, res) => {
   const data = req.body;
 
   try {
+    const timestamp = (new Date).toJSON();
     let death = deathsRef.push({
-      timestamp: (new Date).toJSON(),
+      timestamp: timestamp,
       miscDeath: '',
       server: data.serverId,
       player: data.playerId
     });
 
     let kill = killsRef.push({
-      timestamp: (new Date).toJSON(),
+      timestamp: timestamp,
       remaniningInfo: '',
       server: data.serverId,
       player: data.perpetratorId,
@@ -45,6 +46,15 @@ module.exports = functions.https.onRequest((req, res) => {
       serversRef.child(data.serverId).child(`kills/${kill.key}`).set(true);
       playersRef.child(data.perpetratorId).child(`kills/${kill.key}`).set(true);
     }
+
+    activitiesRef.push({
+      timestamp: timestamp,
+      player: data.perpetratorId,
+      server: data.serverId,
+      action: 'player killed another player',
+      kind: 'kill',
+      kindId: kill.key
+    });
 
     res.status(200).send('OK');
   } catch(error) {

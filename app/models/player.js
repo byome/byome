@@ -8,5 +8,6 @@ export default DS.Model.extend({
   servers: DS.hasMany('server'),
   connections: DS.hasMany('connection'),
   kills: DS.hasMany('kill'),
-  deaths: DS.hasMany('death')
+  deaths: DS.hasMany('death'),
+  activities: DS.hasMany('activity')
 });

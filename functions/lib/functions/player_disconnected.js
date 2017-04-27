@@ -5,6 +5,7 @@ const ServerKeys = functions.config().rust.servers.api_keys;
 
 // Refs
 const connectionsRef = DB.ref('connections');
+const activitiesRef = DB.ref('activities');
 
 module.exports = functions.https.onRequest((req, res) => {
   const validRequest = validateRequest(req);
@@ -19,6 +20,16 @@ module.exports = functions.https.onRequest((req, res) => {
 
   connectionsRef.child(`${data.serverId}-${data.playerId}`).update({
     connected: false
+  })
+  .then((player) => {
+    activitiesRef.push({
+      timestamp: (new Date()).toJSON(),
+      player: data.playerId,
+      server: data.serverId,
+      action: 'player disconnected',
+      kind: 'connection',
+      kindId: `${data.serverId}-${data.playerId}`
+    });
   })
   .then(() => {
     res.status(200).send("OK");
