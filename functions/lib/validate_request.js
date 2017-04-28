@@ -21,7 +21,6 @@ module.exports = function(req) {
     response.valid = false;
     response.status = 403;
     response.message = "Server API key invalid";
-    return;
   }
 
   // Handle
