@@ -34,7 +34,7 @@ module.exports = (process) => {
       "'self'",
       "byome-fcaae.appspot.com",
       "www.google-analytics.com",
-      "*.byome.io:28015",
+      "http://*.byome.io:28015",
       "app.getsentry.com",
       "https://stats.g.doubleclick.net"
     ]

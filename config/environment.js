@@ -28,7 +28,7 @@ module.exports = function(environment) {
     torii: require('./initializers/torii')(process),
     metricsAdapters: require('./initializers/metrics_adapters')(process),
     stripe: require('./initializers/stripe')(process),
-    sentry: require('./initializers/sentry')(process)
+    sentry: require('./initializers/sentry')(process),
   };
 
 
