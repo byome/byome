@@ -5,8 +5,9 @@ export default Ember.Controller.extend({
 
   actions: {
     updateWipeDay() {
-      this.set('model.lastWipe', new Date('4/20/2017'));
-      this.set('model.nextWipe', new Date('4/27/2017'))
+      let today = new Date();
+      this.set('model.lastWipe', today);
+      this.set('model.nextWipe', new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000));
       this.get('model').save();
     }
   }
