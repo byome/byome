@@ -48,11 +48,13 @@
 		}
 
 		@include tablet {
-			display: none;
+			flex: 0 0 auto;
+			margin-left: 5vw;
 		}
 
 		@include phone {
-			display: none;
+			flex: 0 0 auto;
+			margin-left: 5vw;
 		}
 	}
 
