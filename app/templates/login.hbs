@@ -2,12 +2,15 @@
   <div class="main-content container">
     <div class="splash-container row">
       <div class="col-sm-6 user-message">
-        <span class="splash-message text-right">Hello!<br> is good to<br> see you again</span>
+        <span class="splash-message text-right">Hello!<br> it is good to<br> see you again</span>
         <span class="alternative-message text-right">Don't have an account? {{#link-to 'register'}}Sign up{{/link-to}}</span>
       </div>
       <div class="col-sm-6 form-message">
         <img src="/assets/byome/logos/byome-logo-white.svg" alt="logo" width="100" height="" class="logo-img mb-4"/>
         <span class="splash-description text-center mt-5 mb-5">Login to your account</span>
+        {{#if errorMessage}}
+          <div class="alert alert-danger">{{errorMessage}}</div>
+        {{/if}}
         <form {{action 'signIn' this on='submit'}}>
           <div class="form-group">
             <div class="input-group">

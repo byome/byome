@@ -5,13 +5,18 @@ export default Ember.Route.extend({
   titleToken: 'Register',
 
   beforeModel() {
-    this.controllerFor('application').set('loginOrRegisterRoute', true);
     if (this.get('session.isAuthenticated')) {
-      this.transitionTo('home');
+      this.transitionTo('home.dashboard');
     }
   },
 
+  activate() {
+    this._super(...arguments);
+    this.controllerFor('application').set('loginOrRegisterRoute', true);
+  },
+
   deactivate() {
+    this._super(...arguments);
     this.controllerFor('application').set('loginOrRegisterRoute', false);
   }
 });

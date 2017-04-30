@@ -17,6 +17,7 @@ export default Ability.extend({
     return this.get('session.userModel.player') === null;
   }),
 
+  canCreate: true,
   canEdit: Ember.computed('userIsAdmin', 'userIsSelf', function() {
     return this.get('userIsAdmin') || this.get('userIsSelf');
   }),

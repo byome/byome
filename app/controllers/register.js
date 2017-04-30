@@ -8,19 +8,23 @@ export default Ember.Controller.extend({
   registering: false,
   errorMessage: null,
 
-  createUser(user, firebaseUID) {
+  buildUser(user, firebaseUID) {
     const { email, name, username } = user.getProperties('email', 'name', 'username');
-    let newUser = this.get('store').createRecord('user', {
+    return this.get('store').createRecord('user', {
+      id: firebaseUID,
       email: email,
       name: name,
       username: username,
-      registeredOn: new Date()
+      registeredOn: (new Date()).toJSON()
     });
-    newUser.set('id', firebaseUID);
-    this.set('registering', false);
-    newUser.save().then((user) => {
-      this.get('metrics').trackEvent('newUser', user.toJSON());
-    }).catch(error => this.get('raven').captureException(error));
+  },
+
+  saveUser(user) {
+    return user.save();
+  },
+
+  trackNewUserEvent(user) {
+    return this.get('metrics').trackEvent('newUser', user.toJSON());
   },
 
   handleErrors(error) {
@@ -31,7 +35,14 @@ export default Ember.Controller.extend({
       "auth/weak-password": "The given password is too weak.",
       "auth/invalid-email": error.message,
     };
-    this.set('errorMessage', firebaseErrors[error.code] || genericError);
+    const firebaseArgumentErrors = {
+      "createUserWithEmailAndPassword failed: First argument \"email\" must be a valid string.": "Email is invalid",
+      "createUserWithEmailAndPassword failed: Second argument \"password\" must be a valid string.": "Password is invalid"
+    };
+    const otherErrors = {
+      "auth/blank-form": error.message
+    };
+    this.set('errorMessage', firebaseErrors[error.code] || firebaseArgumentErrors[error.message] || otherErrors[error.code] || genericError);
     this.set('registering', false);
   },
 
@@ -43,18 +54,32 @@ export default Ember.Controller.extend({
       password: null,
       passwordConfirmation: null
     });
+    this.set('registering', false);
+  },
+
+  createFirebaseUser(email, password) {
+    if (!email && !password) {
+      return Ember.RSVP.reject({ code: "auth/blank-form", message: "You cannot create something out of nothing. Begin with your email." });
+    }
+    try {
+      return this.get('firebaseApp').auth().createUserWithEmailAndPassword(email, password);
+    } catch(error) {
+      return Ember.RSVP.reject(error);
+    }
   },
 
   actions: {
     signUp(user) {
+      this.set('errorMessage', null);
       this.set('registering', true);
       const { email, password } = user.getProperties('email', 'password');
-      this.get('firebaseApp').auth()
-        .createUserWithEmailAndPassword(email, password)
-        .then(data => this.createUser(user, data.uid))
+      this.createFirebaseUser(email, password)
+        .then(data => this.buildUser(user, data.uid))
+        .then(user => this.saveUser(user))
+        .then(user => this.trackNewUserEvent(user))
         .then(() => this.clearUserForm(user))
-        .then(() => this.transitionToRoute('login'))
-        .catch(this.handleErrors.bind(this));
+        .then(() => this.transitionToRoute('home.dashboard'))
+        .catch(errors => this.handleErrors(errors));
     }
   }
 });

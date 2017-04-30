@@ -11,7 +11,7 @@ export default Ember.Route.extend({
 
   actions: {
     accessDenied() {
-      this.transitionTo('home');
+      this.transitionTo('home.dashboard');
     }
   }
 });
