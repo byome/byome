@@ -10,7 +10,7 @@ export default Ember.Component.extend({
       equalTo: true
     });
   }),
-  onlinePlayersCount: Ember.computed.alias('onlinePlayers.length'),
+  onlinePlayersCount: Ember.computed.alias('onlinePlayers.[].length'),
 
   sleepingPlayers: Ember.computed('store', function() {
     return this.get('store').query('connection', {
@@ -18,5 +18,5 @@ export default Ember.Component.extend({
       equalTo: true
     });
   }),
-  sleepingPlayersCount: Ember.computed.alias('sleepingPlayers.length')
+  sleepingPlayersCount: Ember.computed.alias('sleepingPlayers.[].length')
 });
