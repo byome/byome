@@ -4,7 +4,7 @@
       <div class="col-sm-6 form-message">
         <img src="/assets/byome/logos/byome-logo-white.svg" alt="logo" width="100" height="" class="logo-img mb-4" />
         <span class="splash-description text-center mt-4 mb-4">Sign up</span>
-        <form class="sign-up-form">
+        <form class="sign-up-form" {{action 'signUp' this on='submit'}}>
           <div class="form-group">
             <div class="input-group"><span class="input-group-addon"><i class="icon s7-mail"></i></span>
               {{input type="text" value=email placeholder="Email" class="form-control"}}
