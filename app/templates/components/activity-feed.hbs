@@ -9,9 +9,9 @@
           <span class="s7-bandaid" style="font-size:large;"></span>
         {{else if activity.isDeath}}
           <span class="s7-arc" style="font-size:large;"></span>
-        {{else if activity.playerConnected}}
+        {{else if activity.isPlayerConnected}}
           <span class="s7-add-user" style="font-size:large;"></span>
-        {{else if activity.playerDiconnected}}
+        {{else if activity.isPlayerDiconnected}}
           <span class="s7-delete-user" style="font-size:large;"></span>
         {{else}}
           <span class="s7-ticket" style="font-size:large;"></span>
@@ -27,9 +27,9 @@
           </blockquote>
         {{else if activity.isKill}}
           <p class="timeline-activity">killed another player {{activity.kind.death.player.name}}</p>
-        {{else if activity.playerConnected}}
+        {{else if activity.isPlayerConnected}}
           <p class="timeline-activity">{{activity.player.name}} connected to {{#link-to 'servers.show' activity.server}}{{activity.server.name}}{{/link-to}}</p>
-        {{else if activity.playerDisconnected}}
+        {{else if activity.isPlayerDisconnected}}
           <p class="timeline-activity">{{activity.player.name}} disconnected from {{#link-to 'servers.show' activity.server}}{{activity.server.name}}{{/link-to}}</p>
         {{else}}
         <p class="timeline-activity">{{activity.kind}}</p>

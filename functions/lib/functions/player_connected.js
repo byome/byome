@@ -54,7 +54,7 @@ module.exports = functions.https.onRequest((req, res) => {
         player: data.playerId,
         server: data.serverId,
         kind: 'connection',
-        eventType: 'player_conncted',
+        eventType: 'player_connected',
         kindId: `${data.serverId}-${data.playerId}`
       });
     })
