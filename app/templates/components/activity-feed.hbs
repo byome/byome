@@ -26,11 +26,11 @@
             <p>{{activity.kind.content}}</p>
           </blockquote>
         {{else if activity.isKill}}
-          <p class="timeline-activity">killed another player {{activity.kind.death.player.name}}</p>
+          <p class="timeline-activity">{{activity.player.name}} killed player {{activity.kind.death.player.name}}</p>
         {{else if activity.isPlayerConnected}}
-          <p class="timeline-activity">{{activity.player.name}} connected to {{#link-to 'servers.show' activity.server}}{{activity.server.name}}{{/link-to}}</p>
+          <p class="timeline-activity">connected to {{#link-to 'servers.show' activity.server}}{{activity.server.name}}{{/link-to}}</p>
         {{else if activity.isPlayerDisconnected}}
-          <p class="timeline-activity">{{activity.player.name}} disconnected from {{#link-to 'servers.show' activity.server}}{{activity.server.name}}{{/link-to}}</p>
+          <p class="timeline-activity">disconnected from {{#link-to 'servers.show' activity.server}}{{activity.server.name}}{{/link-to}}</p>
         {{else}}
         <p class="timeline-activity">{{activity.kind}}</p>
         <div class="timeline-summary">
