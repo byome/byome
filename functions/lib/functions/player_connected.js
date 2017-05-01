@@ -53,7 +53,8 @@ module.exports = functions.https.onRequest((req, res) => {
         timestamp: (new Date()).toJSON(),
         player: data.playerId,
         server: data.serverId,
-        kind: 'player connected',
+        kind: 'connection',
+        eventType: 'player_conncted',
         kindId: `${data.serverId}-${data.playerId}`
       });
     })

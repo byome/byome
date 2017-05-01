@@ -12,5 +12,5 @@ export default Ember.Component.extend({
       equalTo: true
     });
   }),
-  onlinePlayersCount: Ember.computed.alias('onlinePlayers.length')
+  onlinePlayersCount: Ember.computed.alias('onlinePlayers.[].length')
 });

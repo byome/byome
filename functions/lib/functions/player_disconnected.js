@@ -26,7 +26,7 @@ module.exports = functions.https.onRequest((req, res) => {
       timestamp: (new Date()).toJSON(),
       player: data.playerId,
       server: data.serverId,
-      action: 'player disconnected',
+      eventType: 'player_disconnected',
       kind: 'connection',
       kindId: `${data.serverId}-${data.playerId}`
     });

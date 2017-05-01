@@ -18,7 +18,7 @@
         {{/if}}
       </div>
       <div class="timeline-header">
-        <span class="timeline-time">{{moment-format activity.timestamp 'hh:mm a'}}</span>
+        <span class="timeline-time">{{moment-from-now activity.timestamp}}</span>
         <span class="timeline-autor">{{activity.player.name}}</span>
         {{#if activity.isMessage}}
           <p class="timeline-activity">sent a message on {{#link-to 'servers.show' activity.server}}{{activity.server.name}}{{/link-to}}:</p>
@@ -29,7 +29,7 @@
           <p class="timeline-activity">killed another player {{activity.kind.death.player.name}}</p>
         {{else if activity.playerConnected}}
           <p class="timeline-activity">{{activity.player.name}} connected to {{#link-to 'servers.show' activity.server}}{{activity.server.name}}{{/link-to}}</p>
-        {{else if activity.playerDionnected}}
+        {{else if activity.playerDisconnected}}
           <p class="timeline-activity">{{activity.player.name}} disconnected from {{#link-to 'servers.show' activity.server}}{{activity.server.name}}{{/link-to}}</p>
         {{else}}
         <p class="timeline-activity">{{activity.kind}}</p>

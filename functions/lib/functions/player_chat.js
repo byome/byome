@@ -31,6 +31,7 @@ module.exports = functions.https.onRequest((req, res) => {
       timestamp: timestamp,
       player: data.playerId,
       server: data.serverId,
+      eventType: 'player_chat',
       kind: 'message',
       kindId: message.key
     });

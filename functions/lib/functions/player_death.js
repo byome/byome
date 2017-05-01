@@ -51,7 +51,7 @@ module.exports = functions.https.onRequest((req, res) => {
       timestamp: timestamp,
       player: data.perpetratorId,
       server: data.serverId,
-      action: 'player killed another player',
+      eventType: 'player_death',
       kind: 'kill',
       kindId: kill.key
     });
