@@ -32,7 +32,9 @@ export default DS.Model.extend(Validations, {
   name: DS.attr('string'),
   username: DS.attr('string'),
   role: DS.attr('string'),
-  createdAt: DS.attr('date'),
+  createdAt: DS.attr('date', {
+    defaultValue() { return (new Date().toJSON()); }
+  }),
 
   referralToken: DS.attr('string'),
   associationToken: DS.attr('string'),

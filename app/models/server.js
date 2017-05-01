@@ -26,10 +26,10 @@ export default DS.Model.extend({
   isRestarting: Ember.computed.equal('status', 'restarting'),
   isUpgrading: Ember.computed.equal('status', 'upgrading'),
   playersOnline: Ember.computed.filterBy('connections', 'connected', true),
-  playersOnlineCount: Ember.computed('playersOnline', function() {
-    return this.get('playersOnline.length');
+  playersOnlineCount: Ember.computed('playersOnline.[]', function() {
+    return this.get('playersOnline.[].length');
   }),
-  playersOnlineWidth: Ember.computed('playersOnlineCount', 'playerLimit', function() {
+  playersOnlineWidth: Ember.computed('playersOnlineCount.[]', 'playerLimit', function() {
     return (this.get('playersOnlineCount') / this.get('playerLimit')) * 100;
   })
 });

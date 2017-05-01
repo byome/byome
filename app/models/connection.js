@@ -10,6 +10,7 @@ export default DS.Model.extend({
   banTimeRemaining: DS.attr('number'),
 
   // Assocations
-  player: DS.belongsTo('player'),
-  server: DS.belongsTo('server')
+  player: DS.belongsTo('player', { async: true }),
+  server: DS.belongsTo('server', { async: true }),
+  activity: DS.belongsTo('activity', { async: true, inverse: 'kindId' })
 });

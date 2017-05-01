@@ -1,0 +1,44 @@
+{{#each reversedActivities as |activity|}}
+  <li class="timeline-item">
+    <div class="timeline-date"><span>{{moment-format activity.timestamp 'MMM DD, YYYY'}}</span></div>
+    <div class="timeline-content">
+      <div class="timeline-avatar">
+        {{#if activity.isMessage}}
+          <span class="s7-chat" style="font-size:large;"></span>
+        {{else if activity.isKill}}
+          <span class="s7-bandaid" style="font-size:large;"></span>
+        {{else if activity.isDeath}}
+          <span class="s7-arc" style="font-size:large;"></span>
+        {{else if activity.playerConnected}}
+          <span class="s7-add-user" style="font-size:large;"></span>
+        {{else if activity.playerDiconnected}}
+          <span class="s7-delete-user" style="font-size:large;"></span>
+        {{else}}
+          <span class="s7-ticket" style="font-size:large;"></span>
+        {{/if}}
+      </div>
+      <div class="timeline-header">
+        <span class="timeline-time">{{moment-format activity.timestamp 'hh:mm a'}}</span>
+        <span class="timeline-autor">{{activity.player.name}}</span>
+        {{#if activity.isMessage}}
+          <p class="timeline-activity">sent a message on {{#link-to 'servers.show' activity.server}}{{activity.server.name}}{{/link-to}}:</p>
+          <blockquote class="timeline-blockquote">
+            <p>{{activity.kind.content}}</p>
+          </blockquote>
+        {{else if activity.isKill}}
+          <p class="timeline-activity">killed another player {{activity.kind.death.player.name}}</p>
+        {{else if activity.playerConnected}}
+          <p class="timeline-activity">{{activity.player.name}} connected to {{#link-to 'servers.show' activity.server}}{{activity.server.name}}{{/link-to}}</p>
+        {{else if activity.playerDionnected}}
+          <p class="timeline-activity">{{activity.player.name}} disconnected from {{#link-to 'servers.show' activity.server}}{{activity.server.name}}{{/link-to}}</p>
+        {{else}}
+        <p class="timeline-activity">{{activity.kind}}</p>
+        <div class="timeline-summary">
+          <p>{{activity.kind.content}}</p>
+        </div>
+        {{/if}}
+      </div>
+    </div>
+  </li>
+{{/each}}
+<li class="timeline-item timeline-loadmore"><a href="#" class="btn btn-sm btn-secondary load-more-btn">Load more</a></li>

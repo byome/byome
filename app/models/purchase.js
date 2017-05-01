@@ -6,7 +6,9 @@ export default DS.Model.extend({
   stripeId: DS.attr('string'),
   status: DS.attr('string'),
   notes: DS.attr('string'),
-  timestamp: DS.attr('date'),
+  timestamp: DS.attr('date', {
+    defaultValue() { return (new Date().toJSON()); }
+  }),
 
   // Associations
   product: DS.belongsTo('product'),

@@ -2,7 +2,8 @@
   "rules": {
     "activities": {
       ".read": true,
-      ".write": false
+      ".write": false,
+      ".indexOn": ["server", "timestamp"]
     },
 
     "authentication-roles": {
