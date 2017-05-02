@@ -12,7 +12,9 @@ export default Ember.Route.extend({
       activities: this.get('store').query('activity', {
         orderBy: 'timestamp',
         limitToLast: this.get('feedLimit')
-      })
+      }),
+      kills: this.get('store').findAll('kill'),
+      deaths: this.get('store').findAll('death')
     });
   }
 });

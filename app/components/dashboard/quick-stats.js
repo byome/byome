@@ -18,5 +18,11 @@ export default Ember.Component.extend({
       equalTo: true
     });
   }),
-  sleepingPlayersCount: Ember.computed.alias('sleepingPlayers.[].length')
+  sleepingPlayersCount: Ember.computed.alias('sleepingPlayers.[].length'),
+
+  kills: 0,
+  deaths: 0,
+
+  totalKills: Ember.computed.alias('kills.[].length'),
+  totalDeaths: Ember.computed.alias('kills.[].length')
 });

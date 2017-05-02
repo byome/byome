@@ -6,13 +6,11 @@ export default DS.Model.extend({
     defaultValue() { return (new Date().toJSON()); }
   }),
   eventType: DS.attr('string'),
+  content: DS.attr('string'),
 
   // Associations
   server: DS.belongsTo('server'),
   player: DS.belongsTo('player'),
-
-  // Polymorphic of sorts
-  kind: DS.attr('string'),
   message: DS.belongsTo('message'),
   death: DS.belongsTo('death'),
   kill: DS.belongsTo('kill'),

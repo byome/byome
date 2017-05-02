@@ -9,5 +9,5 @@ export default DS.Model.extend({
   connections: DS.hasMany('connection'),
   kills: DS.hasMany('kill'),
   deaths: DS.hasMany('death'),
-  activities: DS.hasMany('activity')
+  activities: DS.hasMany('activity', { inverse: null, async: true })
 });

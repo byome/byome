@@ -12,5 +12,5 @@ export default DS.Model.extend({
   // Assocations
   player: DS.belongsTo('player'),
   server: DS.belongsTo('server'),
-  activity: DS.belongsTo('activity')
+  activity: DS.belongsTo('activity', { inverse: null })
 });

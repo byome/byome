@@ -21,7 +21,7 @@
     {{#if activity.isMessage}}
       <p class="timeline-activity">sent a message on {{#link-to 'servers.show' activity.server}}{{activity.server.name}}{{/link-to}}:</p>
       <blockquote class="timeline-blockquote">
-        <p>{{activity.messageContent}}</p>
+        <p>{{activity.content}}</p>
       </blockquote>
     {{else if activity.isKill}}
       <p class="timeline-activity">{{activity.player.name}} killed player {{activity.kill.death.player.name}}</p>
