@@ -14,7 +14,15 @@ export default Ember.Route.extend({
         limitToLast: this.get('feedLimit')
       }),
       kills: this.get('store').findAll('kill'),
-      deaths: this.get('store').findAll('death')
+      deaths: this.get('store').findAll('death'),
+      onlinePlayers: this.get('store').query('connection', {
+        orderBy: 'connected',
+        equalTo: true
+      }),
+      inactivePlayers: this.get('store').query('connection', {
+        orderBy: 'sleeping',
+        equalTo: true
+      })
     });
   }
 });
