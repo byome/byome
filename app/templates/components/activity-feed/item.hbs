@@ -1,7 +1,9 @@
 <div class="timeline-date"><span>{{moment-format activity.timestamp 'MMM DD, YYYY'}}</span></div>
 <div class="timeline-content">
   <div class="timeline-avatar">
-    {{#if activity.isMessage}}
+    {{#if activity.player.avatar}}
+      <img src={{activity.player.avatar}} class="circle" alt="player avatar" />
+    {{else if activity.isMessage}}
       <span class="s7-chat" style="font-size:large;"></span>
     {{else if activity.isKill}}
       <span class="s7-bandaid" style="font-size:large;"></span>

@@ -1,7 +1,9 @@
 {{#if session.isAuthenticated}}
   <li class="dropdown nav-item">
     <a href="javascript:;" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle nav-link">
-      <!-- <img src="assets/img/avatar.jpg"/> -->
+      {{#if user.player.avatar}}
+        <img src="{{user.player.avatar}}" />
+      {{/if}}
       <span class="user-name">{{user.name}}</span>
       <span class="angle-down s7-angle-down"></span>
     </a>

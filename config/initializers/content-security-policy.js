@@ -36,7 +36,8 @@ module.exports = (process) => {
       "www.google-analytics.com",
       "http://*.byome.io:28015",
       "app.getsentry.com",
-      "https://stats.g.doubleclick.net"
+      "https://stats.g.doubleclick.net",
+      "steamcdn-a.akamaihd.net"
     ]
   };
 }

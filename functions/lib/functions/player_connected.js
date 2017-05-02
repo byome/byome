@@ -1,13 +1,24 @@
 const functions = require('firebase-functions');
+const rp = require('request-promise');
 const DB = require('../database');
 const validateRequest = require('../validate_request');
 const ServerKeys = functions.config().rust.servers.api_keys;
+const SteamAPIKey = functions.config().steam.api_key;
+
 
 // Refs
 const connectionsRef = DB.ref('connections');
 const playersRef = DB.ref('players');
 const serversRef = DB.ref('servers');
 const activitiesRef = DB.ref('activities');
+
+
+// Get Steam Avatar URL
+function getSteamAvatar(playerId) {
+  const endpoint = `http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=${SteamAPIKey}&steamids=${playerId}`;
+  return rp({ uri: endpoint, json: true });
+}
+
 
 module.exports = functions.https.onRequest((req, res) => {
   const validRequest = validateRequest(req);
@@ -46,6 +57,13 @@ module.exports = functions.https.onRequest((req, res) => {
       });
       serversRef.child(data.serverId).child(`connections/${data.serverId}-${data.playerId}`).set(true);
       player.child('connections').child(`${data.serverId}-${data.playerId}`).set(true);
+      return player;
+    })
+    .then((player) => {
+      getSteamAvatar(data.playerId).then((res, res2) => {
+        const avatar = res.response.players[0].avatarfull;
+        player.child('avatar').set(avatar);
+      });
       return player;
     })
     .then((player) => {
