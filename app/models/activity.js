@@ -13,12 +13,15 @@ export default DS.Model.extend({
 
   // Polymorphic of sorts
   kind: DS.attr('string'),
-  kindId: DS.attr('string', { polymorphic: true }),
+  message: DS.belongsTo('message'),
+  death: DS.belongsTo('death'),
+  kill: DS.belongsTo('kill'),
+  connection: DS.belongsTo('connection'),
 
   // Helpers
   isMessage: Ember.computed.equal('eventType', 'player_chat'),
   isDeath: Ember.computed.equal('eventType', 'player_death'),
   isKill: Ember.computed.equal('eventType', 'player_kill'),
   isPlayerConnected: Ember.computed.equal('eventType', 'player_connected'),
-  isPlayerDisconnected: Ember.computed.equal('eventType', 'player_disconnected'),
+  isPlayerDisconnected: Ember.computed.equal('eventType', 'player_disconnected')
 });

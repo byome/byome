@@ -12,7 +12,7 @@ export default Ember.Route.extend({
       activities: this.get('store').query('activity', {
         orderBy: 'timestamp',
         limitToLast: this.get('feedLimit')
-      }),
+      })
     });
   }
 });

@@ -7,8 +7,8 @@ export default DS.Model.extend({
   remaniningInfo: DS.attr('string'), // TODO: So while we record new types of kills, this works
 
   // Associations
-  server: DS.belongsTo('server', { async: true }),
-  player: DS.belongsTo('player', { async: true }),
-  death: DS.belongsTo('death', { async: true }),
-  activity: DS.belongsTo('activity', { async: true, inverse: 'kindId' })
+  server: DS.belongsTo('server'),
+  player: DS.belongsTo('player'),
+  death: DS.belongsTo('death'),
+  activity: DS.belongsTo('activity')
 });

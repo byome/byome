@@ -7,7 +7,7 @@ export default DS.Model.extend({
   content: DS.attr('string'),
 
   // Associations
-  player: DS.belongsTo('player', { async: true }),
-  server: DS.belongsTo('server', { async: true }),
-  activity: DS.belongsTo('activity', { async: true, inverse: 'kindId' })
+  player: DS.belongsTo('player'),
+  server: DS.belongsTo('server'),
+  activity: DS.belongsTo('activity')
 });

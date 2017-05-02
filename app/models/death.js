@@ -8,8 +8,8 @@ export default DS.Model.extend({
   miscDeath: DS.attr('string'), // for debugging, like animals or suicide, will categorize
 
   // Associations
-  server: DS.belongsTo('server', { async: true }),
-  player: DS.belongsTo('player', { async: true }),
-  kill: DS.belongsTo('kill', { async: true }),
-  activity: DS.belongsTo('activity', { async: true, inverse: 'kindId' })
+  server: DS.belongsTo('server'),
+  player: DS.belongsTo('player'),
+  kill: DS.belongsTo('kill'),
+  activity: DS.belongsTo('activity')
 });
