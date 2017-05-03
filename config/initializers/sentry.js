@@ -3,7 +3,7 @@ module.exports = (process) => {
     cdn: process.env.SENTRY_CDN,
     dsn: process.env.SENTRY_DSN,
     debug: true,
-    development: false,
+    development: true,
     exposedPropertyName: 'raven',
     serviceName: 'raven',
     globalErrorCatching: true,

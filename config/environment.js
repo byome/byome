@@ -67,6 +67,7 @@ module.exports = function(environment) {
    */
   if (environment === 'production') {
     ENV.metricsAdapters[0].config.sendHitTask = true;
+    ENV.sentry.development = false;
   }
 
   return ENV;
