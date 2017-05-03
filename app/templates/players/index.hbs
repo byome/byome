@@ -1,3 +1,15 @@
+<nav>
+  <ul class="pagination">
+    {{#each numberOfPages as |pageNumner|}}
+    <li class="page-item">
+      {{#link-to 'players' (query-params pageNumber=pageNumber) class="page-link"}}
+        {{pageNumber}}
+      {{/link-to}}
+    </li>
+    {{/each}}
+  </ul>
+</nav>
+
 {{#each players as |player|}}
   <li><img src={{playerAvatar}} style="width:20px;"/> {{#link-to 'players.show' player}}{{player.name}}{{/link-to}}</li>
 {{/each}}

@@ -16,9 +16,24 @@
 }
 
 .user-display {
-  margin-top: 15vh;
+  background-color: #353535;
 
   .user-display-cover {
-    display: hidden;
+    //color: #353535;
+    visibility: hidden;
+
+    .server-name {
+      color: #fff;
+      font-size: 10vh;
+      text-align: center;
+    }
+  }
+
+  .user-display-name {
+    text-align: center;
+  }
+
+  .user-display-bottom {
+    background-color: #fff;
   }
 }
