@@ -12,6 +12,7 @@ module.exports = {
   },
   globals: {
     "$": true,
-    "jQuery": true
+    "jQuery": true,
+    "App": true
   }
 };

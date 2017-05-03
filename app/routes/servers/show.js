@@ -20,6 +20,6 @@ export default Ember.Route.extend(CanMixin, {
   },
 
   titleToken(model) {
-    return model.get('server.name');
+    return model.server.get('server.name');
   }
 });
