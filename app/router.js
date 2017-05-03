@@ -36,6 +36,7 @@ Router.map(function() {
   });
   this.route('players', function() {
     this.route('show', { path: '/:player_id' });
+    this.route('leaderboard');
   });
 });
 

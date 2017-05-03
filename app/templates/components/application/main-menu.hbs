@@ -57,6 +57,29 @@
           {{/link-to}}
         </ul>
 
+        <ul class="nav navbar-nav">
+          {{#link-to 'players' tagName='li' classNames="nav-item parent" activeClass="open"}}
+            {{#link-to 'players' tagName='a' class="nav-link"}}
+              <span class="icon s7-users"></span>
+              <span> Players</span>
+            {{/link-to}}
+            <ul class="mai-nav-tabs-sub mai-sub-nav nav">
+              <li class="nav-item">
+                {{#link-to 'players' class="nav-link"}}
+                  <span class="icon s7-map-marker"></span>
+                  <span class="name">Browse</span>
+                {{/link-to}}
+              </li>
+              <li class="nav-item">
+                {{#link-to 'players.leaderboard' class="nav-link"}}
+                  <span class="icon s7-cup"></span>
+                  <span class="name">Leaderboard</span>
+                {{/link-to}}
+              </li>
+            </ul>
+          {{/link-to}}
+        </ul>
+        
       </div>
     </nav>
   <!--Search input-->
