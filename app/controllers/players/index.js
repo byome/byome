@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   queryParams: ['pageFromPlayer', 'perPage'],
   pageFromPlayer: 'A',
-  perPage: 5,
+  perPage: 25,
 
   players: Ember.computed('model', 'pageFromPlayer', 'perPage', function() {
     return this.get('store').query('player', {

@@ -12,11 +12,11 @@
         <span class="icon s7-home"></span> My Account
       </a>
       <a href="#" class="dropdown-item">
-        <span class="icon s7-user"></span> Profile
-      </a>
-      <a href="#" class="dropdown-item">
         <span class="icon s7-tools"></span> Settings
       </a> -->
+      {{#link-to 'players.show' user.player class="dropdown-item"}}
+        <span class="icon s7-user"></span> Profile
+      {{/link-to}}
       {{#link-to 'settings.billing' class="dropdown-item"}}
         <span class="icon s7-cash"></span> Billing
       {{/link-to}}

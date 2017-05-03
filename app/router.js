@@ -35,7 +35,7 @@ Router.map(function() {
     this.authenticatedRoute('billing');
   });
   this.route('players', function() {
-    this.route('show');
+    this.route('show', { path: '/:player_id' });
   });
 });
 

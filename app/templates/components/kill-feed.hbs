@@ -15,7 +15,9 @@
                 {{/if}}
               </td>
               <td>
-                {{kill.player.name}}
+                {{#link-to 'players.show' kill.player}}
+                  {{kill.player.name}}
+                {{/link-to}}
               </td>
               <td>killed <span class="s7-right-arrow"></span></td>
               <td>
@@ -24,7 +26,9 @@
                 {{/if}}
               </td>
               <td>
-                {{kill.death.player.name}}
+                {{#link-to 'players.show' kill.death.player}}
+                  {{kill.death.player.name}}
+                {{/link-to}}
               </td>
             </tr>
           {{/each}}

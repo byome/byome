@@ -1,1 +1,32 @@
-{{outlet}}
+<div class="user-profile">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="user-display">
+        <div class="user-display-cover"></div>
+        <div class="user-display-bottom">
+          <div class="user-display-id"><img src={{playerAvatar}} alt="avatar" class="user-display-avatar">
+            <div class="user-display-name">{{player.name}}</div>
+          </div>
+          <div class="user-display-stats">
+            <div class="user-display-stat">
+              <span class="user-display-stat-counter">{{killCount}}</span>
+              <span class="user-display-stat-title">Kills</span>
+            </div>
+            <div class="user-display-stat">
+              <span class="user-display-stat-counter">{{deathCount}}</span>
+              <span class="user-display-stat-title">Deaths</span>
+            </div>
+            <div class="user-display-stat">
+              <span class="user-display-stat-counter">{{player.kdRatio}}</span>
+              <span class="user-display-stat-title">K/D Ratio</span>
+            </div>
+            <div class="user-display-stat">
+              <span class="user-display-stat-counter">{{serversCount}}</span>
+              <span class="user-display-stat-title">Server</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

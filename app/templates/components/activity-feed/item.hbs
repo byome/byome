@@ -19,7 +19,11 @@
   </div>
   <div class="timeline-header">
     <span class="timeline-time">{{moment-from-now activity.timestamp}}</span>
-    <span class="timeline-autor">{{activity.player.name}}</span>
+    <span class="timeline-autor">
+      {{#link-to 'players.show' activity.player}}
+        {{activity.player.name}}
+      {{/link-to}}
+    </span>
     {{#if activity.isMessage}}
       <p class="timeline-activity">sent a message on {{#link-to 'servers.show' activity.server}}{{activity.server.name}}{{/link-to}}:</p>
       <blockquote class="timeline-blockquote">
