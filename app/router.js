@@ -34,6 +34,9 @@ Router.map(function() {
     this.authenticatedRoute('link-account');
     this.authenticatedRoute('billing');
   });
+  this.route('players', function() {
+    this.route('show');
+  });
 });
 
 export default Router;
