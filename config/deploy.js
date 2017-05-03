@@ -3,20 +3,9 @@
 module.exports = function(deployTarget) {
   var ENV = {
     build: {},
-    sentry: {
-      publicUrl: process.env.SENTRY_PUBLIC_URL, // the URL or CDN your js assets are served from
-      sentryUrl: process.env.SENTRY_URL, // the sentry install you're using, https://sentry.io for hosted accounts
-      sentryOrganizationSlug: process.env.SENTRY_ORGANIZATION_SLUG,
-      sentryProjectSlug: process.env.SENTRY_PROJECT_SLUG,
-      sentryApiKey: process.env.SENTRY_API_KEY,
-      sentryBearerApiKey: process.env.SENTRY_BEARER_API_KEY
-    },
-    firebase: {
-      deployToken: process.env.FIREBASE_DEPLOY_TOKEN
-    },
-    slack: {
-      webhookURL: process.env.SLACK_NOTIFICATION_HOOK
-    }
+    sentry: require('./deploy/sentry')(process),
+    firebase: require('./deploy/firebase')(process),
+    slack: require('./deploy/slack')(process),
   };
 
   if (deployTarget === 'development') {
