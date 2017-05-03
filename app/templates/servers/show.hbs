@@ -5,29 +5,29 @@
     <div class="row">
       <div class="col-md-12">
         <div class="user-info-list panel panel-default">
-          <div class="panel-heading panel-heading-divider">{{model.name}}</div>
+          <div class="panel-heading panel-heading-divider">{{server.name}}</div>
           <div class="panel-body">
             <table class="no-border no-strip skills">
               <tbody class="no-border-x no-border-y">
                 <tr>
                   <td class="icon"><span class="icon s7-graph1"></span></td>
                   <td class="item">Host</td>
-                  <td>{{model.host}}</td>
+                  <td>{{server.host}}</td>
                 </tr>
                 <tr>
                   <td class="icon"><span class="icon s7-global"></span></td>
                   <td class="item">Location</td>
-                  <td>{{model.location}}</td>
+                  <td>{{server.location}}</td>
                 </tr>
                 <tr>
                   <td class="icon"><span class="icon s7-rocket"></span></td>
                   <td class="item">Status</td>
                   <td>
-                    {{#if model.isOnline}}
+                    {{#if server.isOnline}}
                       <span class="item badge badge-success">Online</span>
-                    {{else if model.isRestarting}}
+                    {{else if server.isRestarting}}
                       <span class="item badge badge-info">Restarting</span>
-                    {{else if model.isUpgrading}}
+                    {{else if server.isUpgrading}}
                       <span class="item badge badge-warning">Upgrading</span>
                     {{else}}
                       <span class="item badge badge-danger">Offline</span>
@@ -38,16 +38,16 @@
                   <td class="icon"><span class="icon s7-hourglass"></span></td>
                   <td class="item">
                     Last Wipe <br/>
-                    {{#if (can "edit server" model)}}
+                    {{#if (can "edit server" server)}}
                       <span class="small"><a href="javascript:;" {{action 'updateWipeDay'}}>Set to Today</a></span>
                     {{/if}}
                   </td>
-                  <td>{{moment-format model.lastWipe 'MM/DD/YYYY'}}</td>
+                  <td>{{moment-format server.lastWipe 'MM/DD/YYYY'}}</td>
                 </tr>
                 <tr>
                   <td class="icon"><span class="icon s7-hourglass"></span></td>
                   <td class="item">Next Wipe</td>
-                  <td>{{moment-format model.nextWipe 'MM/DD/YYYY'}}</td>
+                  <td>{{moment-format server.nextWipe 'MM/DD/YYYY'}}</td>
                 </tr>
               </tbody>
             </table>
@@ -60,7 +60,7 @@
     <!-- Server Map -->
     <div class="row">
       <div class="col-md-12">
-        <img src="http://{{model.slug}}.byome.io:28015/map.jpg" class="img-fluid" alt="Map of {{model.name}}" />
+        <img src="http://{{server.slug}}.byome.io:28015/map.jpg" class="img-fluid" alt="Map of {{server.name}}" />
       </div>
     </div>
     <!-- / Server Map -->
@@ -78,9 +78,9 @@
           </div>
           <div class="panel-body">
             <div class="progress progress-striped active">
-              <div style="width: {{model.playersOnlineWidth}}%" class="progress-bar progress-bar-success"></div>
+              <div style="width: {{server.playersOnlineWidth}}%" class="progress-bar progress-bar-success"></div>
             </div>
-            <small>{{model.playersOnlineCount}} / {{model.playerLimit}} players online</small>
+            <small>{{server.playersOnlineCount}} / {{server.playerLimit}} players online</small>
           </div>
         </div>
       </div>
@@ -88,43 +88,7 @@
     <!-- / Active Players -->
 
     <!-- Kill Feed -->
-    <div class="row">
-      <div class="col-md-12">
-        <div class="panel panel-default panel-table">
-          <div class="panel-heading">
-            Kill Feed
-          </div>
-          <div class="panel-body">
-            <table class="table table-borderless">
-              <tbody>
-                {{#each killFeed as |kill|}}
-                  <tr>
-                    <td>{{moment-from-now kill.timestamp}}</td>
-                    <td>
-                      {{#if kill.player.avatar}}
-                        <img src={{kill.player.avatar}} class="img-circle img-responsive" style="width:2vw;" />
-                      {{/if}}
-                    </td>
-                    <td>
-                      {{kill.player.name}}
-                    </td>
-                    <td>killed <span class="s7-right-arrow"></span></td>
-                    <td>
-                      {{#if kill.death.player.avatar}}
-                        <img src={{kill.death.player.avatar}} class="img-circle img-responsive" style="width:2vw;" />
-                      {{/if}}
-                    </td>
-                    <td>
-                      {{kill.death.player.name}}
-                    </td>
-                  </tr>
-                {{/each}}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
+    {{kill-feed kills=kills}}
     <!-- / Kill Feed -->
 
   </div>

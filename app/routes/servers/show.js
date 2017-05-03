@@ -3,27 +3,23 @@ import { CanMixin } from 'ember-can';
 
 export default Ember.Route.extend(CanMixin, {
   model(params) {
-    return this.get('store').findRecord('server', params.server_id);
+    return Ember.RSVP.hash({
+      server: this.get('store').findRecord('server', params.server_id),
+      kills: this.get('store').query('kill', {
+        orderBy: 'server',
+        equalTo: params.server_id,
+        limitToLast: 10
+      })
+    });
   },
 
   afterModel(model) {
-    if (!this.can('show server', model)) {
-      this.transitionTo('home');
+    if (!this.can('show server', model.server)) {
+      this.transitionTo('home.dashboard');
     }
   },
 
   titleToken(model) {
-    return model.get('name');
-  },
-
-  setupController(controller, model) {
-    this._super(controller, model);
-    this.get('store').query('kill', {
-      orderBy: 'server',
-      equalTo: model.get('id'),
-      limitToLast: 10
-    }).then((serverKills) => {
-      controller.set('killFeed', serverKills.toArray().reverse());
-    });
+    return model.get('server.name');
   }
 });

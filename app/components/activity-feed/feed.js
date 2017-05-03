@@ -5,7 +5,7 @@ export default Ember.Component.extend({
   classNames: ['timeline'],
 
   activities: null,
-  reversedActivities: Ember.computed('activities', function() {
+  reversedActivities: Ember.computed('activities.[]', function() {
     return this.get('activities').toArray().reverse();
   })
 });

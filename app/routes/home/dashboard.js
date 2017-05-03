@@ -11,7 +11,8 @@ export default Ember.Route.extend({
     return RSVP.hash({
       activities: this.get('store').query('activity', {
         orderBy: 'timestamp',
-        limitToLast: this.get('feedLimit')
+        limitToLast: this.get('feedLimit'),
+        startAt: (new Date(2016, 4, 3)).toJSON()
       }),
       kills: this.get('store').findAll('kill'),
       deaths: this.get('store').findAll('death'),

@@ -1,0 +1,35 @@
+<div class="col-md-12">
+  <div class="panel panel-default panel-table">
+    <div class="panel-heading">
+      Kill Feed
+    </div>
+    <div class="panel-body">
+      <table class="table table-borderless">
+        <tbody>
+          {{#each killFeed as |kill|}}
+            <tr>
+              <td>{{moment-from-now kill.timestamp}}</td>
+              <td>
+                {{#if kill.player.avatar}}
+                  <img src={{kill.player.avatar}} class="img-circle img-responsive" style="width:2vw;" />
+                {{/if}}
+              </td>
+              <td>
+                {{kill.player.name}}
+              </td>
+              <td>killed <span class="s7-right-arrow"></span></td>
+              <td>
+                {{#if kill.death.player.avatar}}
+                  <img src={{kill.death.player.avatar}} class="img-circle img-responsive" style="width:2vw;" />
+                {{/if}}
+              </td>
+              <td>
+                {{kill.death.player.name}}
+              </td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
