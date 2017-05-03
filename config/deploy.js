@@ -13,6 +13,9 @@ module.exports = function(deployTarget) {
     },
     firebase: {
       deployToken: process.env.FIREBASE_DEPLOY_TOKEN
+    },
+    slack: {
+      webhookURL: process.env.SLACK_NOTIFICATION_HOOK
     }
   };
 
