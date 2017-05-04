@@ -1,4 +1,5 @@
 import DS from 'ember-data';
+import Ember from 'ember';
 
 export default DS.Model.extend({
   ipAddress: DS.attr('string'),
@@ -12,5 +13,8 @@ export default DS.Model.extend({
   // Assocations
   player: DS.belongsTo('player'),
   server: DS.belongsTo('server'),
-  activity: DS.belongsTo('activity', { inverse: null })
+  activity: DS.belongsTo('activity', { inverse: null }),
+
+  // Helpers
+  activePlayers: Ember.computed.equal('connected', true)
 });

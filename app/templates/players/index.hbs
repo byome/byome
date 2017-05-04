@@ -1,15 +1,28 @@
-<nav>
-  <ul class="pagination">
-    {{#each numberOfPages as |pageNumner|}}
-    <li class="page-item">
-      {{#link-to 'players' (query-params pageNumber=pageNumber) class="page-link"}}
-        {{pageNumber}}
-      {{/link-to}}
-    </li>
-    {{/each}}
-  </ul>
-</nav>
+<div class="row">
+  <div class="col-sm-12 col-md-10 col-lg-10">
 
-{{#each players as |player|}}
-  <li><img src={{playerAvatar}} style="width:20px;"/> {{#link-to 'players.show' player}}{{player.name}}{{/link-to}}</li>
-{{/each}}
+    <!-- Search for a player -->
+    <form {{action 'searchPlayers' this on='keyup'}} style="margin-bottom: 10px;">
+      {{input value=query class="form-control" placeholder="Search for a player"}}
+    </form>
+    <!-- / Search -->
+
+    <!-- Results -->
+    <div class="row">
+      <div class="col-md-12">
+        <div class="project-list">
+          {{#each model as |player|}}
+            {{#if (can "show player" player)}}
+              {{player-list-item player=player}}
+            {{/if}}
+          {{/each}}
+        </div>
+      </div>
+    </div>
+    <!-- / Results -->
+
+  </div>
+  <div class="col-md-2 col-lg-2">
+    <span class="lead">There are <strong>{{totalPlayers}}</strong> total active and inactive players using the Byome ecosystem for Rust.</span>
+  </div>
+</div>

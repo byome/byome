@@ -1,0 +1,50 @@
+<div class="project-item-title">
+  <span class="name">
+    {{userName}}
+  </span>
+  <span class="description">Byome User</span>
+</div>
+
+<div class="project-item-user">
+  <div class="user-avatar">
+    <img src={{avatar}} alt="avatar">
+  </div>
+  <div class="user-info">
+    {{#link-to 'players.show' player}}
+      {{player.name}}
+    {{/link-to}}
+    <span class="position description">Rust Player</span>
+  </div>
+</div>
+
+<div class="project-item-state" style="margin-left: 10px;">
+  <span class="name">
+    <strong>{{player.killCount}}</strong>
+  </span>
+  <span class="description">Kills</span>
+</div>
+
+<div class="project-item-state">
+  <span class="name">
+    <strong>{{player.deathCount}}</strong>
+  </span>
+  <span class="description">Deaths</span>
+</div>
+
+<div class="project-item-state">
+  <span class="name">
+    <strong>{{player.kdRatio}}</strong>
+  </span>
+  <span class="description">K/D</span>
+</div>
+
+<div class="project-item-state">
+  <span class="name">
+    {{#if isOnline}}
+      <strong class="text-success">Online</strong>
+    {{else}}
+      <span class="text-danger">Offline</span>
+    {{/if}}
+  </span>
+  <span class="description">Player Status</span>
+</div>
