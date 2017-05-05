@@ -10,23 +10,69 @@ module.exports = (process) => {
     username: username,
     iconURL: iconURL,
     willDeploy(context) {
+      const env = context.deployTarget;
+      const version = context.project.pkg.version;
+      const startTime = new Date();
       return (slack) => {
         return slack.notify({
-          text: `<@B57SUCLCB|channel>: Deploy started at ${new Date()}`
+          attachments: [
+            {
+              fallback: `*Deploy started*:\nEnvironment: ${env}\nVersion: ${version}\nTimestamp: ${startTime.toLocaleString()}`,
+              text: `Deploy Started`,
+              color: "#563D7C",
+              footer: "My name is Kunta Kinte - DeployBot",
+              fields: [
+                { title: "Environment", value: env, short: true },
+                { title: "Version", value: `<https://github.com/byome/byome/releases/tag/v${version}|v${version}>`, short: true },
+                { title: "Timestamp", value: startTime.toLocaleString(), short: true },
+              ]
+            }
+          ],
+          startTime: startTime
         });
       }
     },
     didDeploy(context) {
+      const endTime = new Date();
+      const deployTime = (context) => (endTime - context.startTime) / 60000;
       return (slack) => {
         return slack.notify({
-          text: `<@B57SUCLCB|channel>: Deploy finished at ${new Date()}`
+          attachments: [
+            {
+              fallback: `${env} deploy of v${version} finished at ${endTime.toLocaleString()}, and took ${deployTime} minutes`,
+              text: `Deploy Successful`,
+              color: "good",
+              footer: "Your name is Tobeh - Some fuckin asshole",
+              fields: [
+                { title: "Environment", value: env, short: true },
+                { title: "Version", value: `<https://github.com/byome/byome/releases/tag/v${version}|v${version}>`, short: true },
+                { title: "Timestamp", value: endTime.toLocaleString(), short: true },
+                { title: "Deploy Time", value: `${deployTime} minutes`, short: true },
+              ]
+            }
+          ]
         });
       }
     },
     didFail(context) {
+      const endTime = new Date();
+      const deployTime = (context) => (endTime - context.startTime) / 60000;
       return (slack) => {
         return slack.notify({
-          text: `<@B57SUCLCB|channel> & miles: Deploy failed! You dun goofed.`
+          attachments: [
+            {
+              fallback: `miles: ${env} deploy of v${version} failed! You dun goofed.`,
+              text: `Deploy Failed`,
+              color: "danger",
+              footer: "Miles are you retarded or something",
+              fields: [
+                { title: "Environment", value: env, short: true },
+                { title: "Version", value: `<https://github.com/byome/byome/releases/tag/v${version}|v${version}>`, short: true },
+                { title: "Timestamp", value: endTime.toLocaleString(), short: true },
+                { title: "Deploy Time", value: `${deployTime} minutes`, short: true },
+              ]
+            }
+          ]
         });
       }
     }

@@ -18,7 +18,7 @@ module.exports = function(deployTarget) {
 
   if (deployTarget === 'production') {
     ENV.build.environment = 'production';
-    //ENV["revision-data"] = require('./deploy/revision-data')(process);
+    ENV["revision-data"] = require('./deploy/revision-data')(process);
   }
 
   return ENV;
