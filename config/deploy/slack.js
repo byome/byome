@@ -33,6 +33,8 @@ module.exports = (process) => {
       }
     },
     didDeploy(context) {
+      const env = context.deployTarget;
+      const version = context.project.pkg.version;
       const endTime = new Date();
       const deployTime = (context) => (endTime - context.startTime) / 60000;
       return (slack) => {
@@ -55,8 +57,10 @@ module.exports = (process) => {
       }
     },
     didFail(context) {
+      const env = context.deployTarget;
+      const version = context.project.pkg.version;
       const endTime = new Date();
-      const deployTime = (context) => (endTime - context.startTime) / 60000;
+      const deployTime = function(context) { return (endTime - context.startTime) / 60000; };
       return (slack) => {
         return slack.notify({
           attachments: [
