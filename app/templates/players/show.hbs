@@ -29,4 +29,33 @@
       </div>
     </div>
   </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="user-info-list panel panel-default">
+        <div class="panel-heading panel-heading-divider">
+          Player Info
+        </div>
+        <div class="panel-body">
+          <table class="no-border no-strip skills">
+            <tbody class="no-border-x no-border-y">
+              <tr>
+                <td class="icon">
+                  <span class="icon s7-power"></span>
+                </td>
+                <td class="item">Status</td>
+                <td>
+                  {{#if isOnline}}
+                    <span class="text-success">Online</span>
+                  {{else}}
+                    <span>Offline</span>
+                  {{/if}}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

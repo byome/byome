@@ -8,9 +8,18 @@ export default Ember.Controller.extend({
     return this.get('player.avatar') || DEFAULT_AVATAR;
   }),
 
-  serversCount: Ember.computed.alias('player.servers.[].length'),
-  killCount: Ember.computed.alias('player.kills.[].length'),
-  deathCount: Ember.computed.alias('player.deaths.[].length'),
   user: Ember.computed.alias('player.user'),
-  kdRatio: Ember.computed.alias('player.kdRadio')
+  connections: Ember.computed.alias('player.connections.[]'),
+  servers: Ember.computed.alias('player.servers.[]'),
+  kills: Ember.computed.alias('player.kills.[]'),
+  deaths: Ember.computed.alias('player.deaths.[]'),
+
+  serversCount: Ember.computed.alias('servers.[].length'),
+  killCount: Ember.computed.alias('kills.[].length'),
+  deathCount: Ember.computed.alias('deaths.[].length'),
+  kdRatio: Ember.computed.alias('player.kdRatio'),
+
+  isOnline: Ember.computed('connections', function() {
+    return this.get('connections').filterBy('connected', true).get('length') > 0;
+  })
 });
