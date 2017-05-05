@@ -5,7 +5,7 @@ module.exports = function(deployTarget) {
     build: {},
     sentry: require('./deploy/sentry')(process),
     firebase: require('./deploy/firebase')(process),
-    slack: require('./deploy/slack')(process),
+    slack: require('./deploy/slack')(process)
   };
 
   if (deployTarget === 'development') {
@@ -18,6 +18,7 @@ module.exports = function(deployTarget) {
 
   if (deployTarget === 'production') {
     ENV.build.environment = 'production';
+    //ENV["revision-data"] = require('./deploy/revision-data')(process);
   }
 
   return ENV;
