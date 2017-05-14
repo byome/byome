@@ -59,7 +59,10 @@ export default Ember.Controller.extend({
 
   createFirebaseUser(email, password) {
     if (!email && !password) {
-      return Ember.RSVP.reject({ code: "auth/blank-form", message: "You cannot create something out of nothing. Begin with your email." });
+      return Ember.RSVP.reject({
+        code: "auth/blank-form",
+        message: "You cannot create something out of nothing."
+      });
     }
     try {
       return this.get('firebaseApp').auth().createUserWithEmailAndPassword(email, password);
@@ -70,8 +73,6 @@ export default Ember.Controller.extend({
 
   actions: {
     signUp(user) {
-      this.set('errorMessage', null);
-      this.set('registering', true);
       const { email, password } = user.getProperties('email', 'password');
       this.createFirebaseUser(email, password)
         .then(data => this.buildUser(user, data.uid))
