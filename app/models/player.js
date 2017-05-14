@@ -26,6 +26,7 @@ export default DS.Model.extend({
   }),
 
   kdRatio: Ember.computed('killCount', 'deathCount', function() {
+    let ratio = "None";
     if (this.get('deathCount') === 0 && this.get('killCount') > 0) {
       return this.get('killCount');
     } else

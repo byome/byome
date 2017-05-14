@@ -13,8 +13,8 @@ export default Ability.extend({
   userHasStripe: Ember.computed('session.userModel', function() {
     return this.get('session.userModel.stripeCardToken') === 'true';
   }),
-  userHasPlayer: Ember.computed('session.userModel', function() {
-    return this.get('session.userModel.player') === null;
+  userHasPlayer: Ember.computed('session.userModel.player', function() {
+    return this.get('session.userModel.player');
   }),
 
   canCreate: true,
@@ -22,7 +22,7 @@ export default Ability.extend({
     return this.get('userIsAdmin') || this.get('userIsSelf');
   }),
   canUpdateStripe: Ember.computed('userIsAdmin', 'userIsSelf', 'userHasStripe', function() {
-    return !this.get('userHasStripe') && (this.get('userIsAdmin') || this.get('userIsSelf'));
+    return this.get('userIsAdmin') || this.get('userIsSelf');
   }),
   canLinkAccount: Ember.computed('userIsSelf', 'userHasPlayer', function() {
     return this.get('userIsSelf') && !this.get('userHasPlayer');

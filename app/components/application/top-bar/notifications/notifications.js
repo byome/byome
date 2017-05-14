@@ -5,5 +5,5 @@ export default Ember.Component.extend({
   classNames: ['dropdown', 'nav-item', 'mai-notifications'],
 
   session: Ember.inject.service('session'),
-  user: Ember.computed.alias('session.userModel'),
+  user: Ember.computed.alias('session.userModel')
 });

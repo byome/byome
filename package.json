@@ -77,10 +77,11 @@
     "ember-source": "2.12.0",
     "ember-stripe-service": "4.4.2",
     "ember-toastr": "^1.5.0",
-    "emberfire": "^2.0.7",
+    "emberfire": "byome/emberfire",
     "firebase": "^3.7.3",
     "install": "0.8.5",
     "loader.js": "^4.2.3",
-    "torii": "^0.8.2"
+    "torii": "Dhaulagiri/torii#br-session",
+    "toastr": "^2.1.2"
   }
 }

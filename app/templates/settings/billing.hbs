@@ -1,67 +1,93 @@
-<section class="panel">
-  <header class="panel-heading panel-heading-divider">
-    Update your billing information
-    <span class="panel-subtitle">Note: we do not store any credit card information. All payment handling is done through Stripe.</span>
-  </header>
-  <div class="panel-body">
-    <div class="row">
-      <div class="col-md-9">
-        {{#if success}}
-          <div class="alert alert-success">Info successfully updated!</div>
-        {{/if}}
-        {{#if errors}}
-          <div class="alert alert-danger">{{errors}}</div>
-        {{/if}}
-        {{#if user.stripeToken}}
-          <div class="alert alert-info"><i class="fa fa-info-circle"></i> You already have a card on file. You can update here if necessary.</div>
-        {{/if}}
-        {{#if (can "update stripe for user" user)}}
-          <form class="form-horizontal" {{action 'saveBillingInfo' on='submit'}}>
-            <div class="form-group row">
-              <label class="col-sm-3 col-form-label text-right">Card Number</label>
-              <div class="col-sm-9">
-                {{input-mask
-                  mask='9999 9999 9999 9999'
-                  unmaskedValue=number
-                  class="form-control"
-                  autofocus="true"
-                  placeholder="1234 5678 1234 5678"}}
+<div class="row">
+
+  <!-- Add New Card -->
+  <div class="col-md-6">
+    <section class="panel">
+      <header class="panel-heading panel-heading-divider">
+        Update Billing Information
+        <span class="panel-subtitle">Note: we do not store any credit card information. All payment handling is done through Stripe.</span>
+      </header>
+      <div class="panel-body">
+        {{#if showBillingUpdateFields}}
+          {{#if success}}
+            <div class="alert alert-success">Info successfully updated!</div>
+          {{/if}}
+          {{#if errors}}
+            <div class="alert alert-danger">{{errors}}</div>
+          {{/if}}
+          {{#if user.stripeToken}}
+            <div class="alert alert-info"><i class="fa fa-info-circle"></i> You already have a card on file. You can update here if necessary.</div>
+          {{/if}}
+          {{#if (can "update stripe for user" user)}}
+            <form class="form-horizontal" {{action 'saveBillingInfo' on='submit'}}>
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label text-right">Card Number</label>
+                <div class="col-sm-9">
+                  {{input-mask
+                    mask='9999 9999 9999 9999'
+                    unmaskedValue=number
+                    class="form-control"
+                    autofocus="true"
+                    placeholder="1234 5678 1234 5678"}}
+                </div>
               </div>
-            </div>
-            <div class="form-group row">
-              <label class="col-sm-3 col-form-label text-right">Expiration</label>
-              <div class="col-sm-9">
-                {{input-mask
-                  mask="99/99[99]"
-                  value=expiration
-                  placeholder="MM/YYYY"
-                  class="form-control"
-                  autofocus="true"}}
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label text-right">Expiration</label>
+                <div class="col-sm-9">
+                  {{input-mask
+                    mask="99/99[99]"
+                    value=expiration
+                    placeholder="MM/YYYY"
+                    class="form-control"
+                    autofocus="true"}}
+                </div>
               </div>
-            </div>
-            <div class="form-group row">
-              <label class="col-sm-3 col-form-label text-right">CVC</label>
-              <div class="col-sm-9">
-                {{input-mask
-                  mask="999"
-                  unmaskedValue=cvc
-                  placeholder="123"
-                  class="form-control"
-                  autofocus="true"}}
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label text-right">CVC</label>
+                <div class="col-sm-9">
+                  {{input-mask
+                    mask="999"
+                    unmaskedValue=cvc
+                    placeholder="123"
+                    class="form-control"
+                    autofocus="true"}}
+                </div>
               </div>
-            </div>
-            <div class="col-12">
-              <button class="btn btn-lg btn-primary pull-right" type="submit" disabled={{submitting}}>
-                {{#if submitting}}
-                  <i class="fa fa-spinner fa-spin"></i>
-                {{else}}
-                  Save
-                {{/if}}
-              </button>
-            </div>
-          </form>
+              <div class="col-12">
+                <button class="btn btn-lg btn-primary pull-right" type="submit" disabled={{submitting}}>
+                  {{#if submitting}}
+                    <i class="fa fa-spinner fa-spin"></i>
+                  {{else}}
+                    Save
+                  {{/if}}
+                </button>
+              </div>
+            </form>
+          {{/if}}
+        {{else}}
+          <button {{action 'showBillingUpdateFields'}} class="btn btn-lg btn-primary">Update Payment Info</button>
+        {{/if}}
+      </div>
+    </section>
+  </div>
+  <!-- / Add New Card -->
+
+  <!-- Cards on File -->
+  <div class="col-md-6">
+    <div class="panel panel-border-color panel-border-color-primary">
+      <div class="panel-heading">
+        Payment on File
+      </div>
+      <div class="panel-body">
+        {{#if user.stripeCardToken}}
+          We have a card on file for you. You can make charges to it as you wish through the byome ecosystem. Learn more at our <a href="#">FAQ</a>
+          <br/>Note: If you want to change the card associated with the account and alraecy hace one setup, please use the button on the left.
+        {{else}}
+          <p class="text-danger">We have no card on file for you. Please update your billing information on the left in order to make a purchase on byome.</p>
         {{/if}}
       </div>
     </div>
   </div>
-</section>
+  <!-- / Cards on File -->
+
+</div>

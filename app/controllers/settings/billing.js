@@ -8,6 +8,7 @@ export default Ember.Controller.extend({
   success: null,
   errors: null,
   submitting: false,
+  showBillingFields: false,
 
   expMonth: Ember.computed('expiration', function() {
     return this.get('expiration').split('/')[0];
@@ -18,6 +19,10 @@ export default Ember.Controller.extend({
   }),
 
   actions: {
+    showBillingUpdateFields() {
+      this.set('showBillingFields', true);
+    },
+
     saveBillingInfo() {
       this.set('submitting', true);
       const number = this.get('number');
