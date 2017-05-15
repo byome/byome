@@ -4,7 +4,7 @@ import config from './config/environment';
 const Router = Ember.Router.extend({
   location: config.locationType,
   rootURL: config.rootURL,
-  metrics: Ember.inject.service(),
+  metrics: Ember.inject.service('metrics'),
 
   didTransition() {
     this._super(...arguments);
@@ -14,7 +14,7 @@ const Router = Ember.Router.extend({
   _trackPage() {
     Ember.run.scheduleOnce('afterRender', this, () => {
       const page = this.get('url');
-      const title = this.getWithDefault('currentRountName', 'unknown');
+      const title = this.getWithDefault('currentRouteName', 'unknown');
       Ember.get(this, 'metrics').trackPage({ page, title });
     });
   }
