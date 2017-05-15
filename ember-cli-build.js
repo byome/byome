@@ -1,5 +1,6 @@
-/*jshint node:true*/
-/* global require, module */
+/* eslint-env node */
+'use strict';
+
 var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 var Funnel = require('broccoli-funnel');
 

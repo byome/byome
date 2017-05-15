@@ -29,3 +29,8 @@ firebase-debug.log
 config/*.env
 config/*.env.*
 .env*
+
+# ember-try
+.node_modules.ember-try/
+bower.json.ember-try
+package.json.ember-try
