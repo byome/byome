@@ -2,8 +2,8 @@
 
 module.exports = {
   browsers: [
-    'last 1 Chrome versions',
-    'last 1 Firefox versions',
-    'last 1 Safari versions'
+    'last 3 Chrome versions',
+    'last 2 Firefox versions',
+    'last 2 Safari versions'
   ]
 };
