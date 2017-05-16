@@ -28,20 +28,17 @@ export default DS.Model.extend({
   kdRatio: Ember.computed('killCount', 'deathCount', function() {
     let ratio = "None";
     if (this.get('deathCount') === 0 && this.get('killCount') > 0) {
-      return this.get('killCount');
+      ratio = this.get('killCount');
     } else
     if (this.get('deathCount') > this.get('killCount')) {
-      return `-${this.get('deathCount')}`;
+      ratio = `-${this.get('deathCount')}`;
     } else
     if (this.get('deathCount') === 0 && this.get('killCount') === 0) {
-      return 0;
+      ratio = 0;
     } else {
       let ratio = this.get('killCount') / this.get('deathCount');
       if (this._isInteger(ratio)) { return parseInt(ratio); }
       return ratio.toFixed(3);
-    }
-    if (ratio === "None" || ratio === Infinity || typeof ratio === NaN) {
-      return 'None';
     }
     return ratio;
   }),
