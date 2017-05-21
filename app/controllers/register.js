@@ -1,12 +1,31 @@
 import Ember from 'ember';
+import { task } from 'ember-concurrency';
 
 export default Ember.Controller.extend({
   firebaseApp: Ember.inject.service('firebaseApp'),
   raven: Ember.inject.service('raven'),
   metrics: Ember.inject.service('metrics'),
 
-  registering: false,
   errorMessage: null,
+
+  handleErrors(error) {
+    const genericError = "Something went wrong. Please try again.";
+    const firebaseErrors = {
+      "auth/email-already-in-use": "Email address already in use.",
+      "auth/weak-password": "The given password is too weak.",
+      "auth/invalid-email": error.message,
+    };
+    const firebaseArgumentErrors = {
+      "createUserWithEmailAndPassword failed: First argument \"email\" must be a valid string.": "Email is invalid",
+      "createUserWithEmailAndPassword failed: Second argument \"password\" must be a valid string.": "Password is invalid"
+    };
+    const otherErrors = {
+      "auth/blank-form": error.message
+    };
+    const errorMessage = firebaseErrors[error.code] || firebaseArgumentErrors[error.message] || otherErrors[error.code] || genericError;
+    this.set('errorMessage', errorMessage);
+    this.get('raven').captureException(new Error(errorMessage));
+  },
 
   buildUser(user, firebaseUID) {
     const { email, name, username } = user.getProperties('email', 'name', 'username');
@@ -27,25 +46,6 @@ export default Ember.Controller.extend({
     return this.get('metrics').trackEvent('newUser', user.toJSON());
   },
 
-  handleErrors(error) {
-    this.get('raven').captureException(error);
-    const genericError = "Something went wrong. Please try again.";
-    const firebaseErrors = {
-      "auth/email-already-in-use": "Email address already in use.",
-      "auth/weak-password": "The given password is too weak.",
-      "auth/invalid-email": error.message,
-    };
-    const firebaseArgumentErrors = {
-      "createUserWithEmailAndPassword failed: First argument \"email\" must be a valid string.": "Email is invalid",
-      "createUserWithEmailAndPassword failed: Second argument \"password\" must be a valid string.": "Password is invalid"
-    };
-    const otherErrors = {
-      "auth/blank-form": error.message
-    };
-    this.set('errorMessage', firebaseErrors[error.code] || firebaseArgumentErrors[error.message] || otherErrors[error.code] || genericError);
-    this.set('registering', false);
-  },
-
   clearUserForm(user) {
     user.setProperties({
       email: null,
@@ -54,7 +54,6 @@ export default Ember.Controller.extend({
       password: null,
       passwordConfirmation: null
     });
-    this.set('registering', false);
   },
 
   createFirebaseUser(email, password) {
@@ -71,16 +70,17 @@ export default Ember.Controller.extend({
     }
   },
 
-  actions: {
-    signUp(user) {
+  signUp: task(function * (user) {
+    try {
       const { email, password } = user.getProperties('email', 'password');
-      this.createFirebaseUser(email, password)
-        .then(data => this.buildUser(user, data.uid))
-        .then(user => this.saveUser(user))
-        .then(user => this.trackNewUserEvent(user))
-        .then(() => this.clearUserForm(user))
-        .then(() => this.transitionToRoute('home.dashboard'))
-        .catch(errors => this.handleErrors(errors));
+      let newFirebaseUser = yield this.createFirebaseUser(email, password);
+      let builtUser = yield this.buildUser(user, newFirebaseUser.uid);
+      let savedUser = yield this.saveUser(builtUser);
+      yield this.trackNewUserEvent(savedUser);
+      yield this.clearUserForm(user);
+      this.transitionToRoute('home.dashboard')
+    } catch(error) {
+      this.handleErrors(error);
     }
-  }
+  })
 });

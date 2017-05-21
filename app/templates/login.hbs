@@ -11,7 +11,7 @@
         {{#if errorMessage}}
           <div class="alert alert-danger">{{errorMessage}}</div>
         {{/if}}
-        <form {{action 'signIn' this on='submit'}}>
+        <form {{action (perform signIn this) on="submit"}}>
           <div class="form-group">
             <div class="input-group">
               <span class="input-group-addon"><i class="icon s7-user"></i></span>
@@ -24,8 +24,8 @@
             </div>
           </div>
           <div class="form-group login-submit">
-            <button data-dismiss="modal" type="submit" class="btn btn-lg btn-primary btn-block">
-              {{#if signingIn}}
+            <button data-dismiss="modal" type="submit" class="btn btn-lg btn-primary btn-block" disabled={{signIn.isRunning}}>
+              {{#if signIn.isRunning}}
                 {{fa-icon "spinner" spin=true}}
               {{else}}
                 Login
